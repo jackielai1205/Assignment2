@@ -1,7 +1,5 @@
 package com.jackie;
 
-import java.util.Observable;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,14 +8,12 @@ import java.util.Observable;
 
 /**
  *
- * @author jacki
+ * @author waltersiu
  */
-public class MovieDetailPageModel extends Observable{
-
-    Movie movie;
+public class Controller {
     
-    MovieDetailPageModel(Movie movie){
-        this.movie = movie;
+    Controller(RegisterModel model, RegisterPage register){
+        
     }
     
 }

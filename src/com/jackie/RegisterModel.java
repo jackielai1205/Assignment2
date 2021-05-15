@@ -1,5 +1,6 @@
 package com.jackie;
 
+
 import java.util.Observable;
 
 /*
@@ -10,14 +11,17 @@ import java.util.Observable;
 
 /**
  *
- * @author jacki
+ * @author waltersiu
  */
-public class MovieDetailPageModel extends Observable{
-
-    Movie movie;
+public class RegisterModel extends Observable{
+    String email;
+    String password;
+    String confirm;
+    String name;
     
-    MovieDetailPageModel(Movie movie){
-        this.movie = movie;
+    public void checkInput(){
+        this.setChanged();
+        this.notifyObservers();
     }
     
 }

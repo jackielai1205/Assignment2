@@ -1,6 +1,5 @@
 package com.jackie;
 
-import java.util.Observable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,14 +9,12 @@ import java.util.Observable;
 
 /**
  *
- * @author jacki
+ * @author waltersiu
  */
-public class MovieDetailPageModel extends Observable{
-
-    Movie movie;
-    
-    MovieDetailPageModel(Movie movie){
-        this.movie = movie;
+public class Main {
+    public static void main(String[] args) {
+        RegisterPage register = new RegisterPage();
+        
     }
     
 }
