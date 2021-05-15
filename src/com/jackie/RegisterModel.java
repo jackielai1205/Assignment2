@@ -14,12 +14,18 @@ import java.util.Observable;
  * @author waltersiu
  */
 public class RegisterModel extends Observable{
-    String email;
-    String password;
-    String confirm;
-    String name;
     
-    public void checkInput(){
+    public void compareInfo(String email, String password, String confirm, String name){
+        
+        String checkEmail = "Sam";
+        String checkPassword = "Sam";
+        String checkConfirm = "Sam";
+        String checkname = "Sam";
+        
+        if(email.equals(checkEmail)){
+            
+        }
+        
         this.setChanged();
         this.notifyObservers();
     }

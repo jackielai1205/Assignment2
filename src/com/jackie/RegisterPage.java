@@ -45,7 +45,7 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
         submit = new javax.swing.JButton();
         inputEmail = new javax.swing.JTextField();
         inputPassword = new javax.swing.JTextField();
-        inputconfirm = new javax.swing.JTextField();
+        inputConfirm = new javax.swing.JTextField();
         inputName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +60,12 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
 
         labelName.setText("Name");
 
-        submit.setText("jButton1");
+        submit.setText("Register");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
 
         inputEmail.setText("jTextField1");
         inputEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +81,7 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
             }
         });
 
-        inputconfirm.setText("jTextField3");
+        inputConfirm.setText("jTextField3");
 
         inputName.setText("jTextField4");
 
@@ -85,22 +90,26 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(submit)
-                    .addComponent(labelReg)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelEmail)
-                            .addComponent(labelPassword)
-                            .addComponent(labelConfirm)
-                            .addComponent(labelName))
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputconfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(labelReg)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelEmail)
+                                    .addComponent(labelPassword)
+                                    .addComponent(labelConfirm)
+                                    .addComponent(labelName))
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(submit)))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,14 +128,14 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelConfirm)
-                    .addComponent(inputconfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName)
                     .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(29, 29, 29)
                 .addComponent(submit)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,6 +148,10 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
     private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputPasswordActionPerformed
+
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,10 +189,10 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField inputConfirm;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputPassword;
-    private javax.swing.JTextField inputconfirm;
     private javax.swing.JLabel labelConfirm;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelName;
@@ -188,6 +201,23 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
     private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 
+    
+    public String getInputEmail(){
+        return inputEmail.getText();
+    }
+    
+    public String getInputPassword(){
+        return inputPassword.getText();
+    }
+    
+    public String getInputConfirm(){
+        return inputConfirm.getText();
+    }
+    
+    public String getInputName(){
+        return inputName.getText();
+    }
+    
     @Override
     public void update(Observable model, Object arg) {
         
