@@ -1,29 +1,27 @@
-package com.jackie;
-
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.jackie;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author jacki
  */
-public class MoviePageController implements ActionListener{
+public class MovieDetailPageController implements ActionListener{
+    
     
     View view;
-    MoviePageModel model;
+    MovieDetailPageModel movieDetailPageModel;
     
-    MoviePageController(View view, MoviePageModel model){
+    MovieDetailPageController(View view, MovieDetailPageModel model){
         this.view = view;
-        this.model = model;
-        model.addObserver(view);
-        model.notifyObservers(view);
+        this.movieDetailPageModel = model;
+        this.movieDetailPageModel.addObserver(view);
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.jackie;
 
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -135,14 +137,22 @@ public class MoviePageView extends View{
     
     @Override
     public void update(Observable o, Object arg) {
-        printMovie((Model)o);
+        printMovie((MoviePageModel)o);
     }
     
-    public void printMovie(Model model){
+    public void printMovie(MoviePageModel model){
         HashMap<Integer, Movie> movies = model.getMovies();
         
         for(Movie movie: movies.values()){
-            panel.add(new MovieListItem(movie.getName()));
+            MovieListItem movieListItem = new MovieListItem(movie.getName());
+            panel.add(movieListItem);
+            movieListItem.getjButton1().addActionListener(
+                    new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            System.out.println(movie.getName() + " hi"); 
+                        };
+                    }
+            );
         }
     }
 

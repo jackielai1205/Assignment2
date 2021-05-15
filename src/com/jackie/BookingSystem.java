@@ -13,7 +13,7 @@ package com.jackie;
 public class BookingSystem {
 
     public static void main(String[] args) {
-        Model model = new Model();
+        MoviePageModel model = new MoviePageModel();
         MoviePageView moviePageView = new MoviePageView();
         MoviePageController moviePageController = new MoviePageController(moviePageView, model);
     }

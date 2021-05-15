@@ -1,5 +1,6 @@
 package com.jackie;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
@@ -14,11 +15,11 @@ import java.util.Observable;
  *
  * @author jacki
  */
-public class Model extends Observable{
+public class MoviePageModel extends Observable{
     private HashMap<Integer, Movie> movies;
     private ArrayList<User> users;
 
-    public Model() {
+    public MoviePageModel() {
         this.movies = new HashMap<>();
         this.movies.put(0, new Movie("Godzialla vs Kong"));
         this.movies.put(1, new Movie("Mortal Kombat"));
