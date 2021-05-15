@@ -1,6 +1,9 @@
 package com.jackie;
 
-
+import com.jackie.MoviePageModel;
+import com.jackie.MoviePageModel;
+import com.jackie.View;
+import com.jackie.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,7 +22,7 @@ public class MoviePageController implements ActionListener{
     View view;
     MoviePageModel model;
     
-    MoviePageController(View view, MoviePageModel model){
+    public MoviePageController(View view, MoviePageModel model){
         this.view = view;
         this.model = model;
         model.addObserver(view);

@@ -1,5 +1,7 @@
 package com.jackie;
 
+import com.jackie.RegisterPageModel;
+import com.jackie.RegisterPageView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +20,7 @@ public class RegisterPageController {
     RegisterPageModel model;
     RegisterPageView register;
     
-    RegisterPageController(RegisterPageModel model, RegisterPageView register){
+    public RegisterPageController(RegisterPageModel model, RegisterPageView register){
         this.model = model;
         this.register = register;
         
