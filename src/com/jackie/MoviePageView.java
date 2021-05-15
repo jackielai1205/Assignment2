@@ -1,3 +1,5 @@
+package com.jackie;
+
 
 import java.awt.Component;
 import java.util.HashMap;

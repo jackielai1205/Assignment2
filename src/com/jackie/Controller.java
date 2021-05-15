@@ -8,8 +8,12 @@ package com.jackie;
 
 /**
  *
- * @author jacki
+ * @author waltersiu
  */
-class User {
+public class Controller {
+    
+    Controller(RegisterModel model, RegisterPage register){
+        
+    }
     
 }
