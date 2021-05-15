@@ -135,10 +135,10 @@ public class MoviePageView extends View{
     
     @Override
     public void update(Observable o, Object arg) {
-        printMovie((Model)o);
+        printMovie((MoviePageModel)o);
     }
     
-    public void printMovie(Model model){
+    public void printMovie(MoviePageModel model){
         HashMap<Integer, Movie> movies = model.getMovies();
         
         for(Movie movie: movies.values()){

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author jacki
  */
-class Movie {
+public class Movie {
     private String name;
     private int length;
     private String[] castings;

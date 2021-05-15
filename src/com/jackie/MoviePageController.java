@@ -15,9 +15,9 @@ import java.awt.event.ActionListener;
 public class MoviePageController implements ActionListener{
     
     View view;
-    Model model;
+    MoviePageModel model;
     
-    MoviePageController(View view, Model model){
+    MoviePageController(View view, MoviePageModel model){
         this.view = view;
         this.model = model;
         model.addObserver(view);
