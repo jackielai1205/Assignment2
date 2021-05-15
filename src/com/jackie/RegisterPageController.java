@@ -25,6 +25,7 @@ public class RegisterPageController {
         this.register.addOnClickListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){
+                model.addObserver(register);
                 String email;
                 String password;
                 String confirm;
@@ -34,7 +35,8 @@ public class RegisterPageController {
                 password = register.getInputPassword();
                 confirm = register.getInputConfirm();
                 name = register.getInputName();
-                    
+                
+                model.compareInfo(email, password, confirm, name);
             }
         });
     }

@@ -24,7 +24,7 @@ public class RegisterModel extends Observable{
         
         if(email.equals(checkEmail)){
             
-        }
+        } 
         
         this.setChanged();
         this.notifyObservers();

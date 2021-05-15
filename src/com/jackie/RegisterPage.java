@@ -220,6 +220,6 @@ public class RegisterPage extends javax.swing.JFrame implements Observer{
     
     @Override
     public void update(Observable model, Object arg) {
-        
+        this.setVisible(true);
     }
 }
