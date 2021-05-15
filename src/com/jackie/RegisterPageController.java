@@ -15,10 +15,10 @@ import java.awt.event.ActionListener;
  */
 public class RegisterPageController {
     
-    RegisterModel model;
-    RegisterPage register;
+    RegisterPageModel model;
+    RegisterPageView register;
     
-    RegisterPageController(RegisterModel model, RegisterPage register){
+    RegisterPageController(RegisterPageModel model, RegisterPageView register){
         this.model = model;
         this.register = register;
         

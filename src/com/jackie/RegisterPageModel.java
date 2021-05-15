@@ -13,7 +13,7 @@ import java.util.Observable;
  *
  * @author waltersiu
  */
-public class RegisterModel extends Observable{
+public class RegisterPageModel extends Observable{
     
     public void compareInfo(String email, String password, String confirm, String name){
         
