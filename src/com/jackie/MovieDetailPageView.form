@@ -40,7 +40,7 @@
                   <Component id="movieName" pref="162" max="32767" attributes="0"/>
                   <Component id="movieLength" alignment="0" max="32767" attributes="0"/>
                   <Component id="casting" alignment="0" max="32767" attributes="0"/>
-                  <Component id="Description" max="32767" attributes="0"/>
+                  <Component id="description" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -56,7 +56,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="movieLength" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Description" max="32767" attributes="0"/>
+                      <Component id="description" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="casting" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
@@ -120,7 +120,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="Description">
+    <Component class="javax.swing.JLabel" name="description">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>

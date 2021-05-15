@@ -22,6 +22,7 @@ public class MovieDetailPageController implements ActionListener{
         this.view = view;
         this.movieDetailPageModel = model;
         this.movieDetailPageModel.addObserver(view);
+        this.movieDetailPageModel.notifyObservers();
     }
 
     @Override

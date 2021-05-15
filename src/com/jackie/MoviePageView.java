@@ -149,7 +149,9 @@ public class MoviePageView extends View{
             movieListItem.getjButton1().addActionListener(
                     new ActionListener(){
                         public void actionPerformed(ActionEvent e){
-                            System.out.println(movie.getName() + " hi"); 
+                            MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie);
+                            MovieDetailPageView movieDetailPageView = new MovieDetailPageView();
+                            MovieDetailPageController movieDetailPageController = new MovieDetailPageController(movieDetailPageView, movieDetailPageModel);
                         };
                     }
             );

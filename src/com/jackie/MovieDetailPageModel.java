@@ -18,6 +18,7 @@ public class MovieDetailPageModel extends Observable{
     
     MovieDetailPageModel(Movie movie){
         this.movie = movie;
+        this.setChanged();
     }
     
 }

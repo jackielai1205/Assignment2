@@ -19,6 +19,7 @@ public class MovieDetailPageView extends View implements Observer{
      */
     public MovieDetailPageView() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -36,7 +37,7 @@ public class MovieDetailPageView extends View implements Observer{
         casting = new javax.swing.JLabel();
         showTime = new javax.swing.JButton();
         back = new javax.swing.JButton();
-        Description = new javax.swing.JLabel();
+        description = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +72,7 @@ public class MovieDetailPageView extends View implements Observer{
             }
         });
 
-        Description.setText("jLabel1");
+        description.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +92,7 @@ public class MovieDetailPageView extends View implements Observer{
                     .addComponent(movieName, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(movieLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(casting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -104,7 +105,7 @@ public class MovieDetailPageView extends View implements Observer{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(movieLength, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(casting, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -163,9 +164,9 @@ public class MovieDetailPageView extends View implements Observer{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Description;
     private javax.swing.JButton back;
     private javax.swing.JLabel casting;
+    private javax.swing.JLabel description;
     private javax.swing.JLabel movieLength;
     private javax.swing.JLabel movieName;
     private javax.swing.JPanel panel;
@@ -174,6 +175,17 @@ public class MovieDetailPageView extends View implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        showMovieDetail(((MovieDetailPageModel)o));
+    }
+    
+    public void showMovieDetail(MovieDetailPageModel model){
+        String allCasting = "";
+        for(String casting: model.movie.getCastings()){
+            allCasting+=casting+" ";
+        }
+        this.casting.setText(allCasting);
+        this.movieLength.setText(String.valueOf(model.movie.getLength()));
+        this.description.setText( "<html><p style=\"width:350px\">"+model.movie.getDescription()+"</p></html>");
+        this.movieName.setText(model.movie.getName());
     }
 }
