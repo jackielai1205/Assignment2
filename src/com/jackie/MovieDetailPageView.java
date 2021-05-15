@@ -5,11 +5,14 @@
  */
 package com.jackie;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  *
  * @author jacki
  */
-public class MovieDetailPageView extends javax.swing.JFrame {
+public class MovieDetailPageView extends View implements Observer{
 
     /**
      * Creates new form MovieDetailPageView
@@ -168,4 +171,9 @@ public class MovieDetailPageView extends javax.swing.JFrame {
     private javax.swing.JPanel panel;
     private javax.swing.JButton showTime;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
