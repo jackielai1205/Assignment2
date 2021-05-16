@@ -2,6 +2,7 @@ package com.jackie;
 
 
 import java.util.Observable;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,19 +16,10 @@ import java.util.Observable;
  */
 public class RegisterPageModel extends Observable{
     
-    public void compareInfo(String email, String password, String confirm, String name){
-        
-        String checkEmail = "Sam";
-        String checkPassword = "Sam";
-        String checkConfirm = "Sam";
-        String checkname = "Sam";
-        
-        if(email.equals(checkEmail)){
-            
-        } 
-        
+    public void registerToDatabase(User user){
+        // Add data to database
+        System.out.print("done!");
         this.setChanged();
         this.notifyObservers();
-    }
-    
+    }   
 }

@@ -1,32 +1,25 @@
-package com.jackie;
-
-
-import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.jackie;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author waltersiu
  */
-public class RegisterPageView extends View implements Observer{
+public class LoginPageView extends View implements Observer {
 
     /**
-     * Creates new form RegisterPage
+     * Creates new form LoginPageView
      */
-    public RegisterPageView() {
+    public LoginPageView() {
         this.setVisible(true);
         initComponents();
-    }
-    
-    public void addOnClickListener(ActionListener al){
-        submit.addActionListener(al);
     }
 
     /**
@@ -38,35 +31,20 @@ public class RegisterPageView extends View implements Observer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelReg = new javax.swing.JLabel();
+        labelLogin = new javax.swing.JLabel();
         labelEmail = new javax.swing.JLabel();
         labelPassword = new javax.swing.JLabel();
-        labelConfirm = new javax.swing.JLabel();
-        labelName = new javax.swing.JLabel();
-        submit = new javax.swing.JButton();
         inputEmail = new javax.swing.JTextField();
         inputPassword = new javax.swing.JTextField();
-        inputConfirm = new javax.swing.JTextField();
-        inputName = new javax.swing.JTextField();
+        submit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        labelReg.setText("Registration");
+        labelLogin.setText("Login");
 
         labelEmail.setText("Email");
 
         labelPassword.setText("Password");
-
-        labelConfirm.setText("Confirm Password");
-
-        labelName.setText("Name");
-
-        submit.setText("Register");
-        submit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
-            }
-        });
 
         inputEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,15 +52,10 @@ public class RegisterPageView extends View implements Observer{
             }
         });
 
-        inputPassword.addActionListener(new java.awt.event.ActionListener() {
+        submit.setText("Login");
+        submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPasswordActionPerformed(evt);
-            }
-        });
-
-        inputConfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputConfirmActionPerformed(evt);
+                submitActionPerformed(evt);
             }
         });
 
@@ -93,50 +66,38 @@ public class RegisterPageView extends View implements Observer{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelReg)
+                            .addComponent(labelLogin)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labelEmail)
-                                    .addComponent(labelPassword)
-                                    .addComponent(labelConfirm)
-                                    .addComponent(labelName))
-                                .addGap(47, 47, 47)
+                                    .addComponent(labelPassword))
+                                .addGap(80, 80, 80)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(inputName)
-                                    .addComponent(inputConfirm)
-                                    .addComponent(inputPassword)
-                                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(inputEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                    .addComponent(inputPassword)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(36, 36, 36)
                         .addComponent(submit)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelReg)
-                .addGap(17, 17, 17)
+                .addGap(15, 15, 15)
+                .addComponent(labelLogin)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEmail)
-                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPassword)
                     .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelConfirm)
-                    .addComponent(inputConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelName)
-                    .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(57, 57, 57)
                 .addComponent(submit)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,17 +107,9 @@ public class RegisterPageView extends View implements Observer{
         // TODO add your handling code here:
     }//GEN-LAST:event_inputEmailActionPerformed
 
-    private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputPasswordActionPerformed
-
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_submitActionPerformed
-
-    private void inputConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputConfirmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputConfirmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,57 +128,35 @@ public class RegisterPageView extends View implements Observer{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterPageView().setVisible(true);
+                new LoginPageView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField inputConfirm;
     private javax.swing.JTextField inputEmail;
-    private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputPassword;
-    private javax.swing.JLabel labelConfirm;
     private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelPassword;
-    private javax.swing.JLabel labelReg;
     private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 
-    
-    public String getInputEmail(){
-        return inputEmail.getText();
-    }
-    
-    public String getInputPassword(){
-        return inputPassword.getText();
-    }
-    
-    public String getInputConfirm(){
-        return inputConfirm.getText();
-    }
-    
-    public String getInputName(){
-        return inputName.getText();
-    }
-    
     @Override
-    public void update(Observable model, Object arg) {
-        this.setVisible(true);
+    public void update(Observable o, Object arg) {
+        
     }
 }
