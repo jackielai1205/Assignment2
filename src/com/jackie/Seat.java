@@ -20,6 +20,8 @@ class Seat {
         this.column = column;
         this.row = row;
     }
+    
+    
 
     public Seat(int column, int row){
         this.column = column;

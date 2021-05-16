@@ -5,6 +5,9 @@
  */
 package com.jackie;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author jacki
@@ -84,4 +87,39 @@ public class ShowTimeList extends javax.swing.JPanel {
     private javax.swing.JLabel price;
     private javax.swing.JLabel time;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getData() {
+        return data;
+    }
+
+    public void setData(JLabel data) {
+        this.data = data;
+    }
+
+    public JButton getEnterShowTime() {
+        return enterShowTime;
+    }
+
+    public void setEnterShowTime(JButton enterShowTime) {
+        this.enterShowTime = enterShowTime;
+    }
+
+    public JLabel getPrice() {
+        return price;
+    }
+
+    public void setPrice(JLabel price) {
+        this.price = price;
+    }
+
+    public JLabel getTime() {
+        return time;
+    }
+
+    public void setTime(JLabel time) {
+        this.time = time;
+    }
+
+
+
 }

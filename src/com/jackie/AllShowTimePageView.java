@@ -5,6 +5,8 @@
  */
 package com.jackie;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 
 /**
@@ -118,6 +120,15 @@ public class AllShowTimePageView extends View {
         for(ShowTime showtime: model.movie.getShowTimes()){
             ShowTimeList component = new ShowTimeList(showtime);
             this.showTimeList.add(component);
+            component.getEnterShowTime().addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    SelectedShowTimePageModel selectedShowTimePageModel = new SelectedShowTimePageModel(showtime);
+                    SelectedShowTimePageView selectedShowTimePageView = new SelectedShowTimePageView(AllShowTimePageView.this);
+                    SelectedShowTimePageController selectedShowTimePageController = new SelectedShowTimePageController(selectedShowTimePageView, selectedShowTimePageModel);
+                    AllShowTimePageView.this.setEnabled(false);
+                }
+            });
         }
     }
 }
