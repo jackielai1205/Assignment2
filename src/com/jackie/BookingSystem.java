@@ -18,8 +18,9 @@ public class BookingSystem {
         MoviePageView moviePageView = new MoviePageView(null);
         MoviePageController moviePageController = new MoviePageController(moviePageView, model);
         
-        RegisterPageView register = new RegisterPageView(null);
-        RegisterPageModel registerModel = new RegisterPageModel();
-        RegisterPageController con = new RegisterPageController(registerModel, register);
+        MenuPageView menuView = new MenuPageView(null);
+        MenuPageModel menuModel = new MenuPageModel();
+        MenuPageController menucontroller = new MenuPageController(menuModel, menuView);
+        
     }
 }

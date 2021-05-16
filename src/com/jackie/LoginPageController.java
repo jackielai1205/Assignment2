@@ -5,10 +5,45 @@
  */
 package com.jackie;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author waltersiu
  */
 public class LoginPageController {
+    LoginPageModel loginModel;
+    LoginPageView loginView;
     
+    LoginPageController(LoginPageModel loginModel, LoginPageView loginView){
+        this.loginModel = loginModel;
+        this.loginView = loginView;
+        
+        this.loginView.addOnClickListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent al){
+                loginModel.addObserver(loginView);
+                User currentLoginUser = new User();
+                
+                /**
+                 * Need to get data from database
+                 */
+                String dbEmail = "123";
+                String dbPassword = "123";
+                
+                currentLoginUser.setEmail(loginView.getInputEmail());
+                currentLoginUser.setPassword(loginView.getInputPassword());
+                
+                if(currentLoginUser.getEmail().equals(dbEmail)){
+                    if(currentLoginUser.getPassword().equals(dbPassword)){
+                        // jump to menu page after login
+                        JOptionPane.showMessageDialog(loginView, "Login success!");
+                        loginView.setVisible(false);
+                    }
+                }
+            }
+        });
+    }
 }

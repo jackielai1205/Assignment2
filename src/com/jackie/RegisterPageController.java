@@ -30,14 +30,19 @@ public class RegisterPageController {
             public void actionPerformed(ActionEvent al){
                 registerModel.addObserver(registerView);
                 User currentUser = new User();
-                String checkEmail = "123";
+              
+                /***
+                 * Need change to get data from database
+                 * Hard code for checkInfo only 
+                 */
+                String dbEmail = "123"; 
 
                 currentUser.setEmail(registerView.getInputEmail());
                 currentUser.setPassword(registerView.getInputPassword());
                 String confirmPassword = registerView.getInputConfirm();
                 currentUser.setName(registerView.getInputName());
                 
-                if(currentUser.getEmail().equals(checkEmail)){
+                if(currentUser.getEmail().equals(dbEmail)){
                     JOptionPane.showMessageDialog(registerView, "Email have been registered. Bye!");
                 } else if(!currentUser.getPassword().equals(confirmPassword)){
                     JOptionPane.showMessageDialog(registerView, "Confirm password and password not match. Bye");

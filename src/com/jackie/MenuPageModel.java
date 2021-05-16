@@ -5,14 +5,10 @@
  */
 package com.jackie;
 
-import java.util.Observable;
-
 /**
  *
  * @author waltersiu
  */
-public class LoginPageModel extends Observable{
-    
-    // function that get userinfo from database and pass to login controller
+public class MenuPageModel {
     
 }
