@@ -76,6 +76,10 @@ public class Movie {
                 this.castings[2] + " " + this.director + " " + this.category + " " + this.rating + " " + this.description;
     }
     
+    public void addShowTime(ShowTime showTime){
+        this.showTimes.add(showTime);
+    }
+    
     //test
     Movie(String name){
         this.name = name;

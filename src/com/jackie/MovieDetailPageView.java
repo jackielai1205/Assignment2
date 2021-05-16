@@ -7,6 +7,8 @@ package com.jackie;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,12 +16,13 @@ import java.util.Observer;
  *
  * @author jacki
  */
-public class MovieDetailPageView extends View implements Observer{
+public class MovieDetailPageView extends View{
 
     /**
      * Creates new form MovieDetailPageView
      */
-    public MovieDetailPageView() {
+    public MovieDetailPageView(View parent) {
+        super(parent);
         initComponents();
         this.setVisible(true);
     }
@@ -112,43 +115,9 @@ public class MovieDetailPageView extends View implements Observer{
     }//GEN-LAST:event_showTimeActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        // TODO add your handling code here:
+        this.back();
     }//GEN-LAST:event_backActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MovieDetailPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MovieDetailPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MovieDetailPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MovieDetailPageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MovieDetailPageView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
@@ -177,5 +146,14 @@ public class MovieDetailPageView extends View implements Observer{
         this.movieName.setText("<html>Movie name:<br>" + model.movie.getName()+ "</html>");
         String imagePath = "/com/jackie/"+model.movie.getName().replaceAll("\\s","")+".jpg";
         this.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
+        this.showTime.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AllShowTimePageView allShowTimePageView = new AllShowTimePageView(MovieDetailPageView.this);
+                AllShowTimePageModel allShowTimePageModel = new AllShowTimePageModel(model.movie);
+                AllShowTimePageController allShowTimePageController =  new AllShowTimePageController(allShowTimePageView, allShowTimePageModel);
+                MovieDetailPageView.this.setEnabled(false);
+            }
+        });
     }
 }
