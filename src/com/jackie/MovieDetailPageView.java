@@ -5,6 +5,8 @@
  */
 package com.jackie;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -31,26 +33,15 @@ public class MovieDetailPageView extends View implements Observer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
         movieName = new javax.swing.JLabel();
         movieLength = new javax.swing.JLabel();
         casting = new javax.swing.JLabel();
         showTime = new javax.swing.JButton();
         back = new javax.swing.JButton();
         description = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 218, Short.MAX_VALUE)
-        );
 
         movieName.setText("jLabel1");
 
@@ -74,20 +65,21 @@ public class MovieDetailPageView extends View implements Observer{
 
         description.setText("jLabel1");
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(showTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(52, 52, 52)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                     .addComponent(movieLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,8 +89,8 @@ public class MovieDetailPageView extends View implements Observer{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showTime)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(back))
@@ -162,12 +154,13 @@ public class MovieDetailPageView extends View implements Observer{
     private javax.swing.JButton back;
     private javax.swing.JLabel casting;
     private javax.swing.JLabel description;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel movieLength;
     private javax.swing.JLabel movieName;
-    private javax.swing.JPanel panel;
     private javax.swing.JButton showTime;
     // End of variables declaration//GEN-END:variables
 
+    
     @Override
     public void update(Observable o, Object arg) {
         showMovieDetail(((MovieDetailPageModel)o));
@@ -182,5 +175,7 @@ public class MovieDetailPageView extends View implements Observer{
         this.movieLength.setText("<html>Length:<br>"+String.valueOf(model.movie.getLength())+"</html>");
         this.description.setText( "<html><p style=\"width:350px\">Description:<br>"+model.movie.getDescription()+"</p></html>");
         this.movieName.setText("<html>Movie name:<br>" + model.movie.getName()+ "</html>");
+        String imagePath = "/com/jackie/"+model.movie.getName().replaceAll("\\s","")+".jpg";
+        this.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
     }
 }
