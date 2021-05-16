@@ -47,10 +47,13 @@ public class MovieDetailPageView extends View{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         movieName.setText("jLabel1");
+        movieName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         movieLength.setText("jLabel2");
+        movieLength.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         casting.setText("jLabel3");
+        casting.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         showTime.setText("Enter ShowTime Page");
         showTime.addActionListener(new java.awt.event.ActionListener() {
@@ -67,8 +70,10 @@ public class MovieDetailPageView extends View{
         });
 
         description.setText("jLabel1");
+        description.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
