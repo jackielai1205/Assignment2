@@ -15,6 +15,17 @@ import java.util.Observer;
  *
  * @author jacki
  */
-abstract class View extends javax.swing.JFrame implements Observer{
+public abstract class View extends javax.swing.JFrame implements Observer{
+    
+    View parent;
+    
+    public View(View parent){
+        this.parent = parent;
+    }
+    
+    public void back(){
+        this.parent.setEnabled(true);
+        dispose();
+    }
 
 }

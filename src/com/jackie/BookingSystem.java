@@ -1,5 +1,6 @@
 package com.jackie;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,10 +15,10 @@ public class BookingSystem {
 
     public static void main(String[] args) {
         MoviePageModel model = new MoviePageModel();
-        MoviePageView moviePageView = new MoviePageView();
+        MoviePageView moviePageView = new MoviePageView(null);
         MoviePageController moviePageController = new MoviePageController(moviePageView, model);
         
-        RegisterPageView register = new RegisterPageView();
+        RegisterPageView register = new RegisterPageView(null);
         RegisterPageModel registerModel = new RegisterPageModel();
         RegisterPageController con = new RegisterPageController(registerModel, register);
     }

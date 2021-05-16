@@ -1,36 +1,34 @@
-package com.jackie;
-
-import com.jackie.MoviePageModel;
-import com.jackie.MoviePageModel;
-import com.jackie.View;
-import com.jackie.View;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.jackie;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author jacki
  */
-public class MoviePageController implements ActionListener{
+public class AllShowTimePageController implements ActionListener{
     
     View view;
-    MoviePageModel model;
+    AllShowTimePageModel allShowTimePageModel;
     
-    public MoviePageController(View view, MoviePageModel model){
+    AllShowTimePageController(View view, AllShowTimePageModel model){
         this.view = view;
-        this.model = model;
-        model.addObserver(view);
-        model.notifyObservers(view);
+        this.allShowTimePageModel = model;
+        this.allShowTimePageModel.addObserver(view);
+        this.allShowTimePageModel.notifyObservers();
     }
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }
