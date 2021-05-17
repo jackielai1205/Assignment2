@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -165,9 +166,12 @@ public class SelectedShowTimePageView extends View {
                 seatButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+                       if(JOptionPane.showConfirmDialog(SelectedShowTimePageView.this,"Do you want to book this seat?","Confirm booking", JOptionPane.YES_NO_OPTION)==0){
+                           currentSeat.setAvailable(false);
+                           SelectedShowTimePageView.this.back();
+                       }
                     }
-
                 });
                 this.content.add(seatButton);
             }
