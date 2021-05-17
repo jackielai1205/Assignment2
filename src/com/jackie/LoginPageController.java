@@ -16,8 +16,9 @@ import javax.swing.JOptionPane;
 public class LoginPageController {
     LoginPageModel loginModel;
     LoginPageView loginView;
+    MenuPageView menuView;
     
-    LoginPageController(LoginPageModel loginModel, LoginPageView loginView){
+    LoginPageController(LoginPageModel loginModel, LoginPageView loginView, MenuPageView menuView){
         this.loginModel = loginModel;
         this.loginView = loginView;
         
@@ -35,12 +36,13 @@ public class LoginPageController {
                 
                 currentLoginUser.setEmail(loginView.getInputEmail());
                 currentLoginUser.setPassword(loginView.getInputPassword());
-                
+               
                 if(currentLoginUser.getEmail().equals(dbEmail)){
                     if(currentLoginUser.getPassword().equals(dbPassword)){
                         // jump to menu page after login
                         JOptionPane.showMessageDialog(loginView, "Login success!");
                         loginView.setVisible(false);
+                        menuView.setEnabled(true);
                     }
                 }
             }

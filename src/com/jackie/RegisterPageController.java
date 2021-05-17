@@ -20,10 +20,12 @@ public class RegisterPageController {
     
     RegisterPageModel registerModel;
     RegisterPageView registerView;
+    MenuPageView menuView;
     
-    RegisterPageController(RegisterPageModel registerModel, RegisterPageView registerView){
+    RegisterPageController(RegisterPageModel registerModel, RegisterPageView registerView, MenuPageView menuView){
         this.registerModel = registerModel;
         this.registerView = registerView;
+        this.menuView = menuView;
         
         this.registerView.addOnClickListener(new ActionListener(){
             @Override
@@ -50,9 +52,9 @@ public class RegisterPageController {
                     registerModel.registerToDatabase(currentUser);
                     JOptionPane.showMessageDialog(registerView, "Register success!");
                     registerView.setVisible(false);
+                    menuView.setEnabled(true);
                 }
             }
         });
     }
-    
 }
