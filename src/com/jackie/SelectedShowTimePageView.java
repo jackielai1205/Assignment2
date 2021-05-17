@@ -47,6 +47,7 @@ public class SelectedShowTimePageView extends View {
         screen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -166,9 +167,9 @@ public class SelectedShowTimePageView extends View {
                 seatButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-        
                        if(JOptionPane.showConfirmDialog(SelectedShowTimePageView.this,"Do you want to book this seat?","Confirm booking", JOptionPane.YES_NO_OPTION)==0){
                            currentSeat.setAvailable(false);
+                           JOptionPane.showMessageDialog(SelectedShowTimePageView.this, "Booking Confirmed", "Message", 1);
                            SelectedShowTimePageView.this.back();
                        }
                     }

@@ -45,6 +45,7 @@ public class MovieDetailPageView extends View{
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         movieName.setText("jLabel1");
         movieName.setBorder(javax.swing.BorderFactory.createEtchedBorder());

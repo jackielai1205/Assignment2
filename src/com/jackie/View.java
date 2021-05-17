@@ -21,6 +21,7 @@ public abstract class View extends javax.swing.JFrame implements Observer{
     
     public View(View parent){
         this.parent = parent;
+        this.setResizable(false);
     }
     
     public void back(){
