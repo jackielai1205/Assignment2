@@ -21,7 +21,8 @@ public class MenuPageController {
             public void actionPerformed(ActionEvent al){
                 RegisterPageView registerView = new RegisterPageView(menuView);
                 RegisterPageModel registerModel = new RegisterPageModel();
-                RegisterPageController registerController = new RegisterPageController(registerModel, registerView);  
+                RegisterPageController registerController = new RegisterPageController(registerModel, registerView, menuView); 
+                menuView.setEnabled(false);
             }
         });
         
@@ -30,7 +31,8 @@ public class MenuPageController {
             public void actionPerformed(ActionEvent al){
                 LoginPageView loginView = new LoginPageView(menuView);
                 LoginPageModel loginModel = new LoginPageModel();
-                LoginPageController loginController = new LoginPageController(loginModel, loginView);
+                LoginPageController loginController = new LoginPageController(loginModel, loginView, menuView);
+                menuView.setEnabled(false);
             }
         });
         
