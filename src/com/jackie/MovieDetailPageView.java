@@ -121,7 +121,7 @@ public class MovieDetailPageView extends View{
     }//GEN-LAST:event_showTimeActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        this.back();
+
     }//GEN-LAST:event_backActionPerformed
 
 
@@ -161,5 +161,9 @@ public class MovieDetailPageView extends View{
                 MovieDetailPageView.this.setEnabled(false);
             }
         });
+    }
+    
+    public void addController(MovieDetailPageController controller){
+        back.addActionListener(controller);
     }
 }

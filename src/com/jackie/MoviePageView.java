@@ -119,11 +119,16 @@ public class MoviePageView extends View{
                             MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie);
                             MovieDetailPageView movieDetailPageView = new MovieDetailPageView(MoviePageView.this);
                             MovieDetailPageController movieDetailPageController = new MovieDetailPageController(movieDetailPageView, movieDetailPageModel);
+                            movieDetailPageView.addController(movieDetailPageController);
                             MoviePageView.this.setEnabled(false);  
                         };
                     }
             );
         }
+    }
+    
+    public void addController(MoviePageController controller){
+       
     }
 
 }

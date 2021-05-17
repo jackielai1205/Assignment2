@@ -8,6 +8,11 @@ package com.jackie;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -110,6 +115,59 @@ public class AllShowTimePageView extends View {
     private javax.swing.JPanel showTimeList;
     // End of variables declaration//GEN-END:variables
     private javax.swing.BoxLayout boxLayout;
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public void setBack(JButton back) {
+        this.back = back;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getMovieText() {
+        return movieText;
+    }
+
+    public void setMovieText(JLabel movieText) {
+        this.movieText = movieText;
+    }
+
+    public JPanel getShowTimeInterface() {
+        return showTimeInterface;
+    }
+
+    public void setShowTimeInterface(JPanel showTimeInterface) {
+        this.showTimeInterface = showTimeInterface;
+    }
+
+    public JPanel getShowTimeList() {
+        return showTimeList;
+    }
+
+    public void setShowTimeList(JPanel showTimeList) {
+        this.showTimeList = showTimeList;
+    }
+
+    public BoxLayout getBoxLayout() {
+        return boxLayout;
+    }
+
+    public void setBoxLayout(BoxLayout boxLayout) {
+        this.boxLayout = boxLayout;
+    }
+    
+    
+    
+    
+    
     @Override
     public void update(Observable o, Object arg) {
         printAllShowTime(((AllShowTimePageModel)o));

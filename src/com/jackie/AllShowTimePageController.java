@@ -14,19 +14,18 @@ import java.awt.event.ActionListener;
  */
 public class AllShowTimePageController implements ActionListener{
     
-    View view;
+    AllShowTimePageView allShowTimePageView;
     AllShowTimePageModel allShowTimePageModel;
     
-    AllShowTimePageController(View view, AllShowTimePageModel model){
-        this.view = view;
+    AllShowTimePageController(AllShowTimePageView allShowTimePageView, AllShowTimePageModel model){
+        this.allShowTimePageView = allShowTimePageView;
         this.allShowTimePageModel = model;
-        this.allShowTimePageModel.addObserver(view);
+        this.allShowTimePageModel.addObserver(allShowTimePageView);
         this.allShowTimePageModel.notifyObservers();
     }
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.allShowTimePageView.back();
     }
     
 }
