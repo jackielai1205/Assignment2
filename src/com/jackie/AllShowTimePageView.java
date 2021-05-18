@@ -103,7 +103,7 @@ public class AllShowTimePageView extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        this.back();
+
     }//GEN-LAST:event_backActionPerformed
 
 

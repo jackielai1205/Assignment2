@@ -111,24 +111,17 @@ public class MoviePageView extends View{
         HashMap<Integer, Movie> movies = model.getMovies();
         
         for(Movie movie: movies.values()){
-            MovieListItem movieListItem = new MovieListItem(movie.getName());
+            MoviePageController controller = new MoviePageController(movie);
+            MovieListItem movieListItem = new MovieListItem(controller.getModel(),controller.getView(), movie.getName());
             panel.add(movieListItem);
-            movieListItem.getjButton1().addActionListener(
-                    new ActionListener(){
-                        public void actionPerformed(ActionEvent e){
-                            MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie);
-                            MovieDetailPageView movieDetailPageView = new MovieDetailPageView(MoviePageView.this);
-                            MovieDetailPageController movieDetailPageController = new MovieDetailPageController(movieDetailPageView, movieDetailPageModel);
-                            movieDetailPageView.addController(movieDetailPageController);
-                            MoviePageView.this.setEnabled(false);  
-                        };
-                    }
-            );
+            movieListItem.getEnter().addActionListener(controller);
         }
     }
     
     public void addController(MoviePageController controller){
-       
     }
+    
+        
+
 
 }

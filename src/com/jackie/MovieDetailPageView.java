@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -152,18 +154,67 @@ public class MovieDetailPageView extends View{
         this.movieName.setText("<html>Movie name:<br>" + model.movie.getName()+ "</html>");
         String imagePath = "/com/jackie/"+model.movie.getName().replaceAll("\\s","")+".jpg";
         this.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
-        this.showTime.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AllShowTimePageView allShowTimePageView = new AllShowTimePageView(MovieDetailPageView.this);
-                AllShowTimePageModel allShowTimePageModel = new AllShowTimePageModel(model.movie);
-                AllShowTimePageController allShowTimePageController =  new AllShowTimePageController(allShowTimePageView, allShowTimePageModel);
-                MovieDetailPageView.this.setEnabled(false);
-            }
-        });
     }
+   
     
     public void addController(MovieDetailPageController controller){
-        back.addActionListener(controller);
+        showTime.addActionListener(controller);
     }
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public void setBack(JButton back) {
+        this.back = back;
+    }
+
+    public JLabel getCasting() {
+        return casting;
+    }
+
+    public void setCasting(JLabel casting) {
+        this.casting = casting;
+    }
+
+    public JLabel getDescription() {
+        return description;
+    }
+
+    public void setDescription(JLabel description) {
+        this.description = description;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getMovieLength() {
+        return movieLength;
+    }
+
+    public void setMovieLength(JLabel movieLength) {
+        this.movieLength = movieLength;
+    }
+
+    public JLabel getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(JLabel movieName) {
+        this.movieName = movieName;
+    }
+
+    public JButton getShowTime() {
+        return showTime;
+    }
+
+    public void setShowTime(JButton showTime) {
+        this.showTime = showTime;
+    }
+    
 }

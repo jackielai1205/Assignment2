@@ -17,13 +17,17 @@ import javax.swing.JLabel;
  */
 public class MovieListItem extends javax.swing.JPanel implements ActionListener{
 
+    MoviePageModel model;
+    View view;
     /**
      * Creates new form MovieList
      */
-    public MovieListItem(String name) {
+    public MovieListItem(MoviePageModel model, View view, String name) {
+        this.view = view;
+        this.model = model;
         initComponents();
-        jLabel1.setText(name);
-        jButton1.setText("View");
+        movieName.setText(name);
+        enter.setText("View");
     }
 
     /**
@@ -35,12 +39,12 @@ public class MovieListItem extends javax.swing.JPanel implements ActionListener{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        movieName = new javax.swing.JLabel();
+        enter = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        movieName.setText("jLabel1");
 
-        jButton1.setText("jButton1");
+        enter.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -48,9 +52,9 @@ public class MovieListItem extends javax.swing.JPanel implements ActionListener{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(movieName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(enter)
                 .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
@@ -58,37 +62,41 @@ public class MovieListItem extends javax.swing.JPanel implements ActionListener{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jButton1))
+                    .addComponent(movieName, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(enter))
                 .addContainerGap())
         );
+
+        movieName.getAccessibleContext().setAccessibleName("movieName");
+        enter.getAccessibleContext().setAccessibleName("enter");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton enter;
+    private javax.swing.JLabel movieName;
     // End of variables declaration//GEN-END:variables
+
+
+    public JButton getEnter() {
+        return enter;
+    }
+
+    public void setEnter(JButton jButton1) {
+        this.enter = jButton1;
+    }
+
+    public JLabel getMovieText() {
+        return movieName;
+    }
+
+    public void setMovieText(JLabel moiveText) {
+        this.movieName = moiveText;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public JButton getjButton1() {
-        return jButton1;
-    }
-
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
     }
     
 }

@@ -18,11 +18,11 @@ import java.awt.event.ActionListener;
 public class MovieDetailPageController implements ActionListener{
     
     
-    View view;
+    MovieDetailPageView movieDetailPageView;
     MovieDetailPageModel movieDetailPageModel;
     
-    public MovieDetailPageController(View view, MovieDetailPageModel model){
-        this.view = view;
+    public MovieDetailPageController(MovieDetailPageView view, MovieDetailPageModel model){
+        this.movieDetailPageView = view;
         this.movieDetailPageModel = model;
         this.movieDetailPageModel.addObserver(view);
         this.movieDetailPageModel.notifyObservers();
@@ -30,6 +30,9 @@ public class MovieDetailPageController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.view.back();
+        AllShowTimePageView allShowTimePageView = new AllShowTimePageView(movieDetailPageView);
+        AllShowTimePageModel allShowTimePageModel = new AllShowTimePageModel(movieDetailPageModel.movie);
+        AllShowTimePageController allShowTimePageController =  new AllShowTimePageController(allShowTimePageView, allShowTimePageModel);
+        movieDetailPageView.setEnabled(false);
     }
 }

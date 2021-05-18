@@ -19,18 +19,62 @@ import java.awt.event.ActionListener;
  */
 public class MoviePageController implements ActionListener{
     
-    View view;
-    MoviePageModel model;
-    
-    public MoviePageController(View view, MoviePageModel model){
-        this.view = view;
+    static View view;
+    static MoviePageModel model;
+    Movie movie;
+   
+    public MoviePageController(MoviePageModel model, View view ){
         this.model = model;
+        this.view = view;
         model.addObserver(view);
         model.notifyObservers(view);
     }
+    
+    public MoviePageController(Movie movie){
+        this.movie = movie;
+    }
 
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        MoviePageController.view = view;
+    }
+
+    public MoviePageModel getModel() {
+        return model;
+    }
+
+    public void setModel(MoviePageModel model) {
+        MoviePageController.model = model;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie);
+        MovieDetailPageView movieDetailPageView = new MovieDetailPageView(view);
+        MovieDetailPageController movieDetailPageController = new MovieDetailPageController(movieDetailPageView, movieDetailPageModel);
+        movieDetailPageView.addController(movieDetailPageController);
+        movieDetailPageView.addBackButton(movieDetailPageView.getBack(), new BackController(movieDetailPageView));
+        view.setEnabled(false);  
+    }
+    
+    public void addModel(MoviePageModel model){
+        this.model = model;
+    }
+    
+    public void addView(View view){
+        this.view = view;
     }
 }

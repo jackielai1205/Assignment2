@@ -16,7 +16,7 @@ public class BookingSystem {
     public static void main(String[] args) {
         MoviePageModel model = new MoviePageModel();
         MoviePageView moviePageView = new MoviePageView(null);
-        MoviePageController moviePageController = new MoviePageController(moviePageView, model);
+        MoviePageController moviePageController = new MoviePageController(model, moviePageView);
         
         MenuPageView menuView = new MenuPageView(null);
         MenuPageModel menuModel = new MenuPageModel();

@@ -4,6 +4,7 @@ package com.jackie;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observer;
+import javax.swing.JButton;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,5 +29,10 @@ public abstract class View extends javax.swing.JFrame implements Observer{
         this.parent.setEnabled(true);
         dispose();
     }
+    
+    public void addBackButton(JButton back, BackController controller){
+        back.addActionListener(controller);
+    }
+   
 
 }
