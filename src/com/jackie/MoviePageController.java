@@ -2,8 +2,8 @@ package com.jackie;
 
 import com.jackie.MoviePageModel;
 import com.jackie.MoviePageModel;
-import com.jackie.View;
-import com.jackie.View;
+import com.jackie.Page;
+import com.jackie.Page;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,11 +19,11 @@ import java.awt.event.ActionListener;
  */
 public class MoviePageController implements ActionListener{
     
-    static View view;
+    static Page view;
     static MoviePageModel model;
     Movie movie;
    
-    public MoviePageController(MoviePageModel model, View view ){
+    public MoviePageController(MoviePageModel model, Page view ){
         this.model = model;
         this.view = view;
         model.addObserver(view);
@@ -34,11 +34,11 @@ public class MoviePageController implements ActionListener{
         this.movie = movie;
     }
 
-    public View getView() {
+    public Page getView() {
         return view;
     }
 
-    public void setView(View view) {
+    public void setView(Page view) {
         MoviePageController.view = view;
     }
 
@@ -57,7 +57,6 @@ public class MoviePageController implements ActionListener{
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
-
     
     
     @Override
@@ -74,7 +73,8 @@ public class MoviePageController implements ActionListener{
         this.model = model;
     }
     
-    public void addView(View view){
+    public void addView(Page view){
         this.view = view;
     }
+
 }

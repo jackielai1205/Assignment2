@@ -18,12 +18,12 @@ import javax.swing.JLabel;
  *
  * @author jacki
  */
-public class MovieDetailPageView extends View{
+public class MovieDetailPageView extends Page{
 
     /**
      * Creates new form MovieDetailPageView
      */
-    public MovieDetailPageView(View parent) {
+    public MovieDetailPageView(Page parent) {
         super(parent);
         initComponents();
         this.setVisible(true);

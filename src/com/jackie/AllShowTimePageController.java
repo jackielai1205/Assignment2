@@ -14,18 +14,67 @@ import java.awt.event.ActionListener;
  */
 public class AllShowTimePageController implements ActionListener{
     
-    AllShowTimePageView allShowTimePageView;
-    AllShowTimePageModel allShowTimePageModel;
+    static AllShowTimePageView allShowTimePageView;
+    static AllShowTimePageModel allShowTimePageModel;
+    ShowTime showTime;
     
-    AllShowTimePageController(AllShowTimePageView allShowTimePageView, AllShowTimePageModel model){
-        this.allShowTimePageView = allShowTimePageView;
-        this.allShowTimePageModel = model;
+    AllShowTimePageController(ShowTime showTime){
+        this.showTime = showTime;
         this.allShowTimePageModel.addObserver(allShowTimePageView);
         this.allShowTimePageModel.notifyObservers();
     }
+    
+    AllShowTimePageController(AllShowTimePageView allShowTimePageView, AllShowTimePageModel allShowTimePageModel){
+        this.allShowTimePageView = allShowTimePageView;
+        this.allShowTimePageModel = allShowTimePageModel;
+        this.allShowTimePageModel.addObserver(allShowTimePageView);
+        this.allShowTimePageModel.notifyObservers();
+    }
+        
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.allShowTimePageView.back();
+        SelectedShowTimePageView selectedShowTimePageView = new SelectedShowTimePageView(allShowTimePageView);
+        SelectedShowTimePageModel selectedShowTimePageModel = new SelectedShowTimePageModel(this.showTime);
+        SelectedShowTimePageController selectedShowTimePageController = new SelectedShowTimePageController(selectedShowTimePageView, selectedShowTimePageModel);
+        allShowTimePageView.setEnabled(false);
     }
+    
+    public void addView(AllShowTimePageView view){
+        this.allShowTimePageView = view;
+    }
+    
+    public void addModel(AllShowTimePageModel model){
+        this.allShowTimePageModel = model;
+    }
+    
+    public void addShowTime(ShowTime showTime){
+        this.showTime = showTime;
+    }
+
+    public AllShowTimePageView getAllShowTimePageView() {
+        return allShowTimePageView;
+    }
+
+    public void setAllShowTimePageView(AllShowTimePageView allShowTimePageView) {
+        AllShowTimePageController.allShowTimePageView = allShowTimePageView;
+    }
+
+    public AllShowTimePageModel getAllShowTimePageModel() {
+        return allShowTimePageModel;
+    }
+
+    public void setAllShowTimePageModel(AllShowTimePageModel allShowTimePageModel) {
+        AllShowTimePageController.allShowTimePageModel = allShowTimePageModel;
+    }
+
+    public ShowTime getShowTime() {
+        return showTime;
+    }
+
+    public void setShowTime(ShowTime showTime) {
+        this.showTime = showTime;
+    }
+    
+    
     
 }

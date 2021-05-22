@@ -18,4 +18,14 @@ public class AllShowTimePageModel extends Observable{
         this.movie = movie;
         this.setChanged();
     }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+    
+    
 }

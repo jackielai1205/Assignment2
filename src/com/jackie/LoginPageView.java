@@ -13,12 +13,12 @@ import java.util.Observer;
  *
  * @author waltersiu
  */
-public class LoginPageView extends View implements Observer {
+public class LoginPageView extends Page implements Observer {
 
     /**
      * Creates new form LoginPageView
      */
-    public LoginPageView(View parent){
+    public LoginPageView(Page parent){
         super(parent);
         this.setVisible(true);
         initComponents();

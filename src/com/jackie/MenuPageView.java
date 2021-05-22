@@ -13,12 +13,12 @@ import java.util.Observer;
  *
  * @author waltersiu
  */
-public class MenuPageView extends View implements Observer {
+public class MenuPageView extends Page implements Observer {
 
     /**
      * Creates new form MenupageView
      */
-    public MenuPageView(View parent) {
+    public MenuPageView(Page parent) {
         super(parent);
         this.setVisible(true);
         initComponents();

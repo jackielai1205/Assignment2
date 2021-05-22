@@ -18,12 +18,12 @@ import javax.swing.JScrollPane;
  *
  * @author jacki
  */
-public class AllShowTimePageView extends View {
+public class AllShowTimePageView extends Page {
 
     /**
      * Creates new form AllShowTimePageView
      */
-    public AllShowTimePageView(View parent) {
+    public AllShowTimePageView(Page parent) {
         super(parent);
         initComponents();
         this.setVisible(true);
@@ -164,10 +164,6 @@ public class AllShowTimePageView extends View {
         this.boxLayout = boxLayout;
     }
     
-    
-    
-    
-    
     @Override
     public void update(Observable o, Object arg) {
         printAllShowTime(((AllShowTimePageModel)o));
@@ -175,18 +171,13 @@ public class AllShowTimePageView extends View {
     
     public void printAllShowTime(AllShowTimePageModel model){
         this.movieText.setText(model.movie.getName());
+        System.out.println(model.movie.getShowTimes());
         for(ShowTime showtime: model.movie.getShowTimes()){
-            ShowTimeList component = new ShowTimeList(showtime);
+            AllShowTimePageController allShowTimePageController = new AllShowTimePageController(showtime);
+            ShowTimeList component = new ShowTimeList(allShowTimePageController.getAllShowTimePageModel(),allShowTimePageController.getAllShowTimePageView(),showtime);
             this.showTimeList.add(component);
-            component.getEnterShowTime().addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    SelectedShowTimePageModel selectedShowTimePageModel = new SelectedShowTimePageModel(showtime);
-                    SelectedShowTimePageView selectedShowTimePageView = new SelectedShowTimePageView(AllShowTimePageView.this);
-                    SelectedShowTimePageController selectedShowTimePageController = new SelectedShowTimePageController(selectedShowTimePageView, selectedShowTimePageModel);
-                    AllShowTimePageView.this.setEnabled(false);
-                }
-            });
+            component.addController(allShowTimePageController);
+
         }
     }
 }

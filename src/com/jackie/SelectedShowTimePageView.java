@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  *
  * @author jacki
  */
-public class SelectedShowTimePageView extends View {
+public class SelectedShowTimePageView extends Page {
 
     /**
      * Creates new form SelectedShowTimePageView
      *
      * @param parent
      */
-    public SelectedShowTimePageView(View parent) {
+    public SelectedShowTimePageView(Page parent) {
         super(parent);
         initComponents();
         this.setVisible(true);
@@ -137,7 +137,7 @@ public class SelectedShowTimePageView extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        this.back();        // TODO add your handling code here:
+               // TODO add your handling code here:
     }//GEN-LAST:event_backActionPerformed
 
     @Override
@@ -145,7 +145,13 @@ public class SelectedShowTimePageView extends View {
         printShowTime(((SelectedShowTimePageModel) o));
     }
 
+    private SeatActionListener listener;
+    public void addSeatListener(SeatActionListener listener) {
+        this.listener = listener;
+    }
+    
     public void printShowTime(SelectedShowTimePageModel model) {
+        back.addActionListener(new BackController(this));
         this.showTime.setText(model.showtime.getDate() + " " + model.showtime.getTime());
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
@@ -167,11 +173,9 @@ public class SelectedShowTimePageView extends View {
                 seatButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                       if(JOptionPane.showConfirmDialog(SelectedShowTimePageView.this,"Do you want to book this seat?","Confirm booking", JOptionPane.YES_NO_OPTION)==0){
-                           currentSeat.setAvailable(false);
-                           JOptionPane.showMessageDialog(SelectedShowTimePageView.this, "Booking Confirmed", "Message", 1);
-                           SelectedShowTimePageView.this.back();
-                       }
+                        if (SelectedShowTimePageView.this.listener != null) {
+                            SelectedShowTimePageView.this.listener.actionPerformed(e, currentSeat);
+                        }
                     }
                 });
                 this.content.add(seatButton);

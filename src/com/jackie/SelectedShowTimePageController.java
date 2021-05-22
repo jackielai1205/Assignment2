@@ -7,17 +7,18 @@ package com.jackie;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jacki
  */
-public class SelectedShowTimePageController implements ActionListener{
+public class SelectedShowTimePageController implements SeatActionListener{
     
-    View view;
-    SelectedShowTimePageModel model;
+    static SelectedShowTimePageView view;
+    static SelectedShowTimePageModel model;
     
-    public SelectedShowTimePageController(View view, SelectedShowTimePageModel model){
+    public SelectedShowTimePageController(SelectedShowTimePageView view, SelectedShowTimePageModel model){
         this.view = view;
         this.model = model;
         this.model.addObserver(view);
@@ -25,8 +26,12 @@ public class SelectedShowTimePageController implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent e, Seat seat) {
+        if(JOptionPane.showConfirmDialog(view,"Do you want to book this seat?","Confirm booking", JOptionPane.YES_NO_OPTION)==0){
+            seat.setAvailable(false);
+            JOptionPane.showMessageDialog(view, "Booking Confirmed", "Message", 1);
+            view.back();
+        }
     }
 
     

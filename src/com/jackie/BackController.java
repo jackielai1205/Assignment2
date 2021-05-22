@@ -14,14 +14,14 @@ import java.awt.event.ActionListener;
  */
 public class BackController implements ActionListener{
     
-    View view;
+    Page page;
     
-    public BackController(View view){
-        this.view = view;
+    public BackController(Page view){
+        this.page = view;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.view.back();
+        this.page.back();
     }
 }

@@ -15,12 +15,12 @@ import java.util.Observer;
  *
  * @author waltersiu
  */
-public class RegisterPageView extends View implements Observer{
+public class RegisterPageView extends Page implements Observer{
 
     /**
      * Creates new form RegisterPage
      */
-    public RegisterPageView(View parent) {
+    public RegisterPageView(Page parent) {
         super(parent);
         this.setVisible(true);
         initComponents();

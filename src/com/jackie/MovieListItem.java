@@ -15,14 +15,14 @@ import javax.swing.JLabel;
  *
  * @author jacki
  */
-public class MovieListItem extends javax.swing.JPanel implements ActionListener{
+public class MovieListItem extends javax.swing.JPanel{
 
     MoviePageModel model;
-    View view;
+    Page view;
     /**
      * Creates new form MovieList
      */
-    public MovieListItem(MoviePageModel model, View view, String name) {
+    public MovieListItem(MoviePageModel model, Page view, String name) {
         this.view = view;
         this.model = model;
         initComponents();
@@ -93,10 +93,8 @@ public class MovieListItem extends javax.swing.JPanel implements ActionListener{
     public void setMovieText(JLabel moiveText) {
         this.movieName = moiveText;
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    public void addController(MoviePageController controller){
+        this.getEnter().addActionListener(controller);
+    }
 }

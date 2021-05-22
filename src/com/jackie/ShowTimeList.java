@@ -13,12 +13,17 @@ import javax.swing.JLabel;
  * @author jacki
  */
 public class ShowTimeList extends javax.swing.JPanel {
+    
+    AllShowTimePageModel model;
+    AllShowTimePageView view;
 
     /**
      * Creates new form ShowTimeList
      * @param showtime
      */
-    public ShowTimeList(ShowTime showtime) {
+    public ShowTimeList(AllShowTimePageModel model, AllShowTimePageView view, ShowTime showtime) {
+        this.view = view;
+        this.model = model;
         initComponents();
         this.data.setText(showtime.getDate());
         this.time.setText(showtime.getTime());
@@ -120,6 +125,8 @@ public class ShowTimeList extends javax.swing.JPanel {
         this.time = time;
     }
 
-
+    public void addController(AllShowTimePageController controller){
+        this.getEnterShowTime().addActionListener(controller);
+    }
 
 }

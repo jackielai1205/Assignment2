@@ -16,11 +16,11 @@ import javax.swing.JButton;
  *
  * @author jacki
  */
-public abstract class View extends javax.swing.JFrame implements Observer{
+public abstract class Page extends javax.swing.JFrame implements Observer{
     
-    View parent;
+    Page parent;
     
-    public View(View parent){
+    public Page(Page parent){
         this.parent = parent;
         this.setResizable(false);
     }

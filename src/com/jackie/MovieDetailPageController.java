@@ -7,7 +7,7 @@ package com.jackie;
  */
 
 import com.jackie.MovieDetailPageModel;
-import com.jackie.View;
+import com.jackie.Page;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,6 +33,8 @@ public class MovieDetailPageController implements ActionListener{
         AllShowTimePageView allShowTimePageView = new AllShowTimePageView(movieDetailPageView);
         AllShowTimePageModel allShowTimePageModel = new AllShowTimePageModel(movieDetailPageModel.movie);
         AllShowTimePageController allShowTimePageController =  new AllShowTimePageController(allShowTimePageView, allShowTimePageModel);
+        allShowTimePageView.getBack().addActionListener(new BackController(allShowTimePageView));
         movieDetailPageView.setEnabled(false);
     }
+   
 }

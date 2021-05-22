@@ -21,12 +21,12 @@ import javax.swing.table.TableCellRenderer;
  *
  * @author jacki
  */
-public class MoviePageView extends View{
+public class MoviePageView extends Page{
 
     /**
      * Creates new form MoviePage
      */
-    public MoviePageView(View parent) {
+    public MoviePageView(Page parent) {
         super(parent);
         initComponents();
         boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
@@ -114,14 +114,7 @@ public class MoviePageView extends View{
             MoviePageController controller = new MoviePageController(movie);
             MovieListItem movieListItem = new MovieListItem(controller.getModel(),controller.getView(), movie.getName());
             panel.add(movieListItem);
-            movieListItem.getEnter().addActionListener(controller);
+            movieListItem.addController(controller);
         }
     }
-    
-    public void addController(MoviePageController controller){
-    }
-    
-        
-
-
 }
