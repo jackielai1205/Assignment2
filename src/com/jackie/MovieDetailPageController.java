@@ -31,7 +31,7 @@ public class MovieDetailPageController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         AllShowTimePageView allShowTimePageView = new AllShowTimePageView(movieDetailPageView);
-        AllShowTimePageModel allShowTimePageModel = new AllShowTimePageModel(movieDetailPageModel.movie);
+        AllShowTimePageModel allShowTimePageModel = new AllShowTimePageModel(movieDetailPageModel.movie, movieDetailPageModel.dbm);
         AllShowTimePageController allShowTimePageController =  new AllShowTimePageController(allShowTimePageView, allShowTimePageModel);
         allShowTimePageView.getBack().addActionListener(new BackController(allShowTimePageView));
         movieDetailPageView.setEnabled(false);

@@ -12,11 +12,12 @@ import java.util.Observable;
  *
  * @author jacki
  */
-public class MovieDetailPageModel extends Observable{
+public class MovieDetailPageModel extends Model{
 
     Movie movie;
     
-    MovieDetailPageModel(Movie movie){
+    MovieDetailPageModel(Movie movie, DatabaseOperation dbm){
+        super(dbm);
         this.movie = movie;
         this.setChanged();
     }

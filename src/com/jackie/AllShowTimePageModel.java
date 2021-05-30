@@ -5,17 +5,21 @@
  */
 package com.jackie;
 
-import java.util.Observable;
-
+import java.util.ArrayList;
 /**
  *
  * @author jacki
  */
-public class AllShowTimePageModel extends Observable{
+public class AllShowTimePageModel extends Model{
+    ArrayList<ShowTime> showtime;
     Movie movie;
     
-    public AllShowTimePageModel(Movie movie){
+    public AllShowTimePageModel(Movie movie, DatabaseOperation dbm){
+        super(dbm);
         this.movie = movie;
+        this.showtime = dbm.getAllShowTimeQuery(1);
+        for(ShowTime showtime: this.showtime){
+        }
         this.setChanged();
     }
 
@@ -26,6 +30,4 @@ public class AllShowTimePageModel extends Observable{
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
-    
-    
 }

@@ -61,7 +61,7 @@ public class MoviePageController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie);
+        MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie, model.dbm);
         MovieDetailPageView movieDetailPageView = new MovieDetailPageView(view);
         MovieDetailPageController movieDetailPageController = new MovieDetailPageController(movieDetailPageView, movieDetailPageModel);
         movieDetailPageView.addController(movieDetailPageController);

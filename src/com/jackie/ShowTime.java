@@ -15,17 +15,23 @@ class ShowTime {
     private String date;
     private String time;
     private int price;
+    private int key;
+    private int movieid;
 
-    public ShowTime(String date, String time, Seat[][] seats, int price) {
+    public ShowTime(String date, String time, Seat[][] seats, int price, int key, int movieid) {
         this.seats = seats;
         this.date = date;
         this.time = time;
         this.price = price;
+        this.key = key;
+        this.movieid = movieid;
     }
 
-    public ShowTime(String date, String time) {
+    public ShowTime(String date, String time, int price, int key) {
         this.date = date;
         this.time = time;
+        this.price = price;
+        this.key = key;
     }
 
     public Seat[][] getSeats() {
@@ -50,4 +56,22 @@ class ShowTime {
         }
         return false;
     }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public int getMovieid() {
+        return movieid;
+    }
+
+    public void setMovieid(int movieid) {
+        this.movieid = movieid;
+    }
+    
+    
 }

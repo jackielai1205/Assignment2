@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -77,12 +78,48 @@ public class DatabaseOperation {
                     + "'Legends collide in Godzilla vs. Kong as these mythic adversaries meet in a spectacular battle for the ages, with the fate of the world hanging in the balance. Kong and his protectors undertake a perilous journey to find his true home, and with them is Jia, a young orphaned girl with whom he has formed a unique and powerful bond. But they unexpectedly find themselves in the path of an enraged Godzilla, cutting a swath of destruction across the globe. The epic clash between the two titans—instigated by unseen forces—is only the beginning of the mystery that lies deep within the core of the Earth.',"
                     + "'/com/jackie/GodzillaVsKong.jpg')";
                 statement.executeUpdate(sqlInsert); 
+                
+                //insert a movie to movie table
+                sqlInsert = "insert into " + movieTable + " values("
+                    + "2,'Mortal Kombat', 110, 'Lewis Tan, Jessica McNamee, Josh Lawson',"
+                    + "'Simon McQuoid','III',3.5,'Action',"
+                    + "'Mortal Kombat is a 2021 American martial arts fantasy film based on the video game franchise of the same name and a reboot of the Mortal Kombat film series.',"
+                    + "'/com/jackie/MortalKombat.jpg')";
+                statement.executeUpdate(sqlInsert); 
 
                 
                 //insert a showtime to showtime table
+                int showtimeid = 1;
                 sqlInsert = "insert into " + showTimeTable + " values("
-                    + "1, '18/06', '08:00', 15, 1)";
+                + showtimeid + ", '18/06', '08:00', 15, 1)";
                 statement.executeUpdate(sqlInsert); 
+                showtimeid++;
+                
+                sqlInsert = "insert into " + showTimeTable + " values("
+                + showtimeid + ", '18/06', '12:00', 15, 1)";
+                statement.executeUpdate(sqlInsert); 
+                showtimeid++;
+                
+                sqlInsert = "insert into " + showTimeTable + " values("
+                + showtimeid + ", '22/06', '12:00', 15, 1)";
+                statement.executeUpdate(sqlInsert); 
+                showtimeid++;
+                
+                sqlInsert = "insert into " + showTimeTable + " values("
+                + showtimeid + ", '18/06', '08:00', 15, 2)";
+                statement.executeUpdate(sqlInsert); 
+                showtimeid++;
+                
+                sqlInsert = "insert into " + showTimeTable + " values("
+                + showtimeid + ", '18/06', '12:00', 15, 2)";
+                statement.executeUpdate(sqlInsert); 
+                showtimeid++;
+                
+                sqlInsert = "insert into " + showTimeTable + " values("
+                + showtimeid + ", '22/06', '12:00', 15, 2)";
+                statement.executeUpdate(sqlInsert); 
+                showtimeid++;
+
                 
                 //insert a Seat to showtime table
                 int id = 1;
@@ -94,6 +131,9 @@ public class DatabaseOperation {
                         id++;
                     }
                 }
+                
+
+                
             }
 
 
@@ -142,5 +182,36 @@ public class DatabaseOperation {
             Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
          return allMovie;
+    }
+    
+        public ArrayList getAllShowTimeQuery(int movieid) {
+        ArrayList<ShowTime> showTimes = new ArrayList<>();
+        ResultSet rs = null;
+
+        try {
+
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            String sqlQuery = "select * from ShowTime where MOVIE_ID =" + movieid;
+
+            rs = statement.executeQuery(sqlQuery);
+            rs.beforeFirst();
+            while (rs.next()) {
+                int showtimeid = rs.getInt("Showtime_ID");
+                String date = rs.getString("date");
+                String time = rs.getString("Time");
+                int price = rs.getInt("Price");
+  
+                showTimes.add(new ShowTime(date, time, price, showtimeid));
+            }
+            System.out.println(movieid);
+            System.out.println(showTimes.get(0).getKey());
+        } catch (SQLException ex) {
+            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return showTimes;
     }
 }

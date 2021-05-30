@@ -15,13 +15,12 @@ import java.util.Observable;
  *
  * @author jacki
  */
-public class MoviePageModel extends Observable{
+public class MoviePageModel extends Model{
     private HashMap<Integer, Movie> movies;
     private ArrayList<User> users;
-    private DatabaseOperation dbm; 
-
+    
     public MoviePageModel(DatabaseOperation dbm) {
-        this.dbm = dbm;
+        super(dbm);
         this.movies = dbm.getAllMovieQuery();
         this.setChanged();
     }
