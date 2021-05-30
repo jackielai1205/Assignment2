@@ -148,7 +148,7 @@ public class MovieDetailPageView extends Page{
         this.movieLength.setText("<html>Length:<br>"+String.valueOf(model.movie.getLength())+"</html>");
         this.description.setText( "<html><p style=\"width:350px\">Description:<br>"+model.movie.getDescription()+"</p></html>");
         this.movieName.setText("<html>Movie name:<br>" + model.movie.getName()+ "</html>");
-        String imagePath = "/com/jackie/"+model.movie.getName().replaceAll("\\s","")+".jpg";
+        String imagePath = model.movie.getImage();
         this.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
     }
    
