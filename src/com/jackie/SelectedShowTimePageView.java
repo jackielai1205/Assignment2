@@ -153,9 +153,11 @@ public class SelectedShowTimePageView extends Page {
     public void printShowTime(SelectedShowTimePageModel model) {
         back.addActionListener(new BackController(this));
         this.showTime.setText(model.showtime.getDate() + " " + model.showtime.getTime());
+        int seatCount = 0;
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
-                Seat currentSeat = model.showtime.getSeats()[x][y];
+//                    Seat currentSeat = model.showtime.getSeats()[x][y];
+                Seat currentSeat = model.seats.get(seatCount);
                 String showText = "";
                 JButton seatButton = new JButton("");
                 if (currentSeat.isAvailable()) {
@@ -179,6 +181,7 @@ public class SelectedShowTimePageView extends Page {
                     }
                 });
                 this.content.add(seatButton);
+                seatCount++;
             }
         }
     }

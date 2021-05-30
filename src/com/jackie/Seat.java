@@ -14,8 +14,10 @@ class Seat {
     private int column;
     private int row;
     private boolean available;
+    private int seatid;
 
-    public Seat(boolean available, int column, int row) {
+    public Seat(int seatid, boolean available, int column, int row) {
+        this.seatid = seatid;
         this.available = available;
         this.column = column;
         this.row = row;
@@ -28,6 +30,16 @@ class Seat {
         this.row = row;
     }
 
+    public int getSeatid() {
+        return seatid;
+    }
+
+    public void setSeatid(int seatid) {
+        this.seatid = seatid;
+    }
+
+    
+    
     public boolean isAvailable() {
         return available;
     }

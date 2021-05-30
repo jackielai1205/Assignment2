@@ -122,25 +122,27 @@ public class DatabaseOperation {
 
                 
                 //insert a Seat to showtime table
-                int id = 1;
+                int seatid = 1;
                 for(int y = 1; y < 5; y++){        
                     for(int x = 1; x < 5; x++){
                         sqlInsert = "insert into " + seatTable + " values("
-                            + id + ", " + x + ", " + y + ", true, 1)";
+                            + seatid + ", " + x + ", " + y + ", true, 1)";
                         statement.executeUpdate(sqlInsert); 
-                        id++;
+                        seatid++;
                     }
                 }
-                
-
-                
+                System.out.println(seatid);
+                //insert a Seat to showtime table
+                for(int y = 1; y < 5; y++){        
+                    for(int x = 1; x < 5; x++){
+                        sqlInsert = "insert into " + seatTable + " values("
+                            + seatid + ", " + x + ", " + y + ", true, 2)";
+                        statement.executeUpdate(sqlInsert); 
+                        seatid++;
+                    }
+                }
+                               
             }
-
-
-
-//            String sqlUpdateTable = "update " + newTableName + " set price=15000 "
-//                    + "where brand='Toyota' and model='camry'";
-//            statement.executeUpdate(sqlUpdateTable);
 
             //statement.close();
             System.out.println("Table created");
@@ -176,7 +178,7 @@ public class DatabaseOperation {
                 String type = rs.getString("Type");
                 String description = rs.getString("Description");
                 String image = rs.getString("Image");
-                allMovie.put(movieid, new Movie(name, length, castings, director, category, rating, type, description, image));
+                allMovie.put(movieid, new Movie(movieid, name, length, castings, director, category, rating, type, description, image));
             }
         } catch (SQLException ex) {
             Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,5 +215,53 @@ public class DatabaseOperation {
             Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
          return showTimes;
+    }
+        
+    public ArrayList getSeatQuery(int showtimeid) {
+        ArrayList<Seat> seats = new ArrayList<>();
+        ResultSet rs = null;
+
+        try {
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            String sqlQuery = "select * from SEAT where showtime_id =" + showtimeid;
+
+            rs = statement.executeQuery(sqlQuery);
+            rs.beforeFirst();
+            while (rs.next()) {
+                int seatid = rs.getInt("SEAT_ID");
+                int column = rs.getInt("Column1");
+                int row = rs.getInt("Row");
+                boolean available = rs.getBoolean("Available");
+  
+                seats.add(new Seat(seatid, available, column, row));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         return seats;
+    }
+    
+    public void updateSeat(int seatid){
+        ResultSet rs = null;
+
+        try {
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            System.out.println(seatid);
+
+            String sqlUpdateTable = "update SEAT set available = false"
+                    + " where SEAT_ID = " + seatid;
+            statement.executeUpdate(sqlUpdateTable);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

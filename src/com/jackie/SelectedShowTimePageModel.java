@@ -5,19 +5,22 @@
  */
 package com.jackie;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
  *
  * @author jacki
  */
-public class SelectedShowTimePageModel extends Observable{
+public class SelectedShowTimePageModel extends Model{
     
+    ArrayList<Seat> seats;
     ShowTime showtime;
     
-    public SelectedShowTimePageModel(ShowTime showtime){
+    public SelectedShowTimePageModel(ShowTime showtime, DatabaseOperation dbm){
+        super(dbm);
         this.showtime = showtime;
+        this.seats = dbm.getSeatQuery(showtime.getKey());
         this.setChanged();
-    }
-    
+    } 
 }

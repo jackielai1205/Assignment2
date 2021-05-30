@@ -34,7 +34,7 @@ public class AllShowTimePageController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         SelectedShowTimePageView selectedShowTimePageView = new SelectedShowTimePageView(allShowTimePageView);
-        SelectedShowTimePageModel selectedShowTimePageModel = new SelectedShowTimePageModel(this.showTime);
+        SelectedShowTimePageModel selectedShowTimePageModel = new SelectedShowTimePageModel(this.showTime, allShowTimePageModel.dbm);
         SelectedShowTimePageController selectedShowTimePageController = new SelectedShowTimePageController(selectedShowTimePageView, selectedShowTimePageModel);
         allShowTimePageView.setEnabled(false);
     }
@@ -74,7 +74,4 @@ public class AllShowTimePageController implements ActionListener{
     public void setShowTime(ShowTime showTime) {
         this.showTime = showTime;
     }
-    
-    
-    
 }

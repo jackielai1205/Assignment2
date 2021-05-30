@@ -22,6 +22,7 @@ public class Movie {
     private String type;
     private String description;
     private String image;
+    private int movieid;
     ArrayList<ShowTime> showTimes;
 
     public String getType() {
@@ -67,10 +68,17 @@ public class Movie {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    
 
-    Movie(String name, int length, String castings, String director, String category, double rating, String type, String description, String image) {
+    public int getMovieid() {
+        return movieid;
+    }
+
+    public void setMovieid(int movieid) {
+        this.movieid = movieid;
+    }
+    
+    Movie(int movieid, String name, int length, String castings, String director, String category, double rating, String type, String description, String image) {
+        this.movieid = movieid;
         this.name = name;
         this.length = length;
         this.castings = castings;

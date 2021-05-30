@@ -20,6 +20,7 @@ public class SelectedShowTimePageController implements SeatActionListener{
     
     public SelectedShowTimePageController(SelectedShowTimePageView view, SelectedShowTimePageModel model){
         this.view = view;
+        this.view.addSeatListener(this);
         this.model = model;
         this.model.addObserver(view);
         this.model.notifyObservers();
@@ -28,8 +29,9 @@ public class SelectedShowTimePageController implements SeatActionListener{
     @Override
     public void actionPerformed(ActionEvent e, Seat seat) {
         if(JOptionPane.showConfirmDialog(view,"Do you want to book this seat?","Confirm booking", JOptionPane.YES_NO_OPTION)==0){
-            seat.setAvailable(false);
+            model.dbm.updateSeat(seat.getSeatid());
             JOptionPane.showMessageDialog(view, "Booking Confirmed", "Message", 1);
+            
             view.back();
         }
     }

@@ -17,9 +17,7 @@ public class AllShowTimePageModel extends Model{
     public AllShowTimePageModel(Movie movie, DatabaseOperation dbm){
         super(dbm);
         this.movie = movie;
-        this.showtime = dbm.getAllShowTimeQuery(1);
-        for(ShowTime showtime: this.showtime){
-        }
+        this.showtime = dbm.getAllShowTimeQuery(movie.getMovieid());
         this.setChanged();
     }
 
