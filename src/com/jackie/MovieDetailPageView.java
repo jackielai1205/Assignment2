@@ -144,11 +144,7 @@ public class MovieDetailPageView extends Page{
     }
     
     public void showMovieDetail(MovieDetailPageModel model){
-        String allCasting = "";
-        for(String casting: model.movie.getCastings()){
-            allCasting+=casting+" ";
-        }
-        this.casting.setText("<html>Casting:<br>"+allCasting+"</html>");
+        this.casting.setText("<html>Casting:<br>"+model.movie.getCastings()+"</html>");
         this.movieLength.setText("<html>Length:<br>"+String.valueOf(model.movie.getLength())+"</html>");
         this.description.setText( "<html><p style=\"width:350px\">Description:<br>"+model.movie.getDescription()+"</p></html>");
         this.movieName.setText("<html>Movie name:<br>" + model.movie.getName()+ "</html>");

@@ -14,6 +14,9 @@ package com.jackie;
 public class BookingSystem {
 
     public static void main(String[] args) {
+        DatabaseOperation dbOperation = new DatabaseOperation();
+        dbOperation.createTable();
+        System.out.println(dbOperation);
         MoviePageModel model = new MoviePageModel();
         MoviePageView moviePageView = new MoviePageView(null);
         MoviePageController moviePageController = new MoviePageController(model, moviePageView);

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Movie {
     private String name;
     private int length;
-    private String[] castings;
+    private String castings;
     private String director;
     private String category;
     private double rating;
@@ -35,7 +35,7 @@ public class Movie {
         return length;
     }
 
-    public String[] getCastings() {
+    public String getCastings() {
         return castings;
     }
 
@@ -59,7 +59,7 @@ public class Movie {
         return showTimes;
     }
 
-    Movie(String name, int length, String[] castings, String director, String category, double rating, String type, String description) {
+    Movie(String name, int length, String castings, String director, String category, double rating, String type, String description) {
         this.name = name;
         this.length = length;
         this.castings = castings;
@@ -72,8 +72,7 @@ public class Movie {
     }
 
     public String toString() {
-        return this.name + " " + this.length + " " + this.castings[0] + " " + this.castings[1] + " " +
-                this.castings[2] + " " + this.director + " " + this.category + " " + this.rating + " " + this.description;
+        return this.name + " " + this.length + " " + this.castings + " " + this.director + " " + this.category + " " + this.rating + " " + this.description;
     }
     
     public void addShowTime(ShowTime showTime){
