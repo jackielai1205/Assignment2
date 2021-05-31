@@ -26,4 +26,22 @@ public abstract class Model extends Observable{
     public void logout(){
         this.userId = null;
     }
+
+    public static String getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(String userId) {
+        Model.userId = userId;
+    }
+
+    public DatabaseOperation getDbm() {
+        return dbm;
+    }
+
+    public void setDbm(DatabaseOperation dbm) {
+        this.dbm = dbm;
+    }
+    
+    
 }
