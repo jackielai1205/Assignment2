@@ -52,36 +52,39 @@ public class DatabaseOperation {
             if(!tables.next()){
                 //Create Movie table
                 String sqlCreate = "create table " + movieTable + " ("
-                        + "Movie_id int PRIMARY KEY,"
+                        + "Movie_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY " 
+                        + "(START WITH 1, INCREMENT BY 1),"
                         + "Name varchar(30), Length int, Castings varchar(100),"
                         + "Director varchar(20), Category varchar(20), Rating double,"
                         + "Type varchar(20), Description varchar(1000), Image varchar(50))";
                 statement.executeUpdate(sqlCreate);
                 
                 //Create ShowTime table
-                sqlCreate = "create table " + showTimeTable + " (ShowTime_id int not null PRIMARY KEY,"
+                sqlCreate = "create table " + showTimeTable + " (ShowTime_id int not null PRIMARY KEY GENERATED ALWAYS AS IDENTITY"
+                        + "(START WITH 1, INCREMENT BY 1),"
                         + "Date varchar(20), Time varchar(20), Price int,"
                         + "Movie_id int,"
                         + "FOREIGN KEY (Movie_id) REFERENCES Movie(Movie_id))";
                 statement.executeUpdate(sqlCreate);
                 
                 //Create Seat table
-                sqlCreate = "create table " + seatTable + " (Seat_id int not null PRIMARY KEY,"
+                sqlCreate = "create table " + seatTable + " (Seat_id int not null PRIMARY KEY GENERATED ALWAYS AS IDENTITY"
+                        + "(START WITH 1, INCREMENT BY 1),"
                         + "Column1 int, Row int, Available boolean, ShowTime_id int,"
                         + "FOREIGN KEY (ShowTime_id) REFERENCES " + showTimeTable + "(ShowTime_id))";
                 statement.executeUpdate(sqlCreate);
                 
                 //insert a movie to movie table
-                String sqlInsert = "insert into " + movieTable + " values("
-                    + "1,'Godzilla vs Kong', 113, 'Alexander Skarsgard, Rebecca Hall, Millie Bobby Brown',"
+                String sqlInsert = "insert into " + movieTable + " (Name, Length, Castings, Director, Category, Rating, Type, Description, Image) values("
+                    + "'Godzilla vs Kong', 113, 'Alexander Skarsgard, Rebecca Hall, Millie Bobby Brown',"
                     + "'Adam Wingard','G',4.5,'Action',"
                     + "'Legends collide in Godzilla vs. Kong as these mythic adversaries meet in a spectacular battle for the ages, with the fate of the world hanging in the balance. Kong and his protectors undertake a perilous journey to find his true home, and with them is Jia, a young orphaned girl with whom he has formed a unique and powerful bond. But they unexpectedly find themselves in the path of an enraged Godzilla, cutting a swath of destruction across the globe. The epic clash between the two titans—instigated by unseen forces—is only the beginning of the mystery that lies deep within the core of the Earth.',"
                     + "'/com/jackie/GodzillaVsKong.jpg')";
                 statement.executeUpdate(sqlInsert); 
                 
                 //insert a movie to movie table
-                sqlInsert = "insert into " + movieTable + " values("
-                    + "2,'Mortal Kombat', 110, 'Lewis Tan, Jessica McNamee, Josh Lawson',"
+                sqlInsert = "insert into " + movieTable + " (Name, Length, Castings, Director, Category, Rating, Type, Description, Image) values("
+                    + "'Mortal Kombat', 110, 'Lewis Tan, Jessica McNamee, Josh Lawson',"
                     + "'Simon McQuoid','III',3.5,'Action',"
                     + "'Mortal Kombat is a 2021 American martial arts fantasy film based on the video game franchise of the same name and a reboot of the Mortal Kombat film series.',"
                     + "'/com/jackie/MortalKombat.jpg')";
@@ -89,44 +92,37 @@ public class DatabaseOperation {
 
                 
                 //insert a showtime to showtime table
-                int showtimeid = 1;
-                sqlInsert = "insert into " + showTimeTable + " values("
-                + showtimeid + ", '18/06', '08:00', 15, 1)";
+                sqlInsert = "insert into " + showTimeTable + "(Date, Time, Price, Movie_id) values("
+                + "'18/06', '08:00', 15, 1)";
                 statement.executeUpdate(sqlInsert); 
-                showtimeid++;
+
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'18/06', '12:00', 15, 1)";
+                statement.executeUpdate(sqlInsert); 
+
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'22/06', '12:00', 15, 1)";
+                statement.executeUpdate(sqlInsert); 
+
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'18/06', '08:00', 15, 2)";
+                statement.executeUpdate(sqlInsert); 
+
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'18/06', '12:00', 15, 2)";
+                statement.executeUpdate(sqlInsert); 
                 
-                sqlInsert = "insert into " + showTimeTable + " values("
-                + showtimeid + ", '18/06', '12:00', 15, 1)";
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'22/06', '12:00', 15, 2)";
                 statement.executeUpdate(sqlInsert); 
-                showtimeid++;
-                
-                sqlInsert = "insert into " + showTimeTable + " values("
-                + showtimeid + ", '22/06', '12:00', 15, 1)";
-                statement.executeUpdate(sqlInsert); 
-                showtimeid++;
-                
-                sqlInsert = "insert into " + showTimeTable + " values("
-                + showtimeid + ", '18/06', '08:00', 15, 2)";
-                statement.executeUpdate(sqlInsert); 
-                showtimeid++;
-                
-                sqlInsert = "insert into " + showTimeTable + " values("
-                + showtimeid + ", '18/06', '12:00', 15, 2)";
-                statement.executeUpdate(sqlInsert); 
-                showtimeid++;
-                
-                sqlInsert = "insert into " + showTimeTable + " values("
-                + showtimeid + ", '22/06', '12:00', 15, 2)";
-                statement.executeUpdate(sqlInsert); 
-                showtimeid++;
 
                 
                 //insert a Seat to showtime table
                 int seatid = 1;
                 for(int y = 1; y < 5; y++){        
                     for(int x = 1; x < 5; x++){
-                        sqlInsert = "insert into " + seatTable + " values("
-                            + seatid + ", " + x + ", " + y + ", true, 1)";
+                        sqlInsert = "insert into " + seatTable + "(Column1, Row, Available, Showtime_id) values( "
+                            + x + ", " + y + ", true, 1)";
                         statement.executeUpdate(sqlInsert); 
                         seatid++;
                     }
@@ -135,8 +131,8 @@ public class DatabaseOperation {
                 //insert a Seat to showtime table
                 for(int y = 1; y < 5; y++){        
                     for(int x = 1; x < 5; x++){
-                        sqlInsert = "insert into " + seatTable + " values("
-                            + seatid + ", " + x + ", " + y + ", true, 2)";
+                        sqlInsert = "insert into " + seatTable + "(Column1, Row, Available, Showtime_id) values( "
+                            + x + ", " + y + ", true, 2)";
                         statement.executeUpdate(sqlInsert); 
                         seatid++;
                     }
