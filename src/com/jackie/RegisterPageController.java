@@ -16,45 +16,34 @@ import javax.swing.JOptionPane;
  *
  * @author waltersiu
  */
-public class RegisterPageController {
+public class RegisterPageController implements ActionListener{
     
     RegisterPageModel registerModel;
     RegisterPageView registerView;
-    MenuPageView menuView;
     
-    RegisterPageController(RegisterPageModel registerModel, RegisterPageView registerView, MenuPageView menuView){
-        this.registerModel = registerModel;
-        this.registerView = registerView;
-        this.menuView = menuView;
-        
-        this.registerView.addOnClickListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent al){
-                registerModel.addObserver(registerView);
-                User currentUser = new User();
-              
-                /***
-                 * Need change to get data from database
-                 * Hard code for checkInfo only 
-                 */
-                String dbEmail = "123"; 
-
-                currentUser.setEmail(registerView.getInputEmail());
-                currentUser.setPassword(registerView.getInputPassword());
-                String confirmPassword = registerView.getInputConfirm();
-                currentUser.setName(registerView.getInputName());
-                
-                if(currentUser.getEmail().equals(dbEmail)){
-                    JOptionPane.showMessageDialog(registerView, "Email have been registered. Bye!");
-                } else if(!currentUser.getPassword().equals(confirmPassword)){
-                    JOptionPane.showMessageDialog(registerView, "Confirm password and password not match. Bye");
-                }  else {
-                    registerModel.registerToDatabase(currentUser);
-                    JOptionPane.showMessageDialog(registerView, "Register success!");
-                    registerView.setVisible(false);
-                    menuView.setEnabled(true);
-                }
-            }
-        });
+    RegisterPageController(){
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        registerModel.addObserver(registerView);
+        User currentUser = new User();
+
+        currentUser.setEmail(registerView.getInputEmail());
+        currentUser.setPassword(registerView.getInputPassword());
+        String confirmPassword = registerView.getInputConfirm();
+        currentUser.setName(registerView.getInputName());
+
+        // pass value to model
+        registerModel.compareData(currentUser);
+    }
+    
+    public void addModel(RegisterPageModel m) {
+        this.registerModel = m;
+    }
+
+    public void addView(RegisterPageView v) {
+        this.registerView = v;
+    }
+    
 }

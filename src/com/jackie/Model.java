@@ -12,9 +12,18 @@ import java.util.Observable;
  * @author jacki
  */
 public abstract class Model extends Observable{
+    static String userId;
     DatabaseOperation dbm;
     
     Model(DatabaseOperation dbm){
         this.dbm = dbm;
+    }
+    
+    public void login(String userId){
+        this.userId = userId;
+    }
+    
+    public void logout(){
+        this.userId = null;
     }
 }

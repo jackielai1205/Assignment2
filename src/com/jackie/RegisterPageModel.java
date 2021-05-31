@@ -16,10 +16,35 @@ import javax.swing.JOptionPane;
  */
 public class RegisterPageModel extends Observable{
     
-    public void registerToDatabase(User user){
-        // Add data to database
-        System.out.print("done!");
-        this.setChanged();
-        this.notifyObservers();
+    // get data from database
+    String dbEmail = "123";
+
+    public void compareData(User currentUser){
+        
+        String result = "";
+        
+        // get data from controller and compare to database, then notify result to View
+        
+        if(currentUser.getEmail().equals(dbEmail)){
+            result = "fail";
+            this.setChanged();
+            this.notifyObservers(result);
+//        } else if(!currentUser.getPassword().equals(confirmPassword)){
+//            JOptionPane.showMessageDialog(registerView, "Confirm password and password not match. Bye");
+//        }  else {
+//            registerModel.registerToDatabase(currentUser);
+//            JOptionPane.showMessageDialog(registerView, "Register success!");
+//            registerView.setVisible(false);
+//            menuView.setEnabled(true);
+//        }
+    }
+    
+//    public void registerToDatabase(User user){
+//
+//        
+//        // Add data to database
+//        System.out.print("done!");
+//        this.setChanged();
+//        this.notifyObservers();
     }   
 }
