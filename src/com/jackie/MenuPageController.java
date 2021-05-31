@@ -12,16 +12,15 @@ import java.awt.event.ActionListener;
  *
  * @author waltersiu
  */
-public class MenuPageController {
+public class MenuPageController{
     
-    public MenuPageController(MenuPageModel menuModel, MenuPageView menuView)
-    {
+    public MenuPageController(MenuPageModel menuModel, MenuPageView menuView){
+        
         menuView.registerAddOnClickListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){
                 RegisterPageView registerView = new RegisterPageView(menuView);
                 RegisterPageModel registerModel = new RegisterPageModel();
-                RegisterPageController registerController = new RegisterPageController(registerModel, registerView, menuView); 
                 menuView.setEnabled(false);
             }
         });
@@ -43,4 +42,5 @@ public class MenuPageController {
             }
         });
     }
+
 }

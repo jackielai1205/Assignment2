@@ -5,10 +5,12 @@
  */
 package com.jackie;
 
+import java.util.Observable;
+
 /**
  *
  * @author waltersiu
  */
-public class MenuPageModel {
-    // get data from database
+public class HomePageModel extends Observable{
+    
 }

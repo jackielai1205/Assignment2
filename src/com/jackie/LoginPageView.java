@@ -24,7 +24,7 @@ public class LoginPageView extends Page implements Observer {
         initComponents();
     }
     
-    public void addOnClickListener(ActionListener al){
+    public void submitAddOnClickListener(ActionListener al){
         submit.addActionListener(al);
     }
 
