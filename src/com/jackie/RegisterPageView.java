@@ -4,6 +4,7 @@ package com.jackie;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,7 +27,7 @@ public class RegisterPageView extends Page implements Observer{
         initComponents();
     }
     
-    public void addOnClickListener(ActionListener al){
+    public void submitAddOnClickListener(ActionListener al){
         submit.addActionListener(al);
     }
 
@@ -214,5 +215,12 @@ public class RegisterPageView extends Page implements Observer{
     @Override
     public void update(Observable model, Object arg) {
         this.setVisible(true);
+        RegisterPageModel registerModel = (RegisterPageModel)model;
+        if(registerModel.result.equals("fail")){
+            JOptionPane.showMessageDialog(this, "Email have been registered...");
+        } else if(registerModel.result.equals("")){
+            JOptionPane.showMessageDialog(this, "Register success!");
+        }
+        this.setVisible(false);
     }
 }

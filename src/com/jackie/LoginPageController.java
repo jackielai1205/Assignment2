@@ -27,7 +27,7 @@ public class LoginPageController{
             @Override
             public void actionPerformed(ActionEvent al){
                 loginModel.addObserver(loginView);
-                User currentLoginUser = new User();
+                User currentLoginUser = new User("", "", "");
 
                 /**
                  * Need to get data from database

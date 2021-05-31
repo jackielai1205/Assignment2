@@ -22,7 +22,7 @@ public class BookingSystem {
         MoviePageController moviePageController = new MoviePageController(model, moviePageView);
         
         MenuPageView menuView = new MenuPageView(null);
-        MenuPageModel menuModel = new MenuPageModel();
+        MenuPageModel menuModel = new MenuPageModel(dbOperation);
         MenuPageController menucontroller = new MenuPageController(menuModel, menuView);
 
     }

@@ -5,8 +5,8 @@
  */
 package com.jackie;
 
-import com.jackie.JDBC.H01_DBManager;
-import com.jackie.JDBC.H02_DBOperations;
+//import com.jackie.JDBC.H01_DBManager;
+//import com.jackie.JDBC.H02_DBOperations;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -49,6 +49,8 @@ public class DatabaseOperation {
             String movieTable = "Movie";
             String showTimeTable = "ShowTime";
             String seatTable = "Seat";
+            String userTable = "User";
+            String bookingTable = "Booking";
             if(!tables.next()){
                 //Create Movie table
                 String sqlCreate = "create table " + movieTable + " ("
@@ -69,6 +71,19 @@ public class DatabaseOperation {
                 sqlCreate = "create table " + seatTable + " (Seat_id int not null PRIMARY KEY,"
                         + "Column1 int, Row int, Available boolean, ShowTime_id int,"
                         + "FOREIGN KEY (ShowTime_id) REFERENCES " + showTimeTable + "(ShowTime_id))";
+                statement.executeUpdate(sqlCreate);
+                
+                //Create User table
+                sqlCreate = "create table " + userTable + "(User_id varchar(255) not null PRIMARY KEY,"
+                        + "User_name varchar(255), User_password varchar(255))";
+                statement.executeUpdate(sqlCreate);
+                
+                //Create Booking table
+                sqlCreate = "create table " + bookingTable + "(Booking_id int not null PRIMARY KEY,"
+                        + "ShowTime_id int, Seat_id int, User_id varchar(255)"
+                        + "FOREIGN KEY (ShowTime_id) REFERENCES " + showTimeTable + "(ShowTime_id)"
+                        + "FOREIGN KEY (Seat_id) REFERENCES " + seatTable + "(Seat_id)"
+                        + "FOREIGN KEY (User_id) REFERENCES " + userTable + "(User_id))";
                 statement.executeUpdate(sqlCreate);
                 
                 //insert a movie to movie table
@@ -148,7 +163,7 @@ public class DatabaseOperation {
             System.out.println("Table created");
 
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -181,7 +196,7 @@ public class DatabaseOperation {
                 allMovie.put(movieid, new Movie(movieid, name, length, castings, director, category, rating, type, description, image));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
          return allMovie;
     }
@@ -212,7 +227,7 @@ public class DatabaseOperation {
             System.out.println(movieid);
             System.out.println(showTimes.get(0).getKey());
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
          return showTimes;
     }
@@ -240,7 +255,7 @@ public class DatabaseOperation {
                 seats.add(new Seat(seatid, available, column, row));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
         
          return seats;
@@ -261,7 +276,52 @@ public class DatabaseOperation {
             statement.executeUpdate(sqlUpdateTable);
 
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void updateUserAfterRegister(User user){
+        ResultSet rs = null;
+        
+        try{
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY);
+            
+            String sqlInsert = "insert into User values("
+            + user.getEmail() + ", " + user.getName() + ", " + user.getPassword() + ");";
+            System.out.println(sqlInsert);
+            statement.executeUpdate(sqlInsert);
+        } catch (SQLException ex) {
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList getUser(){
+        ArrayList<User> user = new ArrayList<>();
+        ResultSet rs = null;
+        
+        try{
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY);
+            
+            String sqlInsert = "select * from User";
+            rs = statement.executeQuery(sqlInsert);
+            if(rs != null){
+                rs.beforeFirst();
+                while (rs.next()) {
+                String userId = rs.getString("User_id");
+                String userName = rs.getString("User_name");
+                String userPassword = rs.getString("User_password");
+                user.add(new User(userId, userName, userPassword));
+                }
+            }
+        } catch (SQLException ex) {
+//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
     }
 }

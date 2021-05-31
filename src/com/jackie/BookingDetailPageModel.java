@@ -9,12 +9,6 @@ package com.jackie;
  *
  * @author waltersiu
  */
-public class MenuPageModel extends Model{
-    // get data from database
-
-    public MenuPageModel(DatabaseOperation dbm) {
-        super(dbm);
-        this.setChanged();
-    }
-    // get data from database
+public class BookingDetailPageModel {
+    
 }

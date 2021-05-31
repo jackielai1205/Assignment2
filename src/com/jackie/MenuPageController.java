@@ -20,8 +20,9 @@ public class MenuPageController{
             @Override
             public void actionPerformed(ActionEvent al){
                 RegisterPageView registerView = new RegisterPageView(menuView);
-                RegisterPageModel registerModel = new RegisterPageModel();
-                menuView.setEnabled(false);
+                RegisterPageModel registerModel = new RegisterPageModel(menuModel.dbm);
+                RegisterPageController registerController = new RegisterPageController(registerModel, registerView);
+//                menuView.setEnabled(false);
             }
         });
         
@@ -31,7 +32,7 @@ public class MenuPageController{
                 LoginPageView loginView = new LoginPageView(menuView);
                 LoginPageModel loginModel = new LoginPageModel();
                 LoginPageController loginController = new LoginPageController(loginModel, loginView, menuView);
-                menuView.setEnabled(false);
+//                menuView.setEnabled(false);
             }
         });
         
