@@ -80,6 +80,8 @@ public class DatabaseOperation {
                 sqlCreate = "create table " + userTable + "(User_id varchar(255) not null PRIMARY KEY,"
                         + "User_name varchar(255), User_password varchar(255))";
                 statement.executeUpdate(sqlCreate);
+                System.out.println();
+                
                 
                 //Create Booking table
                 sqlCreate = "create table " + bookingTable + "(Booking_id int not null PRIMARY KEY,"
