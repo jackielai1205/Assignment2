@@ -5,8 +5,6 @@
  */
 package com.jackie;
 
-import com.jackie.JDBC.H01_DBManager;
-import com.jackie.JDBC.H02_DBOperations;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -68,7 +66,7 @@ public class DatabaseOperation {
                 statement.executeUpdate(sqlCreate);
                 
                 //Create Seat table
-                sqlCreate = "create table " + seatTable + " (Seat_id int not null PRIMARY KEY GENERATED ALWAYS AS IDENTITY"
+                sqlCreate = "create table " + seatTable + " (Seat_id int not null PRIMARY KEY GENERATED ALWAYS AS IDENTITY "
                         + "(START WITH 1, INCREMENT BY 1),"
                         + "Column1 int, Row int, Available boolean, ShowTime_id int,"
                         + "FOREIGN KEY (ShowTime_id) REFERENCES " + showTimeTable + "(ShowTime_id))";
@@ -118,23 +116,19 @@ public class DatabaseOperation {
 
                 
                 //insert a Seat to showtime table
-                int seatid = 1;
                 for(int y = 1; y < 5; y++){        
                     for(int x = 1; x < 5; x++){
                         sqlInsert = "insert into " + seatTable + "(Column1, Row, Available, Showtime_id) values( "
                             + x + ", " + y + ", true, 1)";
                         statement.executeUpdate(sqlInsert); 
-                        seatid++;
                     }
                 }
-                System.out.println(seatid);
                 //insert a Seat to showtime table
                 for(int y = 1; y < 5; y++){        
                     for(int x = 1; x < 5; x++){
                         sqlInsert = "insert into " + seatTable + "(Column1, Row, Available, Showtime_id) values( "
                             + x + ", " + y + ", true, 2)";
                         statement.executeUpdate(sqlInsert); 
-                        seatid++;
                     }
                 }
                                
@@ -144,7 +138,7 @@ public class DatabaseOperation {
             System.out.println("Table created");
 
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong. Please try again");
         }
     }
 
@@ -177,7 +171,7 @@ public class DatabaseOperation {
                 allMovie.put(movieid, new Movie(movieid, name, length, castings, director, category, rating, type, description, image));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong. Please try again");
         }
          return allMovie;
     }
@@ -208,7 +202,7 @@ public class DatabaseOperation {
             System.out.println(movieid);
             System.out.println(showTimes.get(0).getKey());
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong. Please try again");
         }
          return showTimes;
     }
@@ -236,7 +230,7 @@ public class DatabaseOperation {
                 seats.add(new Seat(seatid, available, column, row));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong. Please try again");
         }
         
          return seats;
@@ -257,7 +251,26 @@ public class DatabaseOperation {
             statement.executeUpdate(sqlUpdateTable);
 
         } catch (SQLException ex) {
-            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong. Please try again");
+        }
+    }
+    
+        public void InsertBooking(String userid, int showtimeid, int seatid){
+        ResultSet rs = null;
+
+        try {
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            System.out.println(userid);
+
+            String sqlInsertTable = "insert into Booking (ShowTime_id, Seat_id, User_email) values( "
+                + showtimeid + ", " + seatid + ", " +  userid + ")";
+            statement.executeUpdate(sqlInsertTable);
+
+        } catch (SQLException ex) {
+            System.out.println("Something went wrong. Please try again");
         }
     }
 }

@@ -31,7 +31,7 @@ public class SelectedShowTimePageController implements SeatActionListener{
         if(JOptionPane.showConfirmDialog(view,"Do you want to book this seat?","Confirm booking", JOptionPane.YES_NO_OPTION)==0){
             model.dbm.updateSeat(seat.getSeatid());
             JOptionPane.showMessageDialog(view, "Booking Confirmed", "Message", 1);
-            
+//            model.dbm.InsertBooking(Model.getUserId(), model.showtime.getKey(), seat.getSeatid());
             view.back();
         }
     }
