@@ -6,8 +6,7 @@ package com.jackie;
  * and open the template in the editor.
  */
 
-import com.jackie.MovieDetailPageModel;
-import com.jackie.Page;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

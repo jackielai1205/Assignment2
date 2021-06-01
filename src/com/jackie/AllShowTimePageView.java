@@ -51,6 +51,7 @@ public class AllShowTimePageView extends Page {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
 
         movieText.setText("jLabel1");
 

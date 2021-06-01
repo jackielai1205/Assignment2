@@ -3,7 +3,6 @@ package com.jackie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +12,7 @@ import java.util.Observable;
 
 /**
  *
- * @author jacki
+ * @author jackie
  */
 public class MoviePageModel extends Model{
     private HashMap<Integer, Movie> movies;

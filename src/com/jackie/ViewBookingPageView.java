@@ -38,6 +38,7 @@ public class ViewBookingPageView extends Page implements Observer{
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
 
         list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPane1.setViewportView(list);

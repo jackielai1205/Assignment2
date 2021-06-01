@@ -19,11 +19,11 @@ import java.awt.event.ActionListener;
  */
 public class MoviePageController implements ActionListener{
     
-    static Page view;
+    static MoviePageView view;
     static MoviePageModel model;
     Movie movie;
    
-    public MoviePageController(MoviePageModel model, Page view ){
+    public MoviePageController(MoviePageModel model, MoviePageView view ){
         this.model = model;
         this.view = view;
         model.addObserver(view);
@@ -34,11 +34,11 @@ public class MoviePageController implements ActionListener{
         this.movie = movie;
     }
 
-    public Page getView() {
+    public MoviePageView getView() {
         return view;
     }
 
-    public void setView(Page view) {
+    public void setView(MoviePageView view) {
         MoviePageController.view = view;
     }
 
@@ -73,7 +73,7 @@ public class MoviePageController implements ActionListener{
         this.model = model;
     }
     
-    public void addView(Page view){
+    public void addView(MoviePageView view){
         this.view = view;
     }
 

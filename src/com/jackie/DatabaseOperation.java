@@ -277,20 +277,27 @@ public class DatabaseOperation {
     
         public void InsertBooking(String userid, int showtimeid, int seatid){
         ResultSet rs = null;
+        
+            System.out.println(userid);
+            System.out.println(showtimeid);
+            System.out.println(seatid);
 
         try {
+            
             System.out.println(" getting query....");
             Statement statement = dbManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             System.out.println(userid);
 
-            String sqlInsertTable = "insert into Booking (ShowTime_id, Seat_id, User_email) values( "
-                + showtimeid + ", " + seatid + ", " +  userid + ")";
-            statement.executeUpdate(sqlInsertTable);
-
+            PreparedStatement sqlInsertStatement = dbManager.getConnection().prepareStatement("insert into Booking (ShowTime_id, Seat_id, User_id) values(?,?,?)"); 
+            sqlInsertStatement.setInt(1, showtimeid);
+            sqlInsertStatement.setInt(2, seatid);
+            sqlInsertStatement.setString(3, userid);
+            sqlInsertStatement.executeUpdate();
+            
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println(ex);
         }
     }
         
@@ -307,7 +314,7 @@ public class DatabaseOperation {
             stmp = conn.prepareStatement(sqlInsert);
             stmp.setString(1, "1");
             stmp.setString(2, "1");
-            stmp.setString(3, "123@123.com");
+            stmp.setString(3, "234@123.com");
             stmp.executeUpdate();
         } catch (SQLException ex){
            System.out.println(ex);

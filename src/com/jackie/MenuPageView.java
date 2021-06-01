@@ -52,6 +52,7 @@ public class MenuPageView extends Page implements Observer {
         exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
 
         jLabel1.setText("Welcome to Ticket Booking System");
 

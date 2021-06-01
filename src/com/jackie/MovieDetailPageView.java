@@ -5,12 +5,7 @@
  */
 package com.jackie;
 
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -47,6 +42,7 @@ public class MovieDetailPageView extends Page{
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
         setResizable(false);
 
         movieName.setText("jLabel1");

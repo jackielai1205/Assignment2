@@ -1,16 +1,10 @@
 package com.jackie;
 
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Observable;
-import java.util.Observer;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.TableCellRenderer;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -49,6 +43,7 @@ public class MoviePageView extends Page{
         panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
         setResizable(false);
 
         movieList.setText("Movie List");

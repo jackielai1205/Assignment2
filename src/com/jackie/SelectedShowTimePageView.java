@@ -47,6 +47,7 @@ public class SelectedShowTimePageView extends Page {
         screen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
         setResizable(false);
 
         back.setText("Back");

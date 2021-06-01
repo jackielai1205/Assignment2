@@ -36,6 +36,7 @@ public class BookingDetailPageView extends javax.swing.JFrame {
         seatNumber = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
 
         cancelBookingButton.setText("Cancel Booking");
         cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
