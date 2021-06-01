@@ -29,8 +29,8 @@ public class MenuPageController{
         menuView.loginAddOnClickListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){
-                LoginPageView loginView = new LoginPageView(menuView);
-                LoginPageModel loginModel = new LoginPageModel();
+                LoginPageView loginView = new LoginPageView(menuView, menuModel.dbm);
+                LoginPageModel loginModel = new LoginPageModel(menuModel.dbm);
                 LoginPageController loginController = new LoginPageController(loginModel, loginView, menuView);
 //                menuView.setEnabled(false);
             }

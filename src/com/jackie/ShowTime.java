@@ -33,6 +33,13 @@ class ShowTime {
         this.price = price;
         this.key = key;
     }
+    
+    public ShowTime(int showTime_id, String date, String time, int price, int moiveid){
+        this.date = date;
+        this.time = time;
+        this.price = price;
+        this.movieid = movieid;
+    }
 
     public Seat[][] getSeats() {
         return seats;

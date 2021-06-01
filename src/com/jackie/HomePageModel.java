@@ -11,6 +11,10 @@ import java.util.Observable;
  *
  * @author waltersiu
  */
-public class HomePageModel extends Observable{
+public class HomePageModel extends Model{
+    
+    public HomePageModel(DatabaseOperation dbm) {
+        super(dbm);
+    }
     
 }

@@ -27,7 +27,7 @@ public abstract class Model extends Observable{
         this.userId = null;
     }
 
-    public static String getUserId() {
+    public String getUserId() {
         return userId;
     }
 

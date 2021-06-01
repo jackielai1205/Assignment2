@@ -16,11 +16,20 @@ public class HomePageController {
     
     public HomePageController(HomePageModel homePageModel, HomePageView homePageView){
         
+        homePageView.viewMovieButtonAddOnClickListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent al){
+                MoviePageModel model = new MoviePageModel(homePageModel.dbm);
+                MoviePageView moviePageView = new MoviePageView(homePageView);
+                MoviePageController  moviePageController = new MoviePageController(model, moviePageView);
+            }
+        });
+        
         homePageView.viewBookingButtonAddOnClickListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){
                 ViewBookingPageView viewBookingView = new ViewBookingPageView(homePageView);
-                ViewBookingPageModel viewBookingModel = new ViewBookingPageModel();
+                ViewBookingPageModel viewBookingModel = new ViewBookingPageModel(homePageModel.dbm);
                 ViewBookingPageController viewBookingController = new ViewBookingPageController(viewBookingModel, viewBookingView);
             }
         });

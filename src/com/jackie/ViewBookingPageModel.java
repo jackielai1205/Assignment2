@@ -5,21 +5,31 @@
  */
 package com.jackie;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
  *
  * @author waltersiu
  */
-public class ViewBookingPageModel extends Observable{
+public class ViewBookingPageModel extends Model{
     
-    Movie still;
+    String currentUserId = super.getUserId(); //Get current User's user id
+    // Get all booking record using user's user id
+    ArrayList<Booking> currentUserBooking = dbm.getUserBookingFromBooking(currentUserId); 
+    ArrayList<ShowTime> currentUserShowTime = getShowTimeInfo();
     
-    ViewBookingPageModel(){
-        // get data from database
-        String[] hi = {"shit"};
-        still = new Movie(1, "still", 1, "", "", "", 1, "", "", "");
-        this.setChanged();
-        this.notifyObservers();
+    public ViewBookingPageModel(DatabaseOperation dbm) {
+        super(dbm);
     }
+    
+    public ArrayList<ShowTime> getShowTimeInfo(){
+        ArrayList<ShowTime> showTimeList = null;
+        for(int index = 0; index < this.currentUserBooking.size(); index++){
+            ShowTime showTime = dbm.getUserShowTimeInfo(currentUserBooking.get(index).getShowTime_id());
+            showTimeList.add(showTime);
+        }
+        return showTimeList;
+    }
+    
 }

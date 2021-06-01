@@ -28,10 +28,10 @@ public class Database {
     //If you only observe "other schemas", you need to find USER_NAME from it, and set it as default schema
     //If the database does not appear in IDE after creating through codes, please restart Netbeans (this is a bug) 
 
-//    private static final String URL = "jdbc:derby://localhost:1527/CarDB;create=true";
+    //private static final String URL = "jdbc:derby://localhost:1527/CarDB;create=true";
     //Embedded database: 
     //You do NOT need to start the javaDB, the database will be created at the root of the project folder
-    private static final String URL = "jdbc:derby://localhost:1527/Movie;create=true";  //derby.jar
+    private static final String URL = "jdbc:derby://localhost:1527/assign2";  //derby.jar
 
     Connection conn;
 
@@ -56,8 +56,8 @@ public class Database {
     public void establishConnection() {
         if (this.conn == null) {
             try {
-                conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                System.out.println(URL + "   CONNECTED....");
+                conn = DriverManager.getConnection(this.URL, this.USER_NAME, this.PASSWORD);
+                System.out.println(this.URL + "   CONNECTED....");
 
             } catch (SQLException ex) {
                 System.out.println("Unable to connect database");

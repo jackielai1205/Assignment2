@@ -128,11 +128,11 @@ public class ViewBookingPageView extends Page implements Observer{
     public void update(Observable model, Object arg) {
         // get result from model and add Jpanel
         ViewBookingPageModel viewBookingModel = (ViewBookingPageModel)model;
-        if(viewBookingModel.still != null){
-            BookingListPanel panel = new BookingListPanel();
-            panel.movieName.setText(viewBookingModel.still.getName());
-            this.list.add(panel);
-        }   
+//        if(viewBookingModel.still != null){
+//            BookingListPanel panel = new BookingListPanel();
+//            panel.movieName.setText(viewBookingModel.still.getName());
+//            this.list.add(panel);
+//        }   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

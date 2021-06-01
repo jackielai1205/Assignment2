@@ -5,7 +5,6 @@
  */
 package com.jackie;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,9 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.sql.*;  
 
 
 /**
@@ -47,7 +48,7 @@ public class DatabaseOperation {
             String movieTable = "Movie";
             String showTimeTable = "ShowTime";
             String seatTable = "Seat";
-            String userTable = "User";
+            String customerTable = "Customer";
             String bookingTable = "Booking";
             if(!tables.next()){
                 //Create Movie table
@@ -75,18 +76,18 @@ public class DatabaseOperation {
                 statement.executeUpdate(sqlCreate);
                 
                 //Create User table
-                sqlCreate = "create table " + userTable + "(User_id varchar(255) not null PRIMARY KEY,"
+                sqlCreate = "create table " + customerTable + " (User_id varchar(255) not null PRIMARY KEY,"
                         + "User_name varchar(255), User_password varchar(255))";
                 statement.executeUpdate(sqlCreate);
-                System.out.println();
                 
                 
                 //Create Booking table
-                sqlCreate = "create table " + bookingTable + "(Booking_id int not null PRIMARY KEY,"
-                        + "ShowTime_id int, Seat_id int, User_id varchar(255)"
-                        + "FOREIGN KEY (ShowTime_id) REFERENCES " + showTimeTable + "(ShowTime_id)"
-                        + "FOREIGN KEY (Seat_id) REFERENCES " + seatTable + "(Seat_id)"
-                        + "FOREIGN KEY (User_id) REFERENCES " + userTable + "(User_id))";
+                sqlCreate = "create table " + bookingTable + "  (Booking_id int not null PRIMARY KEY GENERATED ALWAYS AS IDENTITY"
+                        + "(START WITH 1, INCREMENT BY 1),"
+                        + "ShowTime_id int, Seat_id int, User_id varchar(255), "
+                        + "FOREIGN KEY (ShowTime_id) REFERENCES " + showTimeTable + "(ShowTime_id), "
+                        + "FOREIGN KEY (Seat_id) REFERENCES " + seatTable + "(Seat_id), "
+                        + "FOREIGN KEY (User_id) REFERENCES " + customerTable + "(User_id))";
                 statement.executeUpdate(sqlCreate);
                 
                 //insert a movie to movie table
@@ -151,11 +152,13 @@ public class DatabaseOperation {
                                
             }
 
-            //statement.close();
+            //statement.close();  
+            addData();
             System.out.println("Table created");
 
         } catch (SQLException ex) {
             System.out.println("Something went wrong. Please try again");
+            System.out.println(ex);
         }
     }
 
@@ -193,7 +196,7 @@ public class DatabaseOperation {
          return allMovie;
     }
     
-        public ArrayList getAllShowTimeQuery(int movieid) {
+    public ArrayList getAllShowTimeQuery(int movieid) {
         ArrayList<ShowTime> showTimes = new ArrayList<>();
         ResultSet rs = null;
 
@@ -290,6 +293,26 @@ public class DatabaseOperation {
             System.out.println("Something went wrong. Please try again");
         }
     }
+        
+    public void addData(){
+        ResultSet rs = null;
+        try{
+            System.out.println("hi");
+            Statement statement = dbManager.getConnection().createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY);
+            String sqlInsert = "insert into booking (showtime_id, seat_id, user_id) values (?, ?, ?)";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlInsert);
+            stmp.setString(1, "1");
+            stmp.setString(2, "1");
+            stmp.setString(3, "123@123.com");
+            stmp.executeUpdate();
+        } catch (SQLException ex){
+           System.out.println(ex);
+        }
+    }
     
     public void updateUserAfterRegister(User user){
         ResultSet rs = null;
@@ -300,12 +323,16 @@ public class DatabaseOperation {
             ResultSet.TYPE_SCROLL_INSENSITIVE,
             ResultSet.CONCUR_READ_ONLY);
             
-            String sqlInsert = "insert into User values("
-            + user.getEmail() + ", " + user.getName() + ", " + user.getPassword() + ");";
-            System.out.println(sqlInsert);
-            statement.executeUpdate(sqlInsert);
+            String sqlInsert = "insert into Customer (User_id, User_name, User_password) values (?, ?, ?)";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlInsert);
+            stmp.setString(1, user.getEmail());
+            stmp.setString(2, user.getName());
+            stmp.setString(3, user.getPassword());
+            stmp.executeUpdate();
         } catch (SQLException ex) {
-//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
     }
     
@@ -319,8 +346,8 @@ public class DatabaseOperation {
             ResultSet.TYPE_SCROLL_INSENSITIVE,
             ResultSet.CONCUR_READ_ONLY);
             
-            String sqlInsert = "select * from User";
-            rs = statement.executeQuery(sqlInsert);
+            String sqlSelect = "select * from Customer";
+            rs = statement.executeQuery(sqlSelect);
             if(rs != null){
                 rs.beforeFirst();
                 while (rs.next()) {
@@ -331,8 +358,70 @@ public class DatabaseOperation {
                 }
             }
         } catch (SQLException ex) {
-//            Logger.getLogger(H02_DBOperations.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         return user;
+    }
+    
+    public ArrayList<Booking> getUserBookingFromBooking(String userId){
+        ArrayList<Booking> booking = new ArrayList<>();
+        ResultSet rs = null;
+        
+        try{
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY);
+            
+            String sqlSelect = "select * from Booking where User_id = ?";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlSelect);
+            stmp.setString(1, userId);
+            rs = stmp.executeQuery();
+            if(rs != null){
+                rs.beforeFirst();
+                while (rs.next()) {
+                    int booking_id = rs.getInt(1);
+                    int showTime_id = rs.getInt(2);
+                    int seat_id = rs.getInt(3);
+                    booking.add(new Booking(booking_id, showTime_id, seat_id, userId));
+                }
+            }
+        } catch (SQLException ex){
+            System.out.println(ex);
+        }
+        return booking;
+    }
+    
+    public ShowTime getUserShowTimeInfo(int showTime_id){
+        ShowTime showTime = null;
+        ResultSet rs = null;
+        try{
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY);
+            
+            String sqlSelect = "select * from ShowTime where ShowTime_id = ?";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlSelect);
+            stmp.setInt(1, showTime_id);
+            rs = stmp.executeQuery();
+            if(rs != null){
+                rs.beforeFirst();
+                while (rs.next()) {
+                    String date = rs.getString(2);
+                    String time = rs.getString(3);
+                    int price = rs.getInt(4);
+                    int movie_id = rs.getInt(5);
+                    showTime = new ShowTime(showTime_id, date, time, price, movie_id);
+                }
+            }
+        } catch (SQLException ex){
+            System.out.println(ex);
+        }
+        return showTime;
     }
 }

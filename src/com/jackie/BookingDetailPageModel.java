@@ -11,4 +11,6 @@ package com.jackie;
  */
 public class BookingDetailPageModel {
     
+    
+    
 }

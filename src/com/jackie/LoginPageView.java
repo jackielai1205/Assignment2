@@ -8,18 +8,22 @@ package com.jackie;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author waltersiu
  */
 public class LoginPageView extends Page implements Observer {
-
+    Page parent;
+    DatabaseOperation dbm;
     /**
      * Creates new form LoginPageView
      */
-    public LoginPageView(Page parent){
+    public LoginPageView(Page parent, DatabaseOperation dbm){
         super(parent);
+        this.parent = parent;
+        this.dbm = dbm;
         this.setVisible(true);
         initComponents();
     }
@@ -185,7 +189,7 @@ public class LoginPageView extends Page implements Observer {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPageView(null).setVisible(true);
+                new LoginPageView(null, null).setVisible(true);
             }
         });
     }
@@ -210,7 +214,21 @@ public class LoginPageView extends Page implements Observer {
     }
     
     @Override
-    public void update(Observable o, Object arg) {
-        
+    public void update(Observable model, Object arg) {
+        this.setVisible(true);
+        LoginPageModel loginModel = (LoginPageModel)model;
+        if(loginModel.result.equals("success")){
+            JOptionPane.showMessageDialog(this, "Login Success!");
+            this.setVisible(false);
+            HomePageView homePageView = new HomePageView(parent);
+            HomePageModel homePageModel = new HomePageModel(this.dbm);
+            HomePageController homePageController = new HomePageController(homePageModel, homePageView);
+        } else if(loginModel.result.equals("wrongEmail")){
+            JOptionPane.showMessageDialog(this, "No record with your Email address!");
+            this.setVisible(false);
+        } else if(loginModel.result.equals("wrongPassword")){
+            JOptionPane.showMessageDialog(this, "Your password is not match with record!");
+            this.setVisible(false);
+        }
     }
 }
