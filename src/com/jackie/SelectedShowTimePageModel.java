@@ -10,7 +10,7 @@ import java.util.Observable;
 
 /**
  *
- * @author jacki
+ * @author jackie
  */
 public class SelectedShowTimePageModel extends Model{
     

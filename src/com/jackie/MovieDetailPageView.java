@@ -39,7 +39,7 @@ public class MovieDetailPageView extends Page{
         showTime = new javax.swing.JButton();
         back = new javax.swing.JButton();
         description = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
@@ -71,8 +71,8 @@ public class MovieDetailPageView extends Page{
         description.setText("jLabel1");
         description.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("jLabel1");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        image.setText("jLabel1");
+        image.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,7 +85,7 @@ public class MovieDetailPageView extends Page{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(showTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
@@ -96,7 +96,7 @@ public class MovieDetailPageView extends Page{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showTime)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -110,6 +110,8 @@ public class MovieDetailPageView extends Page{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        image.getAccessibleContext().setAccessibleName("image");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,7 +129,7 @@ public class MovieDetailPageView extends Page{
     private javax.swing.JButton back;
     private javax.swing.JLabel casting;
     private javax.swing.JLabel description;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel image;
     private javax.swing.JLabel movieLength;
     private javax.swing.JLabel movieName;
     private javax.swing.JButton showTime;
@@ -145,7 +147,7 @@ public class MovieDetailPageView extends Page{
         this.description.setText( "<html><p style=\"width:350px\">Description:<br>"+model.movie.getDescription()+"</p></html>");
         this.movieName.setText("<html>Movie name:<br>" + model.movie.getName()+ "</html>");
         String imagePath = model.movie.getImage();
-        this.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
+        this.image.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagePath))); // NOI18N
     }
    
     
@@ -178,11 +180,11 @@ public class MovieDetailPageView extends Page{
     }
 
     public JLabel getjLabel1() {
-        return jLabel1;
+        return image;
     }
 
     public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
+        this.image = jLabel1;
     }
 
     public JLabel getMovieLength() {

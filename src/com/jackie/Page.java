@@ -18,7 +18,7 @@ import javax.swing.JButton;
  */
 public abstract class Page extends javax.swing.JFrame implements Observer{
     
-    Page parent;
+    private Page parent;
     
     public Page(Page parent){
         this.parent = parent;
@@ -26,6 +26,7 @@ public abstract class Page extends javax.swing.JFrame implements Observer{
     }
     
     public void back(){
+        this.parent.setVisible(true);
         this.parent.setEnabled(true);
         dispose();
     }
@@ -33,6 +34,12 @@ public abstract class Page extends javax.swing.JFrame implements Observer{
     public void addBackButton(JButton back, BackController controller){
         back.addActionListener(controller);
     }
-   
 
+    public Page getParent() {
+        return parent;
+    }
+
+    public void setParent(Page parent) {
+        this.parent = parent;
+    }
 }

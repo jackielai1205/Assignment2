@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author jacki
  */
-public class Database {
+public final class Database {
 
     private static final String USER_NAME = "pdc";
     private static final String PASSWORD = "pdc";
@@ -73,37 +73,6 @@ public class Database {
             } catch (SQLException ex) {
                 System.out.println("Unable to close database");
             }
-        }
-    }
-
-    public ResultSet myQuery(String sql) {
-
-        Connection connection = this.conn;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return resultSet;
-    }
-
-    public void myUpdate(String sql) {
-
-        Connection connection = this.conn;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(sql);
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
    

@@ -1,9 +1,5 @@
 package com.jackie;
 
-import com.jackie.MoviePageModel;
-import com.jackie.MoviePageModel;
-import com.jackie.Page;
-import com.jackie.Page;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,8 +20,8 @@ public class MoviePageController implements ActionListener{
     Movie movie;
    
     public MoviePageController(MoviePageModel model, MoviePageView view ){
-        this.model = model;
-        this.view = view;
+        MoviePageController.model = model;
+        MoviePageController.view = view;
         model.addObserver(view);
         model.notifyObservers(view);
     }
@@ -58,7 +54,7 @@ public class MoviePageController implements ActionListener{
         this.movie = movie;
     }
     
-    
+    //Create a next page and add controller.
     @Override
     public void actionPerformed(ActionEvent e) {
         MovieDetailPageModel movieDetailPageModel = new MovieDetailPageModel(movie, model.dbm);
@@ -66,15 +62,16 @@ public class MoviePageController implements ActionListener{
         MovieDetailPageController movieDetailPageController = new MovieDetailPageController(movieDetailPageView, movieDetailPageModel);
         movieDetailPageView.addController(movieDetailPageController);
         movieDetailPageView.addBackButton(movieDetailPageView.getBack(), new BackController(movieDetailPageView));
-        view.setEnabled(false);  
+        view.setEnabled(false);
+        view.setVisible(false);
     }
     
     public void addModel(MoviePageModel model){
-        this.model = model;
+        MoviePageController.model = model;
     }
     
     public void addView(MoviePageView view){
-        this.view = view;
+        MoviePageController.view = view;
     }
 
 }

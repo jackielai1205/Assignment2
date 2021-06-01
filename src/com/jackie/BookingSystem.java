@@ -9,7 +9,7 @@ package com.jackie;
 
 /**
  *
- * @author jacki
+ * @author jackie
  */
 public class BookingSystem {
 

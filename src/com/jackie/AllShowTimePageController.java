@@ -37,6 +37,7 @@ public class AllShowTimePageController implements ActionListener{
         SelectedShowTimePageModel selectedShowTimePageModel = new SelectedShowTimePageModel(this.showTime, allShowTimePageModel.dbm);
         SelectedShowTimePageController selectedShowTimePageController = new SelectedShowTimePageController(selectedShowTimePageView, selectedShowTimePageModel);
         allShowTimePageView.setEnabled(false);
+        allShowTimePageView.setVisible(false);
     }
     
     public void addView(AllShowTimePageView view){

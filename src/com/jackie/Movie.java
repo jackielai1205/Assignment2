@@ -23,7 +23,7 @@ public class Movie {
     private String description;
     private String image;
     private int movieid;
-    ArrayList<ShowTime> showTimes;
+    private ArrayList<ShowTime> showTimes;
 
     public String getType() {
         return type;

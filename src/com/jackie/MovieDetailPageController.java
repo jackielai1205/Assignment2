@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author jacki
+ * @author jackie
  */
 public class MovieDetailPageController implements ActionListener{
     
@@ -34,6 +34,7 @@ public class MovieDetailPageController implements ActionListener{
         AllShowTimePageController allShowTimePageController =  new AllShowTimePageController(allShowTimePageView, allShowTimePageModel);
         allShowTimePageView.getBack().addActionListener(new BackController(allShowTimePageView));
         movieDetailPageView.setEnabled(false);
+        movieDetailPageView.setVisible(false);
     }
    
 }

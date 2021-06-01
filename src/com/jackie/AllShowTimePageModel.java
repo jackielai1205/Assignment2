@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author jacki
  */
 public class AllShowTimePageModel extends Model{
-    ArrayList<ShowTime> showtime;
-    Movie movie;
+    private ArrayList<ShowTime> showtime;
+    private Movie movie;
     
     public AllShowTimePageModel(Movie movie, DatabaseOperation dbm){
         super(dbm);
@@ -27,5 +27,13 @@ public class AllShowTimePageModel extends Model{
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public ArrayList<ShowTime> getShowtime() {
+        return showtime;
+    }
+
+    public void setShowtime(ArrayList<ShowTime> showtime) {
+        this.showtime = showtime;
     }
 }

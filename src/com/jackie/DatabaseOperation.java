@@ -25,21 +25,19 @@ import java.sql.*;
  * @author jacki
  */
 public class DatabaseOperation {
-    /*
- * The programs are designed for PDC paper
- */ 
 /**
  *
- * @author Quan Bai and Weihua Li
+ * @author jackie
  * @Note Database Operation Component
  */
 
-    private Database dbManager;
+    private final Database dbManager;
 
     public DatabaseOperation() { 
         dbManager = new Database();
     }
 
+    //Initalize the database and insert record for demonstration
     public void createTable() {
         try {
             DatabaseMetaData dbm = this.dbManager.conn.getMetaData();
@@ -162,6 +160,7 @@ public class DatabaseOperation {
         }
     }
 
+    //Get movie data from database and retunr as a HashMap
     public HashMap getAllMovieQuery() {
         HashMap<Integer, Movie> allMovie = new HashMap<>();
         ResultSet rs = null;
@@ -196,6 +195,7 @@ public class DatabaseOperation {
          return allMovie;
     }
     
+    //Get the showtime info from database
     public ArrayList getAllShowTimeQuery(int movieid) {
         ArrayList<ShowTime> showTimes = new ArrayList<>();
         ResultSet rs = null;
@@ -226,7 +226,8 @@ public class DatabaseOperation {
         }
          return showTimes;
     }
-        
+    
+    //Get the seat info from database
     public ArrayList getSeatQuery(int showtimeid) {
         ArrayList<Seat> seats = new ArrayList<>();
         ResultSet rs = null;
@@ -256,6 +257,7 @@ public class DatabaseOperation {
          return seats;
     }
     
+    //Update the seat status when customer made booking
     public void updateSeat(int seatid){
         ResultSet rs = null;
 

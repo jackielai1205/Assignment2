@@ -20,11 +20,11 @@ public abstract class Model extends Observable{
     }
     
     public void login(String userId){
-        this.userId = userId;
+        Model.userId = userId;
     }
     
     public void logout(){
-        this.userId = null;
+        Model.userId = null;
     }
 
     public static String getUserId() {

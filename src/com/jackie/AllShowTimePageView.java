@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 
 /**
  *
- * @author jacki
+ * @author jackie
  */
 public class AllShowTimePageView extends Page {
 
@@ -220,13 +220,13 @@ public class AllShowTimePageView extends Page {
     }
     
     public void printAllShowTime(AllShowTimePageModel model){
-        this.movieText.setText(model.movie.getName());
-        System.out.println(model.movie.getShowTimes());
-        for(ShowTime showtime: model.showtime){
+        this.movieText.setText(model.getMovie().getName());
+        System.out.println(model.getMovie().getShowTimes());
+        for(ShowTime showtime: model.getShowtime()){
             AllShowTimePageController allShowTimePageController = new AllShowTimePageController(showtime);
-            ShowTimeList component = new ShowTimeList(allShowTimePageController.getAllShowTimePageModel(),allShowTimePageController.getAllShowTimePageView(),showtime);
-            this.showTimeList.add(component);
-            component.addController(allShowTimePageController);
+            ShowTimeList showTimeList = new ShowTimeList(allShowTimePageController.getAllShowTimePageModel(),allShowTimePageController.getAllShowTimePageView(),showtime);
+            this.showTimeList.add(showTimeList);
+            showTimeList.addController(allShowTimePageController);
 
         }
     }

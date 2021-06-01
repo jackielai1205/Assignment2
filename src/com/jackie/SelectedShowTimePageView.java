@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -146,20 +145,20 @@ public class SelectedShowTimePageView extends Page {
         printShowTime(((SelectedShowTimePageModel) o));
     }
 
+    //Add Listener to the button
     private SeatActionListener listener;
     public void addSeatListener(SeatActionListener listener) {
         this.listener = listener;
     }
     
+    //Print the seat status of selected showtime
     public void printShowTime(SelectedShowTimePageModel model) {
         back.addActionListener(new BackController(this));
         this.showTime.setText(model.showtime.getDate() + " " + model.showtime.getTime());
-        int seatCount = 0;
+        System.out.println(model.seats.size());
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
-//                    Seat currentSeat = model.showtime.getSeats()[x][y];
-                Seat currentSeat = model.seats.get(seatCount);
-                String showText = "";
+                Seat currentSeat = model.seats.get(x*4+y);
                 JButton seatButton = new JButton("");
                 if (currentSeat.isAvailable()) {
                     seatButton.setText("O");
@@ -182,7 +181,6 @@ public class SelectedShowTimePageView extends Page {
                     }
                 });
                 this.content.add(seatButton);
-                seatCount++;
             }
         }
     }

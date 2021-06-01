@@ -6,7 +6,6 @@
 package com.jackie;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,11 +18,11 @@ public class SelectedShowTimePageController implements SeatActionListener{
     static SelectedShowTimePageModel model;
     
     public SelectedShowTimePageController(SelectedShowTimePageView view, SelectedShowTimePageModel model){
-        this.view = view;
-        this.view.addSeatListener(this);
-        this.model = model;
-        this.model.addObserver(view);
-        this.model.notifyObservers();
+        SelectedShowTimePageController.view = view;
+        SelectedShowTimePageController.view.addSeatListener(this);
+        SelectedShowTimePageController.model = model;
+        SelectedShowTimePageController.model.addObserver(view);
+        SelectedShowTimePageController.model.notifyObservers();
     }
 
     @Override

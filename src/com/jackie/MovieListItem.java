@@ -1,7 +1,5 @@
 package com.jackie;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -13,7 +11,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author jacki
+ * @author jackie
  */
 public class MovieListItem extends javax.swing.JPanel{
 
@@ -21,6 +19,9 @@ public class MovieListItem extends javax.swing.JPanel{
     Page view;
     /**
      * Creates new form MovieList
+     * @param model save data from model
+     * @param view save data from view
+     * @param name save movie name
      */
     public MovieListItem(MoviePageModel model, Page view, String name) {
         this.view = view;
