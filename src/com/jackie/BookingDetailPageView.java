@@ -36,7 +36,7 @@ public class BookingDetailPageView extends Page {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        BookingDetailPagePanel = new javax.swing.JPanel();
         cancelBookingButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         movieName = new javax.swing.JLabel();
@@ -69,27 +69,27 @@ public class BookingDetailPageView extends Page {
 
         seatNumber.setText("Seat:");
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BookingDetailPagePanelLayout = new javax.swing.GroupLayout(BookingDetailPagePanel);
+        BookingDetailPagePanel.setLayout(BookingDetailPagePanelLayout);
+        BookingDetailPagePanelLayout.setHorizontalGroup(
+            BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BookingDetailPagePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cancelBookingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                 .addComponent(backButton))
-            .addGroup(panelLayout.createSequentialGroup()
+            .addGroup(BookingDetailPagePanelLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seatNumber)
                     .addComponent(movieTime)
                     .addComponent(movieDate)
                     .addComponent(movieName))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+        BookingDetailPagePanelLayout.setVerticalGroup(
+            BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookingDetailPagePanelLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(movieName)
                 .addGap(27, 27, 27)
@@ -99,7 +99,7 @@ public class BookingDetailPageView extends Page {
                 .addGap(31, 31, 31)
                 .addComponent(seatNumber)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelBookingButton)
                     .addComponent(backButton))
                 .addContainerGap())
@@ -109,11 +109,11 @@ public class BookingDetailPageView extends Page {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BookingDetailPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BookingDetailPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -164,6 +164,7 @@ public class BookingDetailPageView extends Page {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BookingDetailPagePanel;
     private javax.swing.JButton backButton;
     private javax.swing.JButton cancelBookingButton;
     private javax.swing.JLabel movieDate;

@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class RegisterPageModel extends Model{
     
-    ArrayList<User> dbUsers;
-    String result = "";
+    private ArrayList<User> dbUsers;
+    private String result = "";
 
     public RegisterPageModel(DatabaseOperation dbm) {
         super(dbm);
@@ -26,45 +26,45 @@ public class RegisterPageModel extends Model{
         this.setChanged();
     }
 
-    public void compareData(User currentUser){
-        
-        for(int index = 0; index < this.dbUsers.size(); index++){
-            if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
-                result = "fail";
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public void compareData(User currentUser, String confirmPassword){
+        final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9]+.com$";
+        if(currentUser.getEmail().matches(regex)){
+            for(int index = 0; index < this.dbUsers.size(); index++){
+                // Email already used 
+                if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
+                    result = "equal";
+                    this.setChanged();
+                    this.notifyObservers(result);
+                } else {
+                    if(currentUser.getPassword().equals("")){
+                        result = "passwordempty";
+                        this.setChanged();
+                        this.notifyObservers(result);
+                    } else if(!currentUser.getPassword().equals(confirmPassword)){
+                        result = "passwordnotmatch";
+                        this.setChanged();
+                        this.notifyObservers(result);
+                    }
+                }
+            }
+            if(result.equals("")){
+                dbm.updateUserAfterRegister(currentUser);
                 this.setChanged();
                 this.notifyObservers(result);
             }
-        }
-        
-        if(result.equals("")){
-            dbm.updateUserAfterRegister(currentUser);
+        } else {
+            result = "notmatch";
             this.setChanged();
             this.notifyObservers(result);
         }
-
-        
-        // get data from controller and compare to database, then notify result to View
-        
-//        if(currentUser.getEmail().equals(dbEmail)){
-//            result = "fail";
-//            this.setChanged();
-//            this.notifyObservers(result);
-//        } else if(!currentUser.getPassword().equals(confirmPassword)){
-//            JOptionPane.showMessageDialog(registerView, "Confirm password and password not match. Bye");
-//        }  else {
-//            registerModel.registerToDatabase(currentUser);
-//            JOptionPane.showMessageDialog(registerView, "Register success!");
-//            registerView.setVisible(false);
-//            menuView.setEnabled(true);
-//        }
     }
-    
-//    public void registerToDatabase(User user){
-//
-//        
-//        // Add data to database
-//        System.out.print("done!");
-//        this.setChanged();
-//        this.notifyObservers();
-    }   
+}   
 

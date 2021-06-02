@@ -28,7 +28,7 @@ public class RegisterPageView extends Page implements Observer{
     }
     
     public void submitAddOnClickListener(ActionListener al){
-        submit.addActionListener(al);
+        submitButton.addActionListener(al);
     }
 
     /**
@@ -48,10 +48,10 @@ public class RegisterPageView extends Page implements Observer{
         inputConfirm = new javax.swing.JTextField();
         inputEmail = new javax.swing.JTextField();
         labelReg = new javax.swing.JLabel();
-        submit = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         inputPassword = new javax.swing.JTextField();
         labelConfirm = new javax.swing.JLabel();
-        back = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,12 +69,7 @@ public class RegisterPageView extends Page implements Observer{
 
         labelReg.setText("Registration");
 
-        submit.setText("Register");
-        submit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
-            }
-        });
+        submitButton.setText("Register");
 
         inputPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,10 +79,10 @@ public class RegisterPageView extends Page implements Observer{
 
         labelConfirm.setText("Confirm Password");
 
-        back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -115,9 +110,9 @@ public class RegisterPageView extends Page implements Observer{
                                     .addComponent(inputConfirm, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                                     .addComponent(inputName, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(submit)
+                        .addComponent(submitButton)
                         .addGap(61, 61, 61)
-                        .addComponent(back)))
+                        .addComponent(backButton)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,8 +138,8 @@ public class RegisterPageView extends Page implements Observer{
                     .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submit)
-                    .addComponent(back))
+                    .addComponent(submitButton)
+                    .addComponent(backButton))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
@@ -170,18 +165,14 @@ public class RegisterPageView extends Page implements Observer{
         // TODO add your handling code here:
     }//GEN-LAST:event_inputPasswordActionPerformed
 
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submitActionPerformed
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         this.back();
-    }//GEN-LAST:event_backActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton back;
+    private javax.swing.JButton backButton;
     private javax.swing.JTextField inputConfirm;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputName;
@@ -192,7 +183,7 @@ public class RegisterPageView extends Page implements Observer{
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelReg;
-    private javax.swing.JButton submit;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 
     
@@ -216,11 +207,17 @@ public class RegisterPageView extends Page implements Observer{
     public void update(Observable model, Object arg) {
         this.setVisible(true);
         RegisterPageModel registerModel = (RegisterPageModel)model;
-        if(registerModel.result.equals("fail")){
+        if(registerModel.getResult().equals("equal")){
             JOptionPane.showMessageDialog(this, "Email have been registered...");
-        } else if(registerModel.result.equals("")){
+        } else if(registerModel.getResult().equals("")){
             JOptionPane.showMessageDialog(this, "Register success!");
+            this.setVisible(false);
+        } else if(registerModel.getResult().equals("notmatch")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid email!");
+        } else if(registerModel.getResult().equals("passwordempty")){
+            JOptionPane.showMessageDialog(this, "Please enter password!");
+        } else if(registerModel.getResult().equals("passwordnotmatch")){
+            JOptionPane.showMessageDialog(this, "Please confirm your password again!");
         }
-        this.setVisible(false);
     }
 }

@@ -7,6 +7,7 @@ package com.jackie;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,7 +15,13 @@ import java.awt.event.ActionListener;
  */
 public class HomePageController {
     
+    private HomePageModel homePageModel;
+    private HomePageView homePageView;
+    
     public HomePageController(HomePageModel homePageModel, HomePageView homePageView){
+        
+        this.homePageModel = homePageModel;
+        this.homePageView = homePageView;
         
         homePageView.viewMovieButtonAddOnClickListener(new ActionListener(){
             @Override
@@ -26,19 +33,21 @@ public class HomePageController {
             }
         });
         
+        homePageView.logoutButtonAddOnClickListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent al){
+                homePageModel.logout();
+                HomePageController.this.homePageView.back();
+                JOptionPane.showMessageDialog(homePageView, "You have logged out!");
+            }
+        });
+        
         homePageView.viewBookingButtonAddOnClickListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){
                 ViewBookingPageView viewBookingView = new ViewBookingPageView(homePageView);
                 ViewBookingPageModel viewBookingModel = new ViewBookingPageModel(homePageModel.dbm);
                 ViewBookingPageController viewBookingController = new ViewBookingPageController(viewBookingModel, viewBookingView);
-            }
-        });
-        
-        homePageView.viewMovieButtonAddOnClickListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent al){
-                
             }
         });
         

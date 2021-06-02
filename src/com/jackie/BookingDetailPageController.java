@@ -11,8 +11,8 @@ package com.jackie;
  */
 public class BookingDetailPageController {
     
-    BookingDetailPageModel bookingDetailModel;
-    BookingDetailPageView bookingDetailView;
+    private BookingDetailPageModel bookingDetailModel;
+    private BookingDetailPageView bookingDetailView;
 
     BookingDetailPageController(BookingDetailPageModel bookingDetailModel, BookingDetailPageView bookingDetailView) {
         this.bookingDetailModel = bookingDetailModel;

@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class RegisterPageController{
     
-    RegisterPageModel registerModel;
-    RegisterPageView registerView;
+    private RegisterPageModel registerModel;
+    private RegisterPageView registerView;
     
     RegisterPageController(RegisterPageModel registerModel, RegisterPageView registerView){
         this.registerModel = registerModel;
@@ -37,7 +37,7 @@ public class RegisterPageController{
                 currentUser.setName(registerView.getInputName());
 
                 // pass value to model
-                registerModel.compareData(currentUser);
+                registerModel.compareData(currentUser, confirmPassword);
             }
         });    
     }
