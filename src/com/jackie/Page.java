@@ -34,6 +34,10 @@ public abstract class Page extends javax.swing.JFrame implements Observer{
     public void addBackButton(JButton back, BackController controller){
         back.addActionListener(controller);
     }
+    
+    public void closeView(){
+        this.parent.setVisible(false);
+    }
 
     public Page getParent() {
         return parent;

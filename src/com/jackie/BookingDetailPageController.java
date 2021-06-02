@@ -11,4 +11,15 @@ package com.jackie;
  */
 public class BookingDetailPageController {
     
+    BookingDetailPageModel bookingDetailModel;
+    BookingDetailPageView bookingDetailView;
+
+    BookingDetailPageController(BookingDetailPageModel bookingDetailModel, BookingDetailPageView bookingDetailView) {
+        this.bookingDetailModel = bookingDetailModel;
+        this.bookingDetailView = bookingDetailView;
+        bookingDetailModel.addObserver(bookingDetailView);
+        bookingDetailView.update(bookingDetailModel, null);
+    }
+    
+    
 }

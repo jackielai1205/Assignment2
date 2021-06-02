@@ -34,7 +34,7 @@ class ShowTime {
         this.key = key;
     }
     
-    public ShowTime(int showTime_id, String date, String time, int price, int moiveid){
+    public ShowTime(int showTime_id, String date, String time, int price, int movieid){
         this.date = date;
         this.time = time;
         this.price = price;

@@ -5,6 +5,11 @@
  */
 package com.jackie;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,7 +17,8 @@ import java.util.Observer;
  *
  * @author waltersiu
  */
-public class ViewBookingPageView extends Page implements Observer{
+public class ViewBookingPageView extends Page{
+    ViewBookingPageView viewBookingView = this;
 
     /**
      * Creates new form ViewBookingPageView
@@ -40,7 +46,17 @@ public class ViewBookingPageView extends Page implements Observer{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
 
-        list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.LINE_AXIS));
+        javax.swing.GroupLayout listLayout = new javax.swing.GroupLayout(list);
+        list.setLayout(listLayout);
+        listLayout.setHorizontalGroup(
+            listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 329, Short.MAX_VALUE)
+        );
+        listLayout.setVerticalGroup(
+            listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 204, Short.MAX_VALUE)
+        );
+
         jScrollPane1.setViewportView(list);
 
         jLabel1.setText("Your Booking:");
@@ -76,7 +92,7 @@ public class ViewBookingPageView extends Page implements Observer{
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addGap(16, 16, 16)
                 .addComponent(backButton)
                 .addGap(4, 4, 4))
@@ -89,7 +105,8 @@ public class ViewBookingPageView extends Page implements Observer{
         // TODO add your handling code here:
         this.back();
     }//GEN-LAST:event_backButtonActionPerformed
-
+   
+    
     /**
      * @param args the command line arguments
      */
@@ -129,11 +146,23 @@ public class ViewBookingPageView extends Page implements Observer{
     public void update(Observable model, Object arg) {
         // get result from model and add Jpanel
         ViewBookingPageModel viewBookingModel = (ViewBookingPageModel)model;
-//        if(viewBookingModel.still != null){
-//            BookingListPanel panel = new BookingListPanel();
-//            panel.movieName.setText(viewBookingModel.still.getName());
-//            this.list.add(panel);
-//        }   
+        this.list.setLayout(new GridLayout(viewBookingModel.currentUserBooking.size(), 1));
+        if(viewBookingModel.currentUserBooking != null){
+            for(int index = 0; index < viewBookingModel.currentUserBooking.size(); index++){
+                BookingListPanel panel = new BookingListPanel();
+                panel.movieName.setText(viewBookingModel.currentMoiveName.get(index) + " " + viewBookingModel.currentUserShowTime.get(index).getDate());
+                final Booking currentBooking = viewBookingModel.currentUserBooking.get(index);
+                panel.viewButton.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent al){
+                        BookingDetailPageModel bookingDetailModel = new BookingDetailPageModel(viewBookingModel.dbm, currentBooking);
+                        BookingDetailPageView bookingDetailView = new BookingDetailPageView(viewBookingView);
+                        BookingDetailPageController bookingDetailController = new BookingDetailPageController(bookingDetailModel, bookingDetailView);
+                    }
+                });
+                this.list.add(panel);
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

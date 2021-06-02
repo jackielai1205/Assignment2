@@ -5,18 +5,29 @@
  */
 package com.jackie;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Observable;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author waltersiu
  */
-public class BookingDetailPageView extends javax.swing.JFrame {
+public class BookingDetailPageView extends Page {
+        
+    public BookingDetailPageView(Page parent){
+        super(parent);
+        initComponents();
+        this.setVisible(true);
+    }
 
     /**
      * Creates new form BookingDetailPageView
      */
-    public BookingDetailPageView() {
-        initComponents();
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +57,11 @@ public class BookingDetailPageView extends javax.swing.JFrame {
         });
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         movieName.setText("Name:");
 
@@ -109,6 +125,11 @@ public class BookingDetailPageView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelBookingButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        this.back();
+    }//GEN-LAST:event_backButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -139,7 +160,7 @@ public class BookingDetailPageView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookingDetailPageView().setVisible(true);
+                new BookingDetailPageView(null).setVisible(true);
             }
         });
     }
@@ -153,4 +174,28 @@ public class BookingDetailPageView extends javax.swing.JFrame {
     private javax.swing.JLabel movieTime;
     private javax.swing.JLabel seatNumber;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable model, Object arg) {
+        BookingDetailPageModel bookingDetailModel = (BookingDetailPageModel)model;
+        this.movieName.setText("Name: " + bookingDetailModel.getCurrentMoiveName());
+        this.movieDate.setText("Date: " + bookingDetailModel.getCurrentUserShowTime().getDate());
+        this.movieTime.setText("Time: " + bookingDetailModel.getCurrentUserShowTime().getTime());
+        this.seatNumber.setText("Seat Number: " + String.valueOf(bookingDetailModel.getCurrentBooking().getSeat_id()));
+        this.cancelBookingButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent al){
+                String[] options = {"Yes", "No"};
+                int result = JOptionPane.showOptionDialog(null, "Confirm to cancel this booking?",
+                "Confirm Cancelling", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                if(result == 0){
+                    bookingDetailModel.dbm.cancelBooking(bookingDetailModel.getCurrentBooking().getBooking_id());
+                    bookingDetailModel.dbm.updateSeatAfterCancelBooking(bookingDetailModel.getCurrentBooking().getSeat_id());
+                    JOptionPane.showMessageDialog(null, "Your Booking have been cancelled. Thank you!");                    
+                }
+                BookingDetailPageView.this.setVisible(false);
+                BookingDetailPageView.this.closeView();
+            }
+        });
+    }
 }

@@ -151,7 +151,7 @@ public class DatabaseOperation {
             }
 
             //statement.close();  
-            addData();
+//            addData();
             System.out.println("Table created");
 
         } catch (SQLException ex) {
@@ -378,14 +378,10 @@ public class DatabaseOperation {
         
         try{
             System.out.println(" getting query....");
-            Statement statement = dbManager.getConnection().createStatement(
-            ResultSet.TYPE_SCROLL_INSENSITIVE,
-            ResultSet.CONCUR_READ_ONLY);
-            
             String sqlSelect = "select * from Booking where User_id = ?";
             PreparedStatement stmp;
             Connection conn = dbManager.getConnection();
-            stmp = conn.prepareStatement(sqlSelect);
+            stmp = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stmp.setString(1, userId);
             rs = stmp.executeQuery();
             if(rs != null){
@@ -408,14 +404,11 @@ public class DatabaseOperation {
         ResultSet rs = null;
         try{
             System.out.println(" getting query....");
-            Statement statement = dbManager.getConnection().createStatement(
-            ResultSet.TYPE_SCROLL_INSENSITIVE,
-            ResultSet.CONCUR_READ_ONLY);
             
             String sqlSelect = "select * from ShowTime where ShowTime_id = ?";
             PreparedStatement stmp;
             Connection conn = dbManager.getConnection();
-            stmp = conn.prepareStatement(sqlSelect);
+            stmp = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stmp.setInt(1, showTime_id);
             rs = stmp.executeQuery();
             if(rs != null){
@@ -433,4 +426,61 @@ public class DatabaseOperation {
         }
         return showTime;
     }
+    
+    public String getBookingMovieName(int movieid){
+        String movieName = "";
+        ResultSet rs = null;
+        try{
+            System.out.println(" getting query....");
+            String sqlSelect = "select * from MOVIE where MOVIE_ID = ?";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stmp.setInt(1, movieid);
+            rs = stmp.executeQuery();
+            if(rs != null){
+                rs.beforeFirst();
+                while (rs.next()) {
+                    movieName = rs.getString(2);
+                }
+            }
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return movieName;
+    }
+    
+    public void cancelBooking(int booking_id){
+        try{
+            System.out.println(" getting query....");
+            String sqlCancel = "delete from BOOKING where BOOKING_ID = ?";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlCancel, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stmp.setInt(1, booking_id);
+            stmp.executeUpdate();
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+    
+    public void updateSeatAfterCancelBooking(int seatid){
+        ResultSet rs = null;
+
+        try {
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            System.out.println(seatid);
+
+            String sqlUpdateTable = "update SEAT set available = true"
+                    + " where SEAT_ID = " + seatid;
+            statement.executeUpdate(sqlUpdateTable);
+
+        } catch (SQLException ex) {
+            System.out.println("Something went wrong. Please try again");
+        }
+    }
+        
 }

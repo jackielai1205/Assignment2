@@ -5,11 +5,13 @@
  */
 package com.jackie;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author waltersiu
  */
-public class ViewBookingPageController {
+public class ViewBookingPageController{
     ViewBookingPageModel viewBookingModel;
     ViewBookingPageView viewBookingView;
     
