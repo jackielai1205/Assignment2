@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  * @author waltersiu
  */
 public class LoginPageView extends Page implements Observer {
-    Page parent;
-    DatabaseOperation dbm;
+    private Page parent;
+    private DatabaseOperation dbm;
     /**
      * Creates new form LoginPageView
      */
@@ -29,7 +29,7 @@ public class LoginPageView extends Page implements Observer {
     }
     
     public void submitAddOnClickListener(ActionListener al){
-        submit.addActionListener(al);
+        submitButton.addActionListener(al);
     }
 
     /**
@@ -41,24 +41,25 @@ public class LoginPageView extends Page implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        loginPagePanel = new javax.swing.JPanel();
         labelLogin = new javax.swing.JLabel();
-        submit = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         inputPassword = new javax.swing.JTextField();
         inputEmail = new javax.swing.JTextField();
         labelPassword = new javax.swing.JLabel();
         labelEmail = new javax.swing.JLabel();
-        back = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
 
         labelLogin.setText("Login");
+        labelLogin.setToolTipText("");
 
-        submit.setText("Login");
-        submit.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setText("Login");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -72,60 +73,58 @@ public class LoginPageView extends Page implements Observer {
 
         labelEmail.setText("Email");
 
-        back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout loginPagePanelLayout = new javax.swing.GroupLayout(loginPagePanel);
+        loginPagePanel.setLayout(loginPagePanelLayout);
+        loginPagePanelLayout.setHorizontalGroup(
+            loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPagePanelLayout.createSequentialGroup()
                 .addContainerGap(215, Short.MAX_VALUE)
-                .addComponent(back)
+                .addComponent(backButton)
                 .addGap(115, 115, 115))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(loginPagePanelLayout.createSequentialGroup()
                     .addGap(60, 60, 60)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(submitButton)
+                        .addGroup(loginPagePanelLayout.createSequentialGroup()
                             .addGap(11, 11, 11)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelLogin)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelEmail)
-                                        .addComponent(labelPassword))
-                                    .addGap(80, 80, 80)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(inputEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                                        .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addComponent(submit))
+                            .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                                .addComponent(labelEmail)
+                                .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(80, 80, 80)
+                            .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(inputEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addContainerGap(60, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        loginPagePanelLayout.setVerticalGroup(
+            loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPagePanelLayout.createSequentialGroup()
                 .addContainerGap(229, Short.MAX_VALUE)
-                .addComponent(back)
+                .addComponent(backButton)
                 .addGap(46, 46, 46))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(48, 48, 48)
-                    .addComponent(labelLogin)
+            .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(loginPagePanelLayout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(26, 26, 26)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelEmail)
                         .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(28, 28, 28)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(loginPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelPassword)
                         .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(57, 57, 57)
-                    .addComponent(submit)
+                    .addComponent(submitButton)
                     .addContainerGap(48, Short.MAX_VALUE)))
         );
 
@@ -134,14 +133,14 @@ public class LoginPageView extends Page implements Observer {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginPagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(loginPagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -151,14 +150,14 @@ public class LoginPageView extends Page implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputEmailActionPerformed
 
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_submitActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         this.back();
-    }//GEN-LAST:event_backActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,14 +195,14 @@ public class LoginPageView extends Page implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton back;
+    private javax.swing.JButton backButton;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputPassword;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelPassword;
-    private javax.swing.JButton submit;
+    private javax.swing.JPanel loginPagePanel;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 
     public String getInputEmail(){
@@ -218,16 +217,16 @@ public class LoginPageView extends Page implements Observer {
     public void update(Observable model, Object arg) {
         this.setVisible(true);
         LoginPageModel loginModel = (LoginPageModel)model;
-        if(loginModel.result.equals("success")){
+        if(loginModel.getResult().equals("success")){
             JOptionPane.showMessageDialog(this, "Login Success!");
             this.setVisible(false);
             HomePageView homePageView = new HomePageView(parent);
             HomePageModel homePageModel = new HomePageModel(this.dbm);
             HomePageController homePageController = new HomePageController(homePageModel, homePageView);
-        } else if(loginModel.result.equals("wrongEmail")){
+        } else if(loginModel.getResult().equals("wrongEmail")){
             JOptionPane.showMessageDialog(this, "No record with your Email address!");
             this.setVisible(false);
-        } else if(loginModel.result.equals("wrongPassword")){
+        } else if(loginModel.getResult().equals("wrongPassword")){
             JOptionPane.showMessageDialog(this, "Your password is not match with record!");
             this.setVisible(false);
         }

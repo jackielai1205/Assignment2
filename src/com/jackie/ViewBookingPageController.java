@@ -12,8 +12,8 @@ import java.awt.event.ActionEvent;
  * @author waltersiu
  */
 public class ViewBookingPageController{
-    ViewBookingPageModel viewBookingModel;
-    ViewBookingPageView viewBookingView;
+    private ViewBookingPageModel viewBookingModel;
+    private ViewBookingPageView viewBookingView;
     
     public ViewBookingPageController(ViewBookingPageModel viewBookingModel, ViewBookingPageView viewBookingView){
         this.viewBookingModel = viewBookingModel;

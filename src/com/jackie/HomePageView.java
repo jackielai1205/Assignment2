@@ -31,6 +31,10 @@ public class HomePageView extends Page implements Observer {
     public void viewBookingButtonAddOnClickListener(ActionListener al){
         viewBookingButton.addActionListener(al);
     }
+    
+    public void logoutButtonAddOnClickListener(ActionListener al){
+        logoutButton.addActionListener(al);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,15 +45,16 @@ public class HomePageView extends Page implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        message = new javax.swing.JLabel();
+        homePagePanel = new javax.swing.JPanel();
+        chooseMessage = new javax.swing.JLabel();
         viewMovieButton = new javax.swing.JButton();
         viewBookingButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        welcomeMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        message.setText("Please choose an option:");
+        chooseMessage.setText("Please choose an option:");
 
         viewMovieButton.setText("View Movie");
         viewMovieButton.addActionListener(new java.awt.event.ActionListener() {
@@ -72,46 +77,56 @@ public class HomePageView extends Page implements Observer {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(viewBookingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewMovieButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(message)
-                        .addGap(14, 14, 14)))
-                .addContainerGap(142, Short.MAX_VALUE))
+        welcomeMessage.setText("Welcome! ");
+
+        javax.swing.GroupLayout homePagePanelLayout = new javax.swing.GroupLayout(homePagePanel);
+        homePagePanel.setLayout(homePagePanelLayout);
+        homePagePanelLayout.setHorizontalGroup(
+            homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePagePanelLayout.createSequentialGroup()
+                .addGroup(homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(viewMovieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewBookingButton)
+                        .addGroup(homePagePanelLayout.createSequentialGroup()
+                            .addGap(95, 95, 95)
+                            .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(homePagePanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chooseMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(welcomeMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(message)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        homePagePanelLayout.setVerticalGroup(
+            homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePagePanelLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(welcomeMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(chooseMessage)
+                .addGap(18, 18, 18)
                 .addComponent(viewMovieButton)
                 .addGap(18, 18, 18)
                 .addComponent(viewBookingButton)
                 .addGap(18, 18, 18)
                 .addComponent(logoutButton)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(homePagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(homePagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -128,7 +143,6 @@ public class HomePageView extends Page implements Observer {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-        this.back();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
@@ -167,11 +181,12 @@ public class HomePageView extends Page implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel chooseMessage;
+    private javax.swing.JPanel homePagePanel;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JLabel message;
     private javax.swing.JButton viewBookingButton;
     private javax.swing.JButton viewMovieButton;
+    private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 
     @Override

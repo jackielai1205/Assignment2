@@ -5,20 +5,17 @@
  */
 package com.jackie;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  *
  * @author waltersiu
  */
 public class ViewBookingPageView extends Page{
-    ViewBookingPageView viewBookingView = this;
+    private ViewBookingPageView viewBookingView = this;
 
     /**
      * Creates new form ViewBookingPageView
@@ -38,9 +35,9 @@ public class ViewBookingPageView extends Page{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        bookingListPanel = new javax.swing.JScrollPane();
         list = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        message = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,9 +54,9 @@ public class ViewBookingPageView extends Page{
             .addGap(0, 204, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(list);
+        bookingListPanel.setViewportView(list);
 
-        jLabel1.setText("Your Booking:");
+        message.setText("Your Booking:");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -80,19 +77,19 @@ public class ViewBookingPageView extends Page{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(message))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bookingListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(message)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1)
+                .addComponent(bookingListPanel)
                 .addGap(16, 16, 16)
                 .addComponent(backButton)
                 .addGap(4, 4, 4))
@@ -146,12 +143,12 @@ public class ViewBookingPageView extends Page{
     public void update(Observable model, Object arg) {
         // get result from model and add Jpanel
         ViewBookingPageModel viewBookingModel = (ViewBookingPageModel)model;
-        this.list.setLayout(new GridLayout(viewBookingModel.currentUserBooking.size(), 1));
-        if(viewBookingModel.currentUserBooking != null){
-            for(int index = 0; index < viewBookingModel.currentUserBooking.size(); index++){
+        this.list.setLayout(new GridLayout(viewBookingModel.getCurrentUserBooking().size(), 1));
+        if(viewBookingModel.getCurrentUserBooking() != null){
+            for(int index = 0; index < viewBookingModel.getCurrentUserBooking().size(); index++){
                 BookingListPanel panel = new BookingListPanel();
-                panel.movieName.setText(viewBookingModel.currentMoiveName.get(index) + " " + viewBookingModel.currentUserShowTime.get(index).getDate());
-                final Booking currentBooking = viewBookingModel.currentUserBooking.get(index);
+                panel.movieName.setText(viewBookingModel.getCurrentMoiveName().get(index) + " " + viewBookingModel.getCurrentUserShowTime().get(index).getDate());
+                final Booking currentBooking = viewBookingModel.getCurrentUserBooking().get(index);
                 panel.viewButton.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent al){
@@ -167,8 +164,8 @@ public class ViewBookingPageView extends Page{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane bookingListPanel;
     private javax.swing.JPanel list;
+    private javax.swing.JLabel message;
     // End of variables declaration//GEN-END:variables
 }

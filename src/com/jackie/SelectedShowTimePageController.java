@@ -34,6 +34,4 @@ public class SelectedShowTimePageController implements SeatActionListener{
             view.back();
         }
     }
-
-    
 }

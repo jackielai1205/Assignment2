@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class LoginPageModel extends Model{
     
-    ArrayList<User> dbUsers;
-    String result = "";
+    private ArrayList<User> dbUsers;
+    private String result = "";
 
     public LoginPageModel(DatabaseOperation dbm) {
         super(dbm);
@@ -49,6 +49,12 @@ public class LoginPageModel extends Model{
         }
 
     }
-    
-    
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    } 
 }

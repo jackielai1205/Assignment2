@@ -25,15 +25,15 @@ public class MenuPageView extends Page implements Observer {
     }
     
     public void registerAddOnClickListener(ActionListener al){
-        register.addActionListener(al);
+        registerLabel.addActionListener(al);
     }
     
     public void loginAddOnClickListener(ActionListener al){
-        login.addActionListener(al);
+        loginButton.addActionListener(al);
     }
     
     public void exitAddOnClickListener(ActionListener al){
-        exit.addActionListener(al);
+        exitButton.addActionListener(al);
     }
 
     /**
@@ -45,76 +45,76 @@ public class MenuPageView extends Page implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        register = new javax.swing.JButton();
-        login = new javax.swing.JButton();
-        exit = new javax.swing.JButton();
+        menuPagePanel = new javax.swing.JPanel();
+        welcomeMessage = new javax.swing.JLabel();
+        registerLabel = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
 
-        jLabel1.setText("Welcome to Ticket Booking System");
+        welcomeMessage.setText("Welcome to Ticket Booking System!");
 
-        register.setText("Register");
+        registerLabel.setText("Register");
 
-        login.setText("Login");
-        login.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        exit.setText("Exit");
+        exitButton.setText("Exit");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1)))
-                .addContainerGap(98, Short.MAX_VALUE))
+        javax.swing.GroupLayout menuPagePanelLayout = new javax.swing.GroupLayout(menuPagePanel);
+        menuPagePanel.setLayout(menuPagePanelLayout);
+        menuPagePanelLayout.setHorizontalGroup(
+            menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPagePanelLayout.createSequentialGroup()
+                .addGroup(menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPagePanelLayout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addGroup(menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerLabel)
+                            .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(menuPagePanelLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(welcomeMessage)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(register)
+        menuPagePanelLayout.setVerticalGroup(
+            menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPagePanelLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(welcomeMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(registerLabel)
                 .addGap(18, 18, 18)
-                .addComponent(login)
+                .addComponent(loginButton)
                 .addGap(18, 18, 18)
-                .addComponent(exit)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addComponent(exitButton)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +153,11 @@ public class MenuPageView extends Page implements Observer {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton exit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton login;
-    private javax.swing.JButton register;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPanel menuPagePanel;
+    private javax.swing.JButton registerLabel;
+    private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 
     @Override

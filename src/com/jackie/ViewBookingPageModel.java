@@ -14,11 +14,11 @@ import java.util.Observable;
  */
 public class ViewBookingPageModel extends Model{
     
-    String currentUserId = super.getUserId(); //Get current User's user id
+    private String currentUserId = super.getUserId(); //Get current User's user id
     // Get all booking record using user's user id
-    ArrayList<Booking> currentUserBooking = dbm.getUserBookingFromBooking(currentUserId); 
-    ArrayList<ShowTime> currentUserShowTime = getShowTimeInfo();
-    ArrayList<String> currentMoiveName = getMovieName();
+    private ArrayList<Booking> currentUserBooking = dbm.getUserBookingFromBooking(currentUserId); 
+    private ArrayList<ShowTime> currentUserShowTime = getShowTimeInfo();
+    private ArrayList<String> currentMoiveName = getMovieName();
     
     public ViewBookingPageModel(DatabaseOperation dbm) {
         super(dbm);
@@ -40,6 +40,38 @@ public class ViewBookingPageModel extends Model{
             movieNameList.add(movieName);
         }
         return movieNameList;
+    }
+
+    public String getCurrentUserId() {
+        return currentUserId;
+    }
+
+    public void setCurrentUserId(String currentUserId) {
+        this.currentUserId = currentUserId;
+    }
+
+    public ArrayList<Booking> getCurrentUserBooking() {
+        return currentUserBooking;
+    }
+
+    public void setCurrentUserBooking(ArrayList<Booking> currentUserBooking) {
+        this.currentUserBooking = currentUserBooking;
+    }
+
+    public ArrayList<ShowTime> getCurrentUserShowTime() {
+        return currentUserShowTime;
+    }
+
+    public void setCurrentUserShowTime(ArrayList<ShowTime> currentUserShowTime) {
+        this.currentUserShowTime = currentUserShowTime;
+    }
+
+    public ArrayList<String> getCurrentMoiveName() {
+        return currentMoiveName;
+    }
+
+    public void setCurrentMoiveName(ArrayList<String> currentMoiveName) {
+        this.currentMoiveName = currentMoiveName;
     }
     
 }
