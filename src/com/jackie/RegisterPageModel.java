@@ -36,32 +36,35 @@ public class RegisterPageModel extends Model{
 
     public void compareData(User currentUser, String confirmPassword){
         final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9]+.com$";
-        if(currentUser.getEmail().matches(regex)){
+        if(currentUser.getEmail().equals("")){
+            result = "emailempty";
+            this.setChanged();
+            this.notifyObservers(result);
+        } else if(currentUser.getPassword().equals("")){
+            result = "passwordempty";
+            this.setChanged();
+            this.notifyObservers(result);
+        } else if(confirmPassword.equals("")){
+            result = "confirmempty";
+        } else if(currentUser.getEmail().matches(regex)){
             for(int index = 0; index < this.dbUsers.size(); index++){
-                // Email already used 
                 if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
                     result = "equal";
                     this.setChanged();
                     this.notifyObservers(result);
-                } else {
-                    if(currentUser.getPassword().equals("")){
-                        result = "passwordempty";
-                        this.setChanged();
-                        this.notifyObservers(result);
-                    } else if(!currentUser.getPassword().equals(confirmPassword)){
-                        result = "passwordnotmatch";
-                        this.setChanged();
-                        this.notifyObservers(result);
-                    }
-                }
-            }
-            if(result.equals("")){
-                dbm.updateUserAfterRegister(currentUser);
-                this.setChanged();
-                this.notifyObservers(result);
+                } else if(!currentUser.getPassword().equals(confirmPassword)){
+                    result = "passwordnotmatch";
+                    this.setChanged();
+                    this.notifyObservers(result);
+                }                    
             }
         } else {
             result = "notmatch";
+            this.setChanged();
+            this.notifyObservers(result);
+        }
+        if(result.equals("")){
+            dbm.updateUserAfterRegister(currentUser);
             this.setChanged();
             this.notifyObservers(result);
         }

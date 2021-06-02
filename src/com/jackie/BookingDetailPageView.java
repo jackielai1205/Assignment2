@@ -20,6 +20,7 @@ public class BookingDetailPageView extends Page {
         super(parent);
         initComponents();
         this.setVisible(true);
+        parent.setVisible(false);
     }
 
     /**
@@ -180,7 +181,7 @@ public class BookingDetailPageView extends Page {
         this.movieName.setText("Name: " + bookingDetailModel.getCurrentMoiveName());
         this.movieDate.setText("Date: " + bookingDetailModel.getCurrentUserShowTime().getDate());
         this.movieTime.setText("Time: " + bookingDetailModel.getCurrentUserShowTime().getTime());
-        this.seatNumber.setText("Seat Number: " + String.valueOf(bookingDetailModel.getCurrentBooking().getSeat_id()));
+        this.seatNumber.setText("Seat Number: " + bookingDetailModel.dbm.getSeatNumber(bookingDetailModel.getCurrentBooking().getSeat_id()));
         this.cancelBookingButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){

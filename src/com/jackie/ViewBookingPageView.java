@@ -24,6 +24,7 @@ public class ViewBookingPageView extends Page{
         super(parent);
         this.setVisible(true);
         initComponents();
+        parent.setVisible(false);
     }
 
     /**
@@ -42,12 +43,13 @@ public class ViewBookingPageView extends Page{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout listLayout = new javax.swing.GroupLayout(list);
         list.setLayout(listLayout);
         listLayout.setHorizontalGroup(
             listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGap(0, 396, Short.MAX_VALUE)
         );
         listLayout.setVerticalGroup(
             listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,7 +58,10 @@ public class ViewBookingPageView extends Page{
 
         bookingListPanel.setViewportView(list);
 
+        getContentPane().add(bookingListPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 40, 400, -1));
+
         message.setText("Your Booking:");
+        getContentPane().add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 30));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -64,36 +69,7 @@ public class ViewBookingPageView extends Page{
                 backButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(14, 14, 14))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(message))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(bookingListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(message)
-                .addGap(18, 18, 18)
-                .addComponent(bookingListPanel)
-                .addGap(16, 16, 16)
-                .addComponent(backButton)
-                .addGap(4, 4, 4))
-        );
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 264, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

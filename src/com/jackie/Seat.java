@@ -23,8 +23,6 @@ class Seat {
         this.row = row;
     }
     
-    
-
     public Seat(int column, int row){
         this.column = column;
         this.row = row;
@@ -38,8 +36,6 @@ class Seat {
         this.seatid = seatid;
     }
 
-    
-    
     public boolean isAvailable() {
         return available;
     }
@@ -47,7 +43,7 @@ class Seat {
     public void setAvailable(boolean available) {
         this.available = available;
     }
-
+    
     public int getColumn() {
         return column;
     }

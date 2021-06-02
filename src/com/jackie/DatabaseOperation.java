@@ -516,5 +516,49 @@ public class DatabaseOperation {
             }
         }
     }
+    
+    public String getSeatNumber(int seatid){
+        ResultSet rs = null;
+        int column = 0;
+        int row = 0;
+        String result = "";
+        try {
+            System.out.println(" getting query....");
+            Statement statement = dbManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            System.out.println(seatid);
+            String sqlSelect = "select * from SEAT where SEAT_ID = ?";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stmp.setInt(1, seatid);
+            rs = stmp.executeQuery();
+            rs.beforeFirst();
+            while (rs.next()) {
+                column = rs.getInt("Column1");
+                row = rs.getInt("Row"); 
+            } 
+            String resultRow = "";
+            switch(row){
+                case 1:
+                    resultRow = "A";
+                    break;
+                case 2:
+                    resultRow = "B";
+                    break;
+                case 3:
+                    resultRow = "C";
+                    break;
+                case 4:
+                    resultRow = "D";
+                    break;
+            }
+            result += resultRow + String.valueOf(column);
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return result;
+    }
         
 }

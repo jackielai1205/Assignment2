@@ -22,6 +22,7 @@ public class HomePageView extends Page implements Observer {
         super(parent);
         this.setVisible(true);
         initComponents();
+        parent.setVisible(false);
     }
     
     public void viewMovieButtonAddOnClickListener(ActionListener al){
@@ -53,8 +54,13 @@ public class HomePageView extends Page implements Observer {
         welcomeMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movie Booking System");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        homePagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         chooseMessage.setText("Please choose an option:");
+        homePagePanel.add(chooseMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 20));
 
         viewMovieButton.setText("View Movie");
         viewMovieButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +68,7 @@ public class HomePageView extends Page implements Observer {
                 viewMovieButtonActionPerformed(evt);
             }
         });
+        homePagePanel.add(viewMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 136, 128, -1));
 
         viewBookingButton.setText("View Booking");
         viewBookingButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +76,7 @@ public class HomePageView extends Page implements Observer {
                 viewBookingButtonActionPerformed(evt);
             }
         });
+        homePagePanel.add(viewBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 183, -1, -1));
 
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,59 +84,12 @@ public class HomePageView extends Page implements Observer {
                 logoutButtonActionPerformed(evt);
             }
         });
+        homePagePanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 128, -1));
 
         welcomeMessage.setText("Welcome! ");
+        homePagePanel.add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 156, 32));
 
-        javax.swing.GroupLayout homePagePanelLayout = new javax.swing.GroupLayout(homePagePanel);
-        homePagePanel.setLayout(homePagePanelLayout);
-        homePagePanelLayout.setHorizontalGroup(
-            homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePagePanelLayout.createSequentialGroup()
-                .addGroup(homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(viewMovieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(viewBookingButton)
-                        .addGroup(homePagePanelLayout.createSequentialGroup()
-                            .addGap(95, 95, 95)
-                            .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(homePagePanelLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(chooseMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(welcomeMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
-        homePagePanelLayout.setVerticalGroup(
-            homePagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePagePanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(welcomeMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(chooseMessage)
-                .addGap(18, 18, 18)
-                .addComponent(viewMovieButton)
-                .addGap(18, 18, 18)
-                .addComponent(viewBookingButton)
-                .addGap(18, 18, 18)
-                .addComponent(logoutButton)
-                .addGap(64, 64, 64))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(homePagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(homePagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(homePagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 357, 323));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
