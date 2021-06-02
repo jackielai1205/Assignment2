@@ -60,11 +60,6 @@ public class MenuPageView extends Page implements Observer {
         registerLabel.setText("Register");
 
         loginButton.setText("Login");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
 
         exitButton.setText("Exit");
 
@@ -103,10 +98,6 @@ public class MenuPageView extends Page implements Observer {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments

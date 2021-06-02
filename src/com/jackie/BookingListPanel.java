@@ -53,7 +53,6 @@ public class BookingListPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel movieName;
     public javax.swing.JButton viewButton;

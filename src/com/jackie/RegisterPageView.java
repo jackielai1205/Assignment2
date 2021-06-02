@@ -70,12 +70,6 @@ public class RegisterPageView extends Page implements Observer{
         jPanel1.add(labelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
         jPanel1.add(inputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 195, 116, -1));
         jPanel1.add(inputConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 155, 116, -1));
-
-        inputEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputEmailActionPerformed(evt);
-            }
-        });
         jPanel1.add(inputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 75, 116, -1));
 
         labelReg.setText("Registration");
@@ -83,12 +77,6 @@ public class RegisterPageView extends Page implements Observer{
 
         submitButton.setText("Register");
         jPanel1.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
-
-        inputPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPasswordActionPerformed(evt);
-            }
-        });
         jPanel1.add(inputPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, 116, -1));
 
         labelConfirm.setText("Confirm Password");
@@ -115,14 +103,6 @@ public class RegisterPageView extends Page implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void inputEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputEmailActionPerformed
-
-    private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputPasswordActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
@@ -162,6 +142,7 @@ public class RegisterPageView extends Page implements Observer{
         return inputName.getText();
     }
     
+    //Receive Compare data result from Model and pop-up related error/success message to user
     @Override
     public void update(Observable model, Object arg) {
         this.setVisible(true);

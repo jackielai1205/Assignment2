@@ -1,10 +1,7 @@
 package com.jackie;
 
-import com.jackie.RegisterPageModel;
-import com.jackie.RegisterPageView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

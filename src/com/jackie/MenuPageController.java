@@ -22,7 +22,6 @@ public class MenuPageController{
                 RegisterPageView registerView = new RegisterPageView(menuView);
                 RegisterPageModel registerModel = new RegisterPageModel(menuModel.dbm);
                 RegisterPageController registerController = new RegisterPageController(registerModel, registerView);
-//                menuView.setEnabled(false);
             }
         });
         
@@ -32,7 +31,6 @@ public class MenuPageController{
                 LoginPageView loginView = new LoginPageView(menuView, menuModel.dbm);
                 LoginPageModel loginModel = new LoginPageModel(menuModel.dbm);
                 LoginPageController loginController = new LoginPageController(loginModel, loginView, menuView);
-//                menuView.setEnabled(false);
             }
         });
         
@@ -43,5 +41,4 @@ public class MenuPageController{
             }
         });
     }
-
 }

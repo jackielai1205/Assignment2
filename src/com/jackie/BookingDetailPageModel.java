@@ -45,8 +45,4 @@ public class BookingDetailPageModel extends Model {
     public void setCurrentMoiveName(String currentMoiveName) {
         this.currentMoiveName = currentMoiveName;
     }
-    
-    
-    
-    
 }

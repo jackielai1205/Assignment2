@@ -63,48 +63,21 @@ public class HomePageView extends Page implements Observer {
         homePagePanel.add(chooseMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 20));
 
         viewMovieButton.setText("View Movie");
-        viewMovieButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewMovieButtonActionPerformed(evt);
-            }
-        });
         homePagePanel.add(viewMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 136, 128, -1));
 
         viewBookingButton.setText("View Booking");
-        viewBookingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewBookingButtonActionPerformed(evt);
-            }
-        });
         homePagePanel.add(viewBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 183, -1, -1));
 
         logoutButton.setText("Logout");
-        logoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
-            }
-        });
         homePagePanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 128, -1));
 
         welcomeMessage.setText("Welcome! ");
         homePagePanel.add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 156, 32));
 
-        getContentPane().add(homePagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 357, 323));
+        getContentPane().add(homePagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void viewMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMovieButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewMovieButtonActionPerformed
-
-    private void viewBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBookingButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewBookingButtonActionPerformed
-
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments

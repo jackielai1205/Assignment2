@@ -49,8 +49,6 @@ public class HomePageController {
                 ViewBookingPageModel viewBookingModel = new ViewBookingPageModel(homePageModel.dbm);
                 ViewBookingPageController viewBookingController = new ViewBookingPageController(viewBookingModel, viewBookingView);
             }
-        });
-        
+        });    
     }
- 
 }

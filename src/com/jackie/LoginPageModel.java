@@ -6,8 +6,6 @@
 package com.jackie;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,9 +21,10 @@ public class LoginPageModel extends Model{
         this.dbUsers = dbm.getUser();
         this.setChanged();
     }
-
+    
+    //Function that compare currentUser input data and database user data
+    //Then return result to LoginPageView
     public void compareData(User currentUser){
-        
         for(int index = 0; index < this.dbUsers.size(); index++){
             if(currentUser.getEmail().equals("")){
                 result = "emailempty";

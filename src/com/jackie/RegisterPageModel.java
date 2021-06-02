@@ -2,8 +2,6 @@ package com.jackie;
 
 
 import java.util.ArrayList;
-import java.util.Observable;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,6 +32,8 @@ public class RegisterPageModel extends Model{
         this.result = result;
     }
 
+    //Compare user input data to database user data
+    //And return compare result to View
     public void compareData(User currentUser, String confirmPassword){
         final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9]+.com$";
         if(currentUser.getEmail().equals("")){

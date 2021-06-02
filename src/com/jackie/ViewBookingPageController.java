@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package com.jackie;
-
-import java.awt.event.ActionEvent;
-
 /**
  *
  * @author waltersiu

@@ -39,21 +39,22 @@ public class BookingDetailPageView extends Page {
 
         BookingDetailPagePanel = new javax.swing.JPanel();
         cancelBookingButton = new javax.swing.JButton();
+        movieTime = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         movieName = new javax.swing.JLabel();
-        movieDate = new javax.swing.JLabel();
-        movieTime = new javax.swing.JLabel();
         seatNumber = new javax.swing.JLabel();
+        movieDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
 
+        BookingDetailPagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         cancelBookingButton.setText("Cancel Booking");
-        cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBookingButtonActionPerformed(evt);
-            }
-        });
+        BookingDetailPagePanel.add(cancelBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+
+        movieTime.setText("Time:");
+        BookingDetailPagePanel.add(movieTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -61,68 +62,30 @@ public class BookingDetailPageView extends Page {
                 backButtonActionPerformed(evt);
             }
         });
+        BookingDetailPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
 
         movieName.setText("Name:");
-
-        movieDate.setText("Date:");
-
-        movieTime.setText("Time:");
+        BookingDetailPagePanel.add(movieName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         seatNumber.setText("Seat:");
+        BookingDetailPagePanel.add(seatNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 98, 25));
 
-        javax.swing.GroupLayout BookingDetailPagePanelLayout = new javax.swing.GroupLayout(BookingDetailPagePanel);
-        BookingDetailPagePanel.setLayout(BookingDetailPagePanelLayout);
-        BookingDetailPagePanelLayout.setHorizontalGroup(
-            BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BookingDetailPagePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cancelBookingButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
-                .addComponent(backButton))
-            .addGroup(BookingDetailPagePanelLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(seatNumber)
-                    .addComponent(movieTime)
-                    .addComponent(movieDate)
-                    .addComponent(movieName))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        BookingDetailPagePanelLayout.setVerticalGroup(
-            BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookingDetailPagePanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(movieName)
-                .addGap(27, 27, 27)
-                .addComponent(movieDate)
-                .addGap(26, 26, 26)
-                .addComponent(movieTime)
-                .addGap(31, 31, 31)
-                .addComponent(seatNumber)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(BookingDetailPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelBookingButton)
-                    .addComponent(backButton))
-                .addContainerGap())
-        );
+        movieDate.setText("Date:");
+        BookingDetailPagePanel.add(movieDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 109, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BookingDetailPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BookingDetailPagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BookingDetailPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(BookingDetailPagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cancelBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelBookingButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
@@ -171,10 +134,10 @@ public class BookingDetailPageView extends Page {
     private javax.swing.JLabel movieDate;
     private javax.swing.JLabel movieName;
     private javax.swing.JLabel movieTime;
-    private javax.swing.JPanel panel;
     private javax.swing.JLabel seatNumber;
     // End of variables declaration//GEN-END:variables
 
+    // Received Customer's current Booking info and update to panel
     @Override
     public void update(Observable model, Object arg) {
         BookingDetailPageModel bookingDetailModel = (BookingDetailPageModel)model;
@@ -182,6 +145,8 @@ public class BookingDetailPageView extends Page {
         this.movieDate.setText("Date: " + bookingDetailModel.getCurrentUserShowTime().getDate());
         this.movieTime.setText("Time: " + bookingDetailModel.getCurrentUserShowTime().getTime());
         this.seatNumber.setText("Seat Number: " + bookingDetailModel.dbm.getSeatNumber(bookingDetailModel.getCurrentBooking().getSeat_id()));
+        // Function that ask customer if need to cancel booking or not
+        // Process SQL command after received answer
         this.cancelBookingButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent al){

@@ -61,19 +61,8 @@ public class LoginPageView extends Page implements Observer {
         loginPagePanel.add(labelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 59, 30));
 
         submitButton.setText("Login");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
         loginPagePanel.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
         loginPagePanel.add(inputPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 145, 190, -1));
-
-        inputEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputEmailActionPerformed(evt);
-            }
-        });
         loginPagePanel.add(inputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 95, 190, -1));
 
         labelPassword.setText("Password");
@@ -103,14 +92,6 @@ public class LoginPageView extends Page implements Observer {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void inputEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputEmailActionPerformed
-
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
@@ -172,6 +153,7 @@ public class LoginPageView extends Page implements Observer {
         return this.inputPassword.getText();
     }
     
+    //Receive compare date result from model and pop-up related message to user
     @Override
     public void update(Observable model, Object arg) {
         this.setVisible(true);
