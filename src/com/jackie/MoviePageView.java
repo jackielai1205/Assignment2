@@ -4,6 +4,10 @@ package com.jackie;
 import java.util.HashMap;
 import java.util.Observable;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 
 /*
@@ -39,8 +43,9 @@ public class MoviePageView extends Page{
     private void initComponents() {
 
         movieList = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        moviePanel = new javax.swing.JScrollPane();
         panel = new javax.swing.JPanel();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
@@ -59,19 +64,28 @@ public class MoviePageView extends Page{
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(panel);
+        moviePanel.setViewportView(panel);
+
+        back.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(movieList)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(moviePanel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(movieList))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(back)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -80,8 +94,9 @@ public class MoviePageView extends Page{
                 .addContainerGap()
                 .addComponent(movieList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(moviePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(back))
         );
 
         pack();
@@ -89,8 +104,9 @@ public class MoviePageView extends Page{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton back;
     private javax.swing.JLabel movieList;
+    private javax.swing.JScrollPane moviePanel;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 
@@ -112,4 +128,46 @@ public class MoviePageView extends Page{
             movieListItem.addController(controller);
         }
     }
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public void setBack(JButton back) {
+        this.back = back;
+    }
+
+    public JLabel getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(JLabel movieList) {
+        this.movieList = movieList;
+    }
+
+    public JScrollPane getMoviePanel() {
+        return moviePanel;
+    }
+
+    public void setMoviePanel(JScrollPane moviePanel) {
+        this.moviePanel = moviePanel;
+    }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
+
+    public BoxLayout getBoxLayout() {
+        return boxLayout;
+    }
+
+    public void setBoxLayout(BoxLayout boxLayout) {
+        this.boxLayout = boxLayout;
+    }
+    
+    
 }

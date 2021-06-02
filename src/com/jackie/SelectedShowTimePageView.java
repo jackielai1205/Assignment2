@@ -50,11 +50,6 @@ public class SelectedShowTimePageView extends Page {
         setResizable(false);
 
         back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout backPanelLayout = new javax.swing.GroupLayout(backPanel);
         backPanel.setLayout(backPanelLayout);
@@ -135,10 +130,6 @@ public class SelectedShowTimePageView extends Page {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-               // TODO add your handling code here:
-    }//GEN-LAST:event_backActionPerformed
 
     @Override
     public void update(Observable o, Object arg) {

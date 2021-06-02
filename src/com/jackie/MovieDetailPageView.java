@@ -55,18 +55,8 @@ public class MovieDetailPageView extends Page{
         casting.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         showTime.setText("Enter ShowTime Page");
-        showTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showTimeActionPerformed(evt);
-            }
-        });
 
         back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
 
         description.setText("jLabel1");
         description.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -115,14 +105,6 @@ public class MovieDetailPageView extends Page{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void showTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showTimeActionPerformed
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-
-    }//GEN-LAST:event_backActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

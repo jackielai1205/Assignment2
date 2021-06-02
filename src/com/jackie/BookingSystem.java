@@ -17,9 +17,6 @@ public class BookingSystem {
         DatabaseOperation dbOperation = new DatabaseOperation();
         dbOperation.createTable();
         System.out.println(dbOperation);
-        MoviePageModel model = new MoviePageModel(dbOperation);
-        MoviePageView moviePageView = new MoviePageView(null);
-        MoviePageController moviePageController = new MoviePageController(model, moviePageView);
         
         MenuPageView menuView = new MenuPageView(null);
         MenuPageModel menuModel = new MenuPageModel(dbOperation);
