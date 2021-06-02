@@ -5,19 +5,14 @@
  */
 package com.jackie;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.sql.*;  
 
 
 /**
@@ -54,7 +49,7 @@ public class DatabaseOperation {
                         + "Movie_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY " 
                         + "(START WITH 1, INCREMENT BY 1),"
                         + "Name varchar(30), Length int, Castings varchar(100),"
-                        + "Director varchar(20), Category varchar(20), Rating double,"
+                        + "Director varchar(50), Category varchar(20), Rating double,"
                         + "Type varchar(20), Description varchar(1000), Image varchar(50))";
                 statement.executeUpdate(sqlCreate);
                 
@@ -99,9 +94,17 @@ public class DatabaseOperation {
                 //insert a movie to movie table
                 sqlInsert = "insert into " + movieTable + " (Name, Length, Castings, Director, Category, Rating, Type, Description, Image) values("
                     + "'Mortal Kombat', 110, 'Lewis Tan, Jessica McNamee, Josh Lawson',"
-                    + "'Simon McQuoid','III',3.5,'Action',"
+                    + "'Simon McQuoid','M',3.5,'Action',"
                     + "'Mortal Kombat is a 2021 American martial arts fantasy film based on the video game franchise of the same name and a reboot of the Mortal Kombat film series.',"
                     + "'/com/jackie/MortalKombat.jpg')";
+                statement.executeUpdate(sqlInsert); 
+                
+                //insert a movie to movie table
+                sqlInsert = "insert into " + movieTable + " (Name, Length, Castings, Director, Category, Rating, Type, Description, Image) values("
+                    + "'Avengers: Endgame', 181, 'Robert Downey Jr., Chris Evans, Mark Ruffalo',"
+                    + "'Anthony Russo, Joseph Russo','M',4.0,'Action',"
+                    + "'Avengers: Endgame is a 2019 American superhero film based on the Marvel Comics superhero team the Avengers. Produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures, it is the direct sequel to Avengers: Infinity War (2018) and the 22nd film in the Marvel Cinematic Universe (MCU).',"
+                    + "'/com/jackie/AvengersEndgame.jpg')";
                 statement.executeUpdate(sqlInsert); 
 
                 
@@ -129,24 +132,32 @@ public class DatabaseOperation {
                 sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
                 + "'22/06', '12:00', 15, 2)";
                 statement.executeUpdate(sqlInsert); 
+                
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'25/06', '14:00', 30, 2)";
+                statement.executeUpdate(sqlInsert); 
+                
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'21/06', '10:00', 30, 3)";
+                statement.executeUpdate(sqlInsert);
+                
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'21/06', '12:00', 45, 3)";
+                statement.executeUpdate(sqlInsert); 
+                
+                sqlInsert = "insert into " + showTimeTable + " (Date, Time, Price, Movie_id) values("
+                + "'24/06', '13:00', 30, 3)";
+                statement.executeUpdate(sqlInsert); 
 
                 
-                //insert a Seat to showtime table
-                for(int y = 1; y < 5; y++){        
-                    for(int x = 1; x < 5; x++){
-                        sqlInsert = "insert into " + seatTable + "(Column1, Row, Available, Showtime_id) values( "
-                            + x + ", " + y + ", true, 1)";
-                        statement.executeUpdate(sqlInsert); 
-                    }
+                
+                //insert Seats to showtime table
+                for(int x = 1; x <= 10; x++){
+                    this.addSeatTable(x);
                 }
-                //insert a Seat to showtime table
-                for(int y = 1; y < 5; y++){        
-                    for(int x = 1; x < 5; x++){
-                        sqlInsert = "insert into " + seatTable + "(Column1, Row, Available, Showtime_id) values( "
-                            + x + ", " + y + ", true, 2)";
-                        statement.executeUpdate(sqlInsert); 
-                    }
-                }
+
+                
+                
                                
             }
 
@@ -155,7 +166,7 @@ public class DatabaseOperation {
             System.out.println("Table created");
 
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println("You encountered an exception. Please try again");
             System.out.println(ex);
         }
     }
@@ -190,7 +201,8 @@ public class DatabaseOperation {
                 allMovie.put(movieid, new Movie(movieid, name, length, castings, director, category, rating, type, description, image));
             }
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println("You encountered an exception. Please try again");
+            System.out.println(ex);
         }
          return allMovie;
     }
@@ -222,7 +234,8 @@ public class DatabaseOperation {
             System.out.println(movieid);
             System.out.println(showTimes.get(0).getKey());
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println("You encountered an exception. Please try again");
+            System.out.println(ex);
         }
          return showTimes;
     }
@@ -251,7 +264,8 @@ public class DatabaseOperation {
                 seats.add(new Seat(seatid, available, column, row));
             }
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println("You encountered an exception. Please try again");
+            System.out.println(ex);
         }
         
          return seats;
@@ -273,7 +287,8 @@ public class DatabaseOperation {
             statement.executeUpdate(sqlUpdateTable);
 
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println("You encountered an exception. Please try again");
+            System.out.println(ex);
         }
     }
     
@@ -367,6 +382,7 @@ public class DatabaseOperation {
                 }
             }
         } catch (SQLException ex) {
+            System.out.println("You encountered an exception. Please try again");
             System.out.println(ex);
         }
         return user;
@@ -394,6 +410,7 @@ public class DatabaseOperation {
                 }
             }
         } catch (SQLException ex){
+            System.out.println("You encountered an exception. Please try again");
             System.out.println(ex);
         }
         return booking;
@@ -422,6 +439,7 @@ public class DatabaseOperation {
                 }
             }
         } catch (SQLException ex){
+            System.out.println("You encountered an exception. Please try again");
             System.out.println(ex);
         }
         return showTime;
@@ -445,6 +463,7 @@ public class DatabaseOperation {
                 }
             }
         } catch(SQLException ex){
+            System.out.println("You encountered an exception. Please try again");
             System.out.println(ex);
         }
         return movieName;
@@ -460,6 +479,7 @@ public class DatabaseOperation {
             stmp.setInt(1, booking_id);
             stmp.executeUpdate();
         } catch(SQLException ex){
+            System.out.println("You encountered an exception. Please try again");
             System.out.println(ex);
         }
     }
@@ -479,7 +499,21 @@ public class DatabaseOperation {
             statement.executeUpdate(sqlUpdateTable);
 
         } catch (SQLException ex) {
-            System.out.println("Something went wrong. Please try again");
+            System.out.println("You encountered an exception. Please try again");
+            System.out.println(ex);
+        }
+    }
+    
+    public void addSeatTable(int showTimeid) throws SQLException{
+        
+        DatabaseMetaData dbm = this.dbManager.conn.getMetaData();
+        Statement statement = dbManager.getConnection().createStatement();
+        for(int y = 1; y < 5; y++){        
+            for(int x = 1; x < 5; x++){
+                String sqlInsert = "insert into Seat (Column1, Row, Available, Showtime_id) values( "
+                    + x + ", " + y + ", true, " + showTimeid + ")";
+                statement.executeUpdate(sqlInsert); 
+            }
         }
     }
         
