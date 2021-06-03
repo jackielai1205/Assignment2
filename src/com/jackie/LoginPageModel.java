@@ -25,40 +25,46 @@ public class LoginPageModel extends Model{
     //Function that compare currentUser input data and database user data
     //Then return result to LoginPageView
     public void compareData(User currentUser){
-        for(int index = 0; index < this.dbUsers.size(); index++){
-            if(currentUser.getEmail().equals("")){
-                result = "emailempty";
-                this.setChanged();
-                this.notifyObservers(result);
-                return;
-            } else if(currentUser.getPassword().equals("")){
-                result = "passwordempty";
-                this.setChanged();
-                this.notifyObservers(result);
-                return;
-            } else {
-                if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
-                    if(currentUser.getPassword().equals(this.dbUsers.get(index).getPassword())){
-                        result = "success";
-                        this.setChanged();
-                        this.notifyObservers(result);
-                        super.login(currentUser.getEmail());
-                        return;
+        if(this.dbUsers.size() == 0){
+            result = "nodata";
+            this.setChanged();
+            this.notifyObservers(result);
+            return;
+        } else {
+            for(int index = 0; index < this.dbUsers.size(); index++){
+                if(currentUser.getEmail().equals("")){
+                    result = "emailempty";
+                    this.setChanged();
+                    this.notifyObservers(result);
+                    return;
+                } else if(currentUser.getPassword().equals("")){
+                    result = "passwordempty";
+                    this.setChanged();
+                    this.notifyObservers(result);
+                    return;
+                } else {
+                    if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
+                        if(currentUser.getPassword().equals(this.dbUsers.get(index).getPassword())){
+                            result = "success";
+                            this.setChanged();
+                            this.notifyObservers(result);
+                            super.login(currentUser.getEmail());
+                            return;
+                        } else {
+                            result = "wrongPassword";
+                            this.setChanged();
+                            this.notifyObservers(result);
+                            return;
+                        }
                     } else {
-                        result = "wrongPassword";
+                        result = "wrongEmail";
                         this.setChanged();
                         this.notifyObservers(result);
                         return;
                     }
-                } else {
-                    result = "wrongEmail";
-                    this.setChanged();
-                    this.notifyObservers(result);
-                    return;
                 }
-            }
+            }        
         }
-
     }
 
     public String getResult() {
@@ -68,4 +74,13 @@ public class LoginPageModel extends Model{
     public void setResult(String result) {
         this.result = result;
     } 
+
+    public ArrayList<User> getDbUsers() {
+        return dbUsers;
+    }
+
+    public void setDbUsers(ArrayList<User> dbUsers) {
+        this.dbUsers = dbUsers;
+    }
+    
 }

@@ -55,46 +55,22 @@ public class MenuPageView extends Page implements Observer {
         setTitle("Movie Booking System");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        menuPagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        welcomeMessage.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         welcomeMessage.setText("Welcome to Ticket Booking System!");
+        menuPagePanel.add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 61, -1, 26));
 
         registerLabel.setText("Register");
+        menuPagePanel.add(registerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 114, -1, -1));
 
         loginButton.setText("Login");
+        menuPagePanel.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 161, 95, -1));
 
         exitButton.setText("Exit");
+        menuPagePanel.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 208, 95, -1));
 
-        javax.swing.GroupLayout menuPagePanelLayout = new javax.swing.GroupLayout(menuPagePanel);
-        menuPagePanel.setLayout(menuPagePanelLayout);
-        menuPagePanelLayout.setHorizontalGroup(
-            menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPagePanelLayout.createSequentialGroup()
-                .addGroup(menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPagePanelLayout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addGroup(menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerLabel)
-                            .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(menuPagePanelLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(welcomeMessage)))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-        menuPagePanelLayout.setVerticalGroup(
-            menuPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPagePanelLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(welcomeMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(registerLabel)
-                .addGap(18, 18, 18)
-                .addComponent(loginButton)
-                .addGap(18, 18, 18)
-                .addComponent(exitButton)
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(menuPagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(menuPagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

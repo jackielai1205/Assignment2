@@ -68,7 +68,7 @@ public class BookingDetailPageView extends Page {
         BookingDetailPagePanel.add(movieName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         seatNumber.setText("Seat:");
-        BookingDetailPagePanel.add(seatNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 98, 25));
+        BookingDetailPagePanel.add(seatNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 140, 25));
 
         movieDate.setText("Date:");
         BookingDetailPagePanel.add(movieDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 109, -1));
@@ -160,6 +160,8 @@ public class BookingDetailPageView extends Page {
                 }
                 BookingDetailPageView.this.setVisible(false);
                 BookingDetailPageView.this.closeView();
+                BookingDetailPageView.this.getParent().setVisible(false);
+                BookingDetailPageView.this.getParent().getParent().setVisible(true);
             }
         });
     }

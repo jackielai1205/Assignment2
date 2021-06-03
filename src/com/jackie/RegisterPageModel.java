@@ -46,6 +46,12 @@ public class RegisterPageModel extends Model{
             this.notifyObservers(result);
         } else if(confirmPassword.equals("")){
             result = "confirmempty";
+            this.setChanged();
+            this.notifyObservers(result);
+        } else if(currentUser.getName().equals("")){
+            result = "nameempty";
+            this.setChanged();
+            this.notifyObservers(result);        
         } else if(currentUser.getEmail().matches(regex)){
             for(int index = 0; index < this.dbUsers.size(); index++){
                 if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
@@ -56,6 +62,7 @@ public class RegisterPageModel extends Model{
                     result = "passwordnotmatch";
                     this.setChanged();
                     this.notifyObservers(result);
+                    return;
                 }                    
             }
         } else {
