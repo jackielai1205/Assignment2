@@ -161,6 +161,10 @@ public class RegisterPageView extends Page implements Observer{
             JOptionPane.showMessageDialog(this, "Please confirm your password again!");
         } else if(registerModel.getResult().equals("nameempty")){
             JOptionPane.showMessageDialog(this, "Please enter your name!");
+        } else if(registerModel.getResult().equals("emailempty")){
+            JOptionPane.showMessageDialog(this, "Please enter your email!");
+        } else if(registerModel.getResult().equals("confirmempty")){
+            JOptionPane.showMessageDialog(this, "Please enter confirm password!!");
         }
     }
 }

@@ -52,6 +52,9 @@ public class LoginPageModel extends Model{
                             return;
                         } else {
                             result = "wrongPassword";
+                            this.setChanged();
+                            this.notifyObservers(result);
+                            return;
                         }
                     } else {
                         result = "wrongEmail";
