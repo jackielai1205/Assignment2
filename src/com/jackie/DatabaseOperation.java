@@ -176,7 +176,6 @@ public class DatabaseOperation {
         ResultSet rs = null;
 
         try {
-
             System.out.println(" getting query....");
             Statement statement = dbManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,

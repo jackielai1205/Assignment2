@@ -17,16 +17,6 @@ public final class Database {
 
     private static final String USER_NAME = "pdc";
     private static final String PASSWORD = "pdc";
-    //You need to start the Java DB, 
-    //The database will be created at C:\Users\YOUR_ID\.netbeans-derby
-    //If you right click Java DB and create a database manually, the location will be the same
-    //The database cannot be deleted unless the Java DB is stopped.
-    //If you only observe "other schemas", you need to find USER_NAME from it, and set it as default schema
-    //If the database does not appear in IDE after creating through codes, please restart Netbeans (this is a bug) 
-
-    //private static final String URL = "jdbc:derby://localhost:1527/CarDB;create=true";
-    //Embedded database: 
-    //You do NOT need to start the javaDB, the database will be created at the root of the project folder
     private static final String URL = "jdbc:derby://localhost:1527/assign2";  //derby.jar
 
     Connection conn;
@@ -37,10 +27,6 @@ public final class Database {
 
     public static void main(String[] args) {
         Database dbManager = new Database();
-        //If it's an online database: You will find: org.apache.derby.client.net.NetConnection40@7fbe847c
-        //That means: Connection conn = new NetConnection(); 
-        //If it's an embedded database: You will find: org.apache.derby.impl.jdbc.EmbedConnection40@681384962 (XID = 16), (SESSIONID = 1), (DATABASE = CarDB), (DRDAID = null) 
-        //That means: Connection conn = new EmbedConnection40(); 
         System.out.println(dbManager.getConnection());
     }
 
