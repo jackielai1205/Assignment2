@@ -27,7 +27,7 @@ public class ShowTimeList extends javax.swing.JPanel {
         initComponents();
         this.data.setText(showtime.getDate());
         this.time.setText(showtime.getTime());
-        this.price.setText(String.valueOf(showtime.getPrice()));
+        this.price.setText("$ " + String.valueOf(showtime.getPrice()));
     }
 
     /**
@@ -51,11 +51,6 @@ public class ShowTimeList extends javax.swing.JPanel {
         time.setText("jLabel2");
 
         enterShowTime.setText("Enter");
-        enterShowTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterShowTimeActionPerformed(evt);
-            }
-        });
 
         price.setText("jLabel1");
 
@@ -80,10 +75,6 @@ public class ShowTimeList extends javax.swing.JPanel {
             .addComponent(time, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void enterShowTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterShowTimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_enterShowTimeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

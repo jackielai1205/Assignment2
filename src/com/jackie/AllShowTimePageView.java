@@ -66,7 +66,8 @@ public class AllShowTimePageView extends Page {
 
         jLabel3.setText("Price:");
 
-        jLabel4.setText("View ShowTime");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("View Seat");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);

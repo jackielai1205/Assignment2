@@ -165,7 +165,8 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View ShowTime"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="View Seat"/>
               </Properties>
             </Component>
           </SubComponents>
