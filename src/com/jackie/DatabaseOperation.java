@@ -512,9 +512,6 @@ public class DatabaseOperation {
         String result = "";
         try {
             System.out.println(" getting query....");
-            Statement statement = dbManager.getConnection().createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
             System.out.println(seatid);
             String sqlSelect = "select * from SEAT where SEAT_ID = ?";
             PreparedStatement stmp;
@@ -549,4 +546,25 @@ public class DatabaseOperation {
         return result;
     }
         
+    public String getUserNameByUserid(String userid){
+        String userName = "";
+        ResultSet rs = null;
+        try {
+            System.out.println(" getting query....");
+            String sqlSelect = "select * from CUSTOMER where USER_ID = ?";
+            PreparedStatement stmp;
+            Connection conn = dbManager.getConnection();
+            stmp = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stmp.setString(1, userid);
+            rs = stmp.executeQuery();
+            rs.beforeFirst();
+            while (rs.next()) {
+                userName = rs.getString(2);
+                System.out.println(userName);
+            }   
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+        return userName;
+    }
 }

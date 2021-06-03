@@ -8,6 +8,7 @@ package com.jackie;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JLabel;
 
 /**
  *
@@ -123,8 +124,12 @@ public class HomePageView extends Page implements Observer {
     private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Observable model, Object arg) {
+        HomePageModel homePageModel = (HomePageModel)model;
+        System.out.println(homePageModel.getUserName());
+        this.welcomeMessage.setText("Welcome! " + homePageModel.getUserName());
     }
 }

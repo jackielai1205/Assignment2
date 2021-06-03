@@ -42,6 +42,12 @@ public abstract class Model extends Observable{
     public void setDbm(DatabaseOperation dbm) {
         this.dbm = dbm;
     }
+
+    public String getUserName() {
+        String userName = this.dbm.getUserNameByUserid(getUserId());
+        System.out.println(getUserId());
+        return userName;
+    }
     
     
 }

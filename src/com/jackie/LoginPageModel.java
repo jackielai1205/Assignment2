@@ -46,9 +46,9 @@ public class LoginPageModel extends Model{
                     if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
                         if(currentUser.getPassword().equals(this.dbUsers.get(index).getPassword())){
                             result = "success";
+                            super.login(currentUser.getEmail());
                             this.setChanged();
                             this.notifyObservers(result);
-                            super.login(currentUser.getEmail());
                             return;
                         } else {
                             result = "wrongPassword";

@@ -40,40 +40,47 @@ public class RegisterPageModel extends Model{
             result = "emailempty";
             this.setChanged();
             this.notifyObservers(result);
+            return;
         } else if(currentUser.getPassword().equals("")){
             result = "passwordempty";
             this.setChanged();
             this.notifyObservers(result);
+            return;
         } else if(confirmPassword.equals("")){
             result = "confirmempty";
             this.setChanged();
             this.notifyObservers(result);
+            return;
         } else if(currentUser.getName().equals("")){
             result = "nameempty";
             this.setChanged();
-            this.notifyObservers(result);        
+            this.notifyObservers(result);   
+            return;
         } else if(currentUser.getEmail().matches(regex)){
             for(int index = 0; index < this.dbUsers.size(); index++){
                 if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
                     result = "equal";
                     this.setChanged();
                     this.notifyObservers(result);
+                    return;
                 } else if(!currentUser.getPassword().equals(confirmPassword)){
                     result = "passwordnotmatch";
                     this.setChanged();
                     this.notifyObservers(result);
                     return;
-                }                    
+                } else {
+                   result = "";
+                    dbm.updateUserAfterRegister(currentUser);
+                    this.setChanged();
+                    this.notifyObservers(result);
+                    return;
+                }                
             }
-        } else {
+        } else if(!currentUser.getEmail().matches(regex)){
             result = "notmatch";
             this.setChanged();
             this.notifyObservers(result);
-        }
-        if(result.equals("")){
-            dbm.updateUserAfterRegister(currentUser);
-            this.setChanged();
-            this.notifyObservers(result);
+            return;
         }
     }
 }   

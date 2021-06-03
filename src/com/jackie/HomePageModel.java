@@ -12,9 +12,12 @@ import java.util.Observable;
  * @author waltersiu
  */
 public class HomePageModel extends Model{
+    private String userName;
     
     public HomePageModel(DatabaseOperation dbm) {
         super(dbm);
+        this.userName = super.getUserName();
+        this.setChanged();
     }
     
 }
