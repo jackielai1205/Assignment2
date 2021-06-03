@@ -5,8 +5,6 @@
  */
 package com.jackie;
 
-import java.util.Observable;
-
 /**
  *
  * @author waltersiu
