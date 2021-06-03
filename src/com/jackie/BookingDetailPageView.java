@@ -8,6 +8,7 @@ package com.jackie;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,11 +59,6 @@ public class BookingDetailPageView extends Page {
         BookingDetailPagePanel.add(movieTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
         BookingDetailPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 150, 25));
 
         movieName.setFont(new java.awt.Font("新細明體", 1, 14)); // NOI18N
@@ -90,11 +86,6 @@ public class BookingDetailPageView extends Page {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        this.back();
-    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +132,10 @@ public class BookingDetailPageView extends Page {
     private javax.swing.JLabel seatNumber;
     // End of variables declaration//GEN-END:variables
 
+    public JButton getBackButton(){
+        return this.backButton;
+    }
+    
     // Received Customer's current Booking info and update to panel
     @Override
     public void update(Observable model, Object arg) {

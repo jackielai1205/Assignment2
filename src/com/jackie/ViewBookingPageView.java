@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
+import javax.swing.JButton;
 
 /**
  *
@@ -65,20 +66,10 @@ public class ViewBookingPageView extends Page{
         getContentPane().add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 30));
 
         backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
         getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 264, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        this.back();
-    }//GEN-LAST:event_backButtonActionPerformed
    
     
     /**
@@ -115,6 +106,10 @@ public class ViewBookingPageView extends Page{
             }
         });
     }
+    
+    public JButton getBackButton(){
+        return this.backButton;
+    }
 
     @Override
     public void update(Observable model, Object arg) {
@@ -132,6 +127,7 @@ public class ViewBookingPageView extends Page{
                         BookingDetailPageModel bookingDetailModel = new BookingDetailPageModel(viewBookingModel.dbm, currentBooking);
                         BookingDetailPageView bookingDetailView = new BookingDetailPageView(viewBookingView);
                         BookingDetailPageController bookingDetailController = new BookingDetailPageController(bookingDetailModel, bookingDetailView);
+                        bookingDetailView.getBackButton().addActionListener(new BackController(bookingDetailView));
                     }
                 });
                 this.list.add(panel);

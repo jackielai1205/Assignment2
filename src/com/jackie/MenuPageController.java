@@ -22,6 +22,8 @@ public class MenuPageController{
                 RegisterPageView registerView = new RegisterPageView(menuView);
                 RegisterPageModel registerModel = new RegisterPageModel(menuModel.dbm);
                 RegisterPageController registerController = new RegisterPageController(registerModel, registerView);
+                registerView.getBackButton().addActionListener(new BackController(registerView));
+                
             }
         });
         
@@ -31,6 +33,7 @@ public class MenuPageController{
                 LoginPageView loginView = new LoginPageView(menuView, menuModel.dbm);
                 LoginPageModel loginModel = new LoginPageModel(menuModel.dbm);
                 LoginPageController loginController = new LoginPageController(loginModel, loginView, menuView);
+                loginView.getBackButton().addActionListener(new BackController(loginView));
             }
         });
         

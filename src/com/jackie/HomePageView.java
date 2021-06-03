@@ -8,6 +8,7 @@ package com.jackie;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
@@ -126,7 +127,9 @@ public class HomePageView extends Page implements Observer {
     private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 
-    
+    public JButton getBackButton(){
+        return this.logoutButton;
+    }
     
     @Override
     public void update(Observable model, Object arg) {

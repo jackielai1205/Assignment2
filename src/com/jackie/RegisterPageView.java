@@ -87,11 +87,6 @@ public class RegisterPageView extends Page implements Observer{
         jPanel1.add(labelConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
         jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,11 +102,6 @@ public class RegisterPageView extends Page implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        this.back();
-    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -129,6 +119,9 @@ public class RegisterPageView extends Page implements Observer{
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 
+    public JButton getBackButton(){
+        return this.backButton;
+    }
     
     public String getInputEmail(){
         return inputEmail.getText();

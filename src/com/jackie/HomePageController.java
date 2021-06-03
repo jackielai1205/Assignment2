@@ -40,7 +40,7 @@ public class HomePageController {
             @Override
             public void actionPerformed(ActionEvent al){
                 homePageModel.logout();
-                HomePageController.this.homePageView.back();
+                HomePageController.this.homePageView.getBackButton().addActionListener(new BackController(HomePageController.this.homePageView));
                 JOptionPane.showMessageDialog(homePageView, "You have logged out!");
             }
         });
@@ -51,6 +51,7 @@ public class HomePageController {
                 ViewBookingPageView viewBookingView = new ViewBookingPageView(homePageView);
                 ViewBookingPageModel viewBookingModel = new ViewBookingPageModel(homePageModel.dbm);
                 ViewBookingPageController viewBookingController = new ViewBookingPageController(viewBookingModel, viewBookingView);
+                viewBookingView.getBackButton().addActionListener(new BackController(viewBookingView));
             }
         });    
     }

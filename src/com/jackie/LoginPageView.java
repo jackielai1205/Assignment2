@@ -8,6 +8,7 @@ package com.jackie;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -73,11 +74,6 @@ public class LoginPageView extends Page implements Observer {
         loginPagePanel.add(labelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 50, -1));
 
         backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
         loginPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,12 +89,6 @@ public class LoginPageView extends Page implements Observer {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        this.back();
-        this.parent.setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +142,10 @@ public class LoginPageView extends Page implements Observer {
     
     public String getInputPassword(){
         return this.inputPassword.getText();
+    }
+    
+    public JButton getBackButton(){
+        return this.backButton;
     }
     
     //Receive compare date result from model and pop-up related message to user
