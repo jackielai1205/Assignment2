@@ -124,6 +124,7 @@ public class ViewBookingPageView extends Page{
                 panel.viewButton.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent al){
+                        System.out.println(currentBooking);
                         BookingDetailPageModel bookingDetailModel = new BookingDetailPageModel(viewBookingModel.dbm, currentBooking);
                         BookingDetailPageView bookingDetailView = new BookingDetailPageView(viewBookingView);
                         BookingDetailPageController bookingDetailController = new BookingDetailPageController(bookingDetailModel, bookingDetailView);

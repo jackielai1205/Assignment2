@@ -11,13 +11,15 @@ package com.jackie;
  */
 public class BookingDetailPageModel extends Model {
     
-    private Booking currentBooking = new Booking(1, 1, 1, "");
-    private ShowTime currentUserShowTime = dbm.getUserShowTimeInfo(this.currentBooking.showTime_id);
-    private String currentMoiveName = dbm.getBookingMovieName(this.currentUserShowTime.getMovieid());
+    private Booking currentBooking;
+    private ShowTime currentUserShowTime; 
+    private String currentMoiveName;
     
     public BookingDetailPageModel(DatabaseOperation dbm, Booking currentBooking) {
         super(dbm);
         this.currentBooking = currentBooking;
+        this.currentUserShowTime = dbm.getUserShowTimeInfo(this.getCurrentBooking().getShowTime_id());
+        this.currentMoiveName = dbm.getBookingMovieName(this.getCurrentUserShowTime().getMovieid());
     }
 
     public Booking getCurrentBooking() {

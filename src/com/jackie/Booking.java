@@ -21,6 +21,10 @@ class Booking {
         this.seat_id = seat_id;
         this.user_id = user_id;
     }
+    
+    public Booking(){
+        
+    }
 
     public int getBooking_id() {
         return booking_id;

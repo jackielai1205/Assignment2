@@ -40,7 +40,8 @@ public class HomePageController {
             @Override
             public void actionPerformed(ActionEvent al){
                 homePageModel.logout();
-                HomePageController.this.homePageView.getBackButton().addActionListener(new BackController(HomePageController.this.homePageView));
+                HomePageController.this.homePageView.setVisible(false);
+                HomePageController.this.homePageView.getParent().setVisible(true);
                 JOptionPane.showMessageDialog(homePageView, "You have logged out!");
             }
         });
