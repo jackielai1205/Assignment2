@@ -60,6 +60,7 @@ public class ViewBookingPageView extends Page{
 
         getContentPane().add(bookingListPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 40, 400, -1));
 
+        message.setFont(new java.awt.Font("新細明體", 1, 18)); // NOI18N
         message.setText("Your Booking:");
         getContentPane().add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 30));
 

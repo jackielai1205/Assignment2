@@ -8,6 +8,7 @@ package com.jackie;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JLabel;
 
 /**
  *
@@ -59,18 +60,20 @@ public class HomePageView extends Page implements Observer {
 
         homePagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        chooseMessage.setFont(new java.awt.Font("新細明體", 1, 12)); // NOI18N
         chooseMessage.setText("Please choose an option:");
         homePagePanel.add(chooseMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 20));
 
         viewMovieButton.setText("View Movie");
-        homePagePanel.add(viewMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 136, 128, -1));
+        homePagePanel.add(viewMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 120, 25));
 
         viewBookingButton.setText("View Booking");
-        homePagePanel.add(viewBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 183, -1, -1));
+        homePagePanel.add(viewBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 120, 25));
 
         logoutButton.setText("Logout");
-        homePagePanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 128, -1));
+        homePagePanel.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 120, 25));
 
+        welcomeMessage.setFont(new java.awt.Font("新細明體", 1, 18)); // NOI18N
         welcomeMessage.setText("Welcome! ");
         homePagePanel.add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 156, 32));
 
@@ -123,8 +126,12 @@ public class HomePageView extends Page implements Observer {
     private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Observable model, Object arg) {
+        HomePageModel homePageModel = (HomePageModel)model;
+        System.out.println(homePageModel.getUserName());
+        this.welcomeMessage.setText("Welcome! " + homePageModel.getUserName());
     }
 }

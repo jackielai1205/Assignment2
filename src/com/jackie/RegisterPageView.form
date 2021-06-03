@@ -93,6 +93,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelReg">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="&#x65b0;&#x7d30;&#x660e;&#x9ad4;" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Registration"/>
           </Properties>
           <Constraints>
@@ -107,7 +110,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="250" width="-1" height="-1"/>
+              <AbsoluteConstraints x="60" y="250" width="90" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -137,7 +140,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="220" y="250" width="-1" height="-1"/>
+              <AbsoluteConstraints x="220" y="250" width="90" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

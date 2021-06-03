@@ -31,40 +31,38 @@ public class LoginPageModel extends Model{
             this.notifyObservers(result);
             return;
         } else {
-            for(int index = 0; index < this.dbUsers.size(); index++){
-                if(currentUser.getEmail().equals("")){
-                    result = "emailempty";
-                    this.setChanged();
-                    this.notifyObservers(result);
-                    return;
-                } else if(currentUser.getPassword().equals("")){
-                    result = "passwordempty";
-                    this.setChanged();
-                    this.notifyObservers(result);
-                    return;
-                } else {
+            if(currentUser.getEmail().equals("")){
+                result = "emailempty";
+                this.setChanged();
+                this.notifyObservers(result);
+                return;
+            } else if(currentUser.getPassword().equals("")){
+                result = "passwordempty";
+                this.setChanged();
+                this.notifyObservers(result);
+                return;
+            } else {
+                for(int index = 0; index < this.dbUsers.size(); index++){
                     if(currentUser.getEmail().equals(this.dbUsers.get(index).getEmail())){
                         if(currentUser.getPassword().equals(this.dbUsers.get(index).getPassword())){
                             result = "success";
+                            super.login(currentUser.getEmail());
                             this.setChanged();
                             this.notifyObservers(result);
-                            super.login(currentUser.getEmail());
                             return;
                         } else {
                             result = "wrongPassword";
-                            this.setChanged();
-                            this.notifyObservers(result);
-                            return;
                         }
                     } else {
                         result = "wrongEmail";
-                        this.setChanged();
-                        this.notifyObservers(result);
-                        return;
                     }
                 }
-            }        
-        }
+                this.setChanged();
+                this.notifyObservers(result);
+                return;
+            }
+        }        
+        
     }
 
     public String getResult() {

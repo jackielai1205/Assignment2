@@ -22,6 +22,8 @@ public class HomePageController {
         
         this.homePageModel = homePageModel;
         this.homePageView = homePageView;
+        homePageModel.addObserver(homePageView);
+        homePageModel.notifyObservers();
         
         homePageView.viewMovieButtonAddOnClickListener(new ActionListener(){
             @Override

@@ -51,10 +51,11 @@ public class BookingDetailPageView extends Page {
         BookingDetailPagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cancelBookingButton.setText("Cancel Booking");
-        BookingDetailPagePanel.add(cancelBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        BookingDetailPagePanel.add(cancelBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 150, 25));
 
+        movieTime.setFont(new java.awt.Font("新細明體", 1, 14)); // NOI18N
         movieTime.setText("Time:");
-        BookingDetailPagePanel.add(movieTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        BookingDetailPagePanel.add(movieTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,16 +63,19 @@ public class BookingDetailPageView extends Page {
                 backButtonActionPerformed(evt);
             }
         });
-        BookingDetailPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+        BookingDetailPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 150, 25));
 
+        movieName.setFont(new java.awt.Font("新細明體", 1, 14)); // NOI18N
         movieName.setText("Name:");
-        BookingDetailPagePanel.add(movieName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        BookingDetailPagePanel.add(movieName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
+        seatNumber.setFont(new java.awt.Font("新細明體", 1, 14)); // NOI18N
         seatNumber.setText("Seat:");
         BookingDetailPagePanel.add(seatNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 140, 25));
 
+        movieDate.setFont(new java.awt.Font("新細明體", 1, 14)); // NOI18N
         movieDate.setText("Date:");
-        BookingDetailPagePanel.add(movieDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 109, -1));
+        BookingDetailPagePanel.add(movieDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 109, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
