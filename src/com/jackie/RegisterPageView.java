@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -141,6 +144,54 @@ public class RegisterPageView extends Page implements Observer{
     
     public String getInputName(){
         return inputName.getText();
+    }
+
+    public void setBackButton(JButton backButton) {
+        this.backButton = backButton;
+    }
+
+    public void setInputConfirm(JTextField inputConfirm) {
+        this.inputConfirm = inputConfirm;
+    }
+
+    public void setInputEmail(JTextField inputEmail) {
+        this.inputEmail = inputEmail;
+    }
+
+    public void setInputName(JTextField inputName) {
+        this.inputName = inputName;
+    }
+
+    public void setInputPassword(JTextField inputPassword) {
+        this.inputPassword = inputPassword;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public void setLabelConfirm(JLabel labelConfirm) {
+        this.labelConfirm = labelConfirm;
+    }
+
+    public void setLabelEmail(JLabel labelEmail) {
+        this.labelEmail = labelEmail;
+    }
+
+    public void setLabelName(JLabel labelName) {
+        this.labelName = labelName;
+    }
+
+    public void setLabelPassword(JLabel labelPassword) {
+        this.labelPassword = labelPassword;
+    }
+
+    public void setLabelReg(JLabel labelReg) {
+        this.labelReg = labelReg;
+    }
+
+    public void setSubmitButton(JButton submitButton) {
+        this.submitButton = submitButton;
     }
     
     //Receive Compare data result from Model and pop-up related error/success message to user
