@@ -51,6 +51,7 @@ public class MoviePageView extends Page{
         setTitle("Movie Booking System");
         setResizable(false);
 
+        movieList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         movieList.setText("Movie List");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
@@ -73,19 +74,13 @@ public class MoviePageView extends Page{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(moviePanel)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(moviePanel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(223, 223, 223)
-                                .addComponent(movieList))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(back)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(back)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(movieList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

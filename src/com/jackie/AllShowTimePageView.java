@@ -51,10 +51,12 @@ public class AllShowTimePageView extends Page {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Booking System");
 
+        movieText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         movieText.setText("jLabel1");
 
         back.setText("Back");
 
+        showTimeList.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
         showTimeList.setLayout(new javax.swing.BoxLayout(showTimeList, javax.swing.BoxLayout.Y_AXIS));
         scrollPane1.setViewportView(showTimeList);
 
@@ -99,13 +101,13 @@ public class AllShowTimePageView extends Page {
         showTimeInterfaceLayout.setHorizontalGroup(
             showTimeInterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(showTimeInterfaceLayout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(movieText, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(267, Short.MAX_VALUE))
-            .addGroup(showTimeInterfaceLayout.createSequentialGroup()
                 .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(showTimeInterfaceLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(movieText, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(showTimeInterfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, showTimeInterfaceLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

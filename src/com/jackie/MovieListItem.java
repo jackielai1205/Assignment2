@@ -43,6 +43,7 @@ public class MovieListItem extends javax.swing.JPanel{
         movieName = new javax.swing.JLabel();
         enter = new javax.swing.JButton();
 
+        movieName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         movieName.setText("jLabel1");
 
         enter.setText("jButton1");
@@ -53,8 +54,8 @@ public class MovieListItem extends javax.swing.JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(movieName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(movieName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(enter)
                 .addGap(78, 78, 78))
         );

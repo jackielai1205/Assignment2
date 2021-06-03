@@ -30,6 +30,7 @@ public class HomePageController {
                 MoviePageView moviePageView = new MoviePageView(homePageView);
                 MoviePageController  moviePageController = new MoviePageController(model, moviePageView);
                 moviePageView.addBackButton(moviePageView.getBack(), new BackController(moviePageView));
+                homePageView.setVisible(false);
             }
         });
         
