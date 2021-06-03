@@ -72,11 +72,12 @@ public class RegisterPageView extends Page implements Observer{
         jPanel1.add(inputConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 155, 116, -1));
         jPanel1.add(inputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 75, 116, -1));
 
+        labelReg.setFont(new java.awt.Font("新細明體", 1, 14)); // NOI18N
         labelReg.setText("Registration");
         jPanel1.add(labelReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         submitButton.setText("Register");
-        jPanel1.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        jPanel1.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 90, 30));
         jPanel1.add(inputPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, 116, -1));
 
         labelConfirm.setText("Confirm Password");
@@ -88,7 +89,7 @@ public class RegisterPageView extends Page implements Observer{
                 backButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

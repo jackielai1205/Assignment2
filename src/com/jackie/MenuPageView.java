@@ -62,13 +62,13 @@ public class MenuPageView extends Page implements Observer {
         menuPagePanel.add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 61, -1, 26));
 
         registerLabel.setText("Register");
-        menuPagePanel.add(registerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 114, -1, -1));
+        menuPagePanel.add(registerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 114, 95, 30));
 
         loginButton.setText("Login");
-        menuPagePanel.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 161, 95, -1));
+        menuPagePanel.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 161, 95, 30));
 
         exitButton.setText("Exit");
-        menuPagePanel.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 208, 95, -1));
+        menuPagePanel.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 208, 95, 30));
 
         getContentPane().add(menuPagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 

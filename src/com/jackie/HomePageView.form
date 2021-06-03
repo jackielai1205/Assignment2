@@ -39,6 +39,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="chooseMessage">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="&#x65b0;&#x7d30;&#x660e;&#x9ad4;" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Please choose an option:"/>
           </Properties>
           <Constraints>
@@ -53,7 +56,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="136" width="128" height="-1"/>
+              <AbsoluteConstraints x="120" y="140" width="120" height="25"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -63,7 +66,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="183" width="-1" height="-1"/>
+              <AbsoluteConstraints x="120" y="180" width="120" height="25"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -73,12 +76,15 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="230" width="128" height="-1"/>
+              <AbsoluteConstraints x="120" y="220" width="120" height="25"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="welcomeMessage">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="&#x65b0;&#x7d30;&#x660e;&#x9ad4;" size="18" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Welcome! "/>
           </Properties>
           <Constraints>

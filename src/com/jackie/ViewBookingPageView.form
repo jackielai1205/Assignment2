@@ -54,6 +54,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="message">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="&#x65b0;&#x7d30;&#x660e;&#x9ad4;" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Your Booking:"/>
       </Properties>
       <Constraints>

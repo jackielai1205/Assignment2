@@ -56,12 +56,13 @@ public class LoginPageView extends Page implements Observer {
 
         loginPagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        labelLogin.setFont(new java.awt.Font("新細明體", 1, 18)); // NOI18N
         labelLogin.setText("Login");
         labelLogin.setToolTipText("");
         loginPagePanel.add(labelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 59, 30));
 
         submitButton.setText("Login");
-        loginPagePanel.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        loginPagePanel.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 90, 30));
         loginPagePanel.add(inputPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 145, 190, -1));
         loginPagePanel.add(inputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 95, 190, -1));
 
@@ -77,7 +78,7 @@ public class LoginPageView extends Page implements Observer {
                 backButtonActionPerformed(evt);
             }
         });
-        loginPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+        loginPagePanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
