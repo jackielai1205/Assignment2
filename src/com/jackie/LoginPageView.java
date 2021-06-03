@@ -158,6 +158,9 @@ public class LoginPageView extends Page implements Observer {
     public void update(Observable model, Object arg) {
         this.setVisible(true);
         LoginPageModel loginModel = (LoginPageModel)model;
+        if(loginModel.getResult().equals("nodata")){
+            JOptionPane.showMessageDialog(this, "Please register first!");
+        }
         if(loginModel.getResult().equals("success")){
             JOptionPane.showMessageDialog(this, "Login Success!");
             this.setVisible(false);

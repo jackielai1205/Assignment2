@@ -145,19 +145,21 @@ public class RegisterPageView extends Page implements Observer{
     //Receive Compare data result from Model and pop-up related error/success message to user
     @Override
     public void update(Observable model, Object arg) {
-        this.setVisible(true);
         RegisterPageModel registerModel = (RegisterPageModel)model;
         if(registerModel.getResult().equals("equal")){
             JOptionPane.showMessageDialog(this, "Email have been registered...");
         } else if(registerModel.getResult().equals("")){
             JOptionPane.showMessageDialog(this, "Register success!");
             this.setVisible(false);
+            this.getParent().setVisible(true);
         } else if(registerModel.getResult().equals("notmatch")){
             JOptionPane.showMessageDialog(this, "Please enter a valid email!");
         } else if(registerModel.getResult().equals("passwordempty")){
             JOptionPane.showMessageDialog(this, "Please enter password!");
         } else if(registerModel.getResult().equals("passwordnotmatch")){
             JOptionPane.showMessageDialog(this, "Please confirm your password again!");
+        } else if(registerModel.getResult().equals("nameempty")){
+            JOptionPane.showMessageDialog(this, "Please enter your name!");
         }
     }
 }
