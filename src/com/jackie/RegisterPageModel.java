@@ -35,6 +35,7 @@ public class RegisterPageModel extends Model{
     //Compare user input data to database user data
     //And return compare result to View
     public void compareData(User currentUser, String confirmPassword){
+        result = "";
         final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9]+.com$";
         if(currentUser.getEmail().equals("")){
             result = "emailempty";
@@ -68,13 +69,13 @@ public class RegisterPageModel extends Model{
                     this.setChanged();
                     this.notifyObservers(result);
                     return;
-                } else {
-                   result = "";
+                }                
+            }
+            if("".equals(result)){
                     dbm.updateUserAfterRegister(currentUser);
                     this.setChanged();
                     this.notifyObservers(result);
                     return;
-                }                
             }
         } else if(!currentUser.getEmail().matches(regex)){
             result = "notmatch";
